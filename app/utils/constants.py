@@ -1,0 +1,25 @@
+APP_NAME = "Smart Inventory API"
+
+API_VERSION = "v1"
+
+DEFAULT_PAGE = 1
+
+DEFAULT_PAGE_SIZE = 10
+
+MAX_PAGE_SIZE = 100
+
+LOW_STOCK_THRESHOLD = 10
+
+DEFAULT_CURRENCY = "IDR"
+
+TOKEN_PREFIX = "Bearer"
+
+UPLOAD_FOLDER = "uploads"
+
+ALLOWED_IMAGE_EXTENSIONS = (
+    ".jpg",
+    ".jpeg",
+    ".png",
+)
+
+MAX_IMAGE_SIZE = 5 * 1024 * 1024
