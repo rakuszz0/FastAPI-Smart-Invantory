@@ -74,7 +74,7 @@ def _seed_profile(email: str, fullname: str, role: str, password: str) -> None:
 def upgrade() -> None:
     _create_users_table_if_needed()
     _seed_profile(
-        email="ilahir6@gmail.com",
+        email="ilahir66@gmail.com",
         fullname="Super Admin",
         role="super_admin",
         password="SuperAdmin@01",
@@ -90,7 +90,7 @@ def upgrade() -> None:
 def downgrade() -> None:
     bind = op.get_bind()
     for email in (
-        "ilahir6@gmail.com",
+        "ilahir66@gmail.com",
         "jiwagila023@gmail.com",
     ):
         bind.execute(sa.text("DELETE FROM users WHERE email = :email"), {"email": email})

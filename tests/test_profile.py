@@ -44,6 +44,35 @@ def test_regular_user_can_only_update_own_profile(client):
     db.close()
 
 
+def test_profile_fields_can_be_updated_partially_including_password(client):
+    db = Session(bind=_database.engine)
+    user, token = _user_with_token(db, "user")
+
+    response = client.put(
+        "/api/v1/auth/me",
+        json={"phone": "081234567890", "gender": "male"},
+        headers={"Authorization": f"Bearer {token}"},
+    )
+    assert response.status_code == 200
+    assert response.json()["phone"] == "081234567890"
+    assert response.json()["gender"] == "male"
+    assert response.json()["profile_is_complete"] is False
+
+    password_response = client.put(
+        "/api/v1/auth/me",
+        json={"password": "NewPassword123"},
+        headers={"Authorization": f"Bearer {token}"},
+    )
+    assert password_response.status_code == 200
+
+    login_response = client.post(
+        "/api/v1/auth/login",
+        json={"email": user.email, "password": "NewPassword123"},
+    )
+    assert login_response.status_code == 200
+    db.close()
+
+
 def test_staff_can_edit_user_profile_but_not_role(client):
     db = Session(bind=_database.engine)
     _, staff_token = _user_with_token(db, "staff")
@@ -84,8 +113,22 @@ def test_registration_always_creates_regular_user(client):
             "fullname": "New Regular User",
             "email": f"register.{unique}@example.com",
             "password": "Password123",
+            "confirm_password": "Password123",
             "role": "admin",
         },
     )
     assert response.status_code == 201
     assert response.json()["role"] == "user"
+
+
+def test_registration_rejects_mismatched_password_confirmation(client):
+    response = client.post(
+        "/api/v1/auth/register",
+        json={
+            "fullname": "New Regular User",
+            "email": f"register.{uuid.uuid4().hex[:8]}@example.com",
+            "password": "Password123",
+            "confirm_password": "DifferentPassword123",
+        },
+    )
+    assert response.status_code == 422

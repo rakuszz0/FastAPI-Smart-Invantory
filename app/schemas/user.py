@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import date, datetime
 from typing import Optional
 
 from pydantic import (
@@ -6,6 +6,7 @@ from pydantic import (
     ConfigDict,
     EmailStr,
     Field,
+    model_validator,
 )
 
 from app.utils.enums import UserRole
@@ -37,6 +38,18 @@ class UserRegister(UserBase):
         min_length=6,
         max_length=100,
     )
+
+    confirm_password: str = Field(
+        ...,
+        min_length=6,
+        max_length=100,
+    )
+
+    @model_validator(mode="after")
+    def passwords_match(self):
+        if self.password != self.confirm_password:
+            raise ValueError("Password confirmation does not match")
+        return self
 
 
 # =====================================
@@ -70,6 +83,26 @@ class ProfileUpdate(BaseModel):
         max_length=100,
     )
 
+    phone: Optional[str] = Field(
+        default=None,
+        min_length=8,
+        max_length=30,
+    )
+
+    address: Optional[str] = Field(
+        default=None,
+        min_length=5,
+        max_length=255,
+    )
+
+    date_of_birth: Optional[date] = None
+
+    gender: Optional[str] = Field(
+        default=None,
+        min_length=1,
+        max_length=20,
+    )
+
 
 class AdminUserUpdate(ProfileUpdate):
 
@@ -92,6 +125,16 @@ class UserResponse(UserBase):
     role: str
 
     is_active: bool
+
+    phone: Optional[str] = None
+
+    address: Optional[str] = None
+
+    date_of_birth: Optional[date] = None
+
+    gender: Optional[str] = None
+
+    profile_is_complete: bool
 
     created_at: datetime
 

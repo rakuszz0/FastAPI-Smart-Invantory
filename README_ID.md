@@ -78,7 +78,7 @@ Jika Anda ingin memperluas sistem izin, role ini dapat dipakai untuk membatasi a
 
 ## Profil dan akses role
 
-- Semua pengguna login dapat melihat profilnya melalui `GET /api/v1/auth/me` dan mengubah profil sendiri melalui `PUT /api/v1/auth/me`.
+- Semua pengguna login dapat melihat profilnya melalui `GET /api/v1/auth/me` dan mengubah profil sendiri melalui `PUT /api/v1/auth/me`. Update bersifat parsial: kirim hanya field yang ingin diubah, misalnya hanya `email` atau hanya `password`.
 - `user` hanya dapat mengubah profil sendiri dan tidak dapat mengubah role.
 - `staff` dapat mengubah profil sendiri serta profil pengguna dengan role `user`, tanpa dapat mengubah role.
 - `admin` dapat mengubah profil dan role `staff` maupun `user` melalui `PUT /api/v1/admin/users/{user_id}`.
@@ -86,14 +86,16 @@ Jika Anda ingin memperluas sistem izin, role ini dapat dipakai untuk membatasi a
 
 Registrasi publik selalu membuat role `user`, walaupun request mengirim field `role`.
 
+Registrasi membutuhkan `fullname`, `email`, `password`, dan `confirm_password`; password harus sama. Setelah login, pengguna dapat melengkapi data diri opsional melalui endpoint profil: `phone`, `address`, `date_of_birth` (format `YYYY-MM-DD`), dan `gender`. Field `profile_is_complete` pada respons menandakan semua data opsional tersebut sudah terisi.
+
 ### Migrasi akun super admin dan admin
 
 Migrasi awal membuat tabel `users` bila belum ada dan menambahkan akun berikut:
 
 | Email | Password | Role |
 | --- | --- | --- |
-| `ilahir6@gmail.com` | `SuperAdmin@01` | `super_admin` |
-| `ilahir66@gmail.com` | `SuperAdmin@01` | `admin` |
+| `ilahir66@gmail.com` | `SuperAdmin@01` | `super_admin` |
+| `jiwagila023@gmail.com` | `SuperAdmin@01` | `admin` |
 
 Jalankan dengan `alembic upgrade head`. Setelah login pertama, sebaiknya ubah password kedua akun.
 

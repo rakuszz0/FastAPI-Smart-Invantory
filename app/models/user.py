@@ -1,8 +1,9 @@
-from datetime import datetime
+from datetime import date, datetime
 
 from sqlalchemy import (
     Boolean,
     Column,
+    Date,
     DateTime,
     Integer,
     String,
@@ -50,6 +51,26 @@ class User(Base):
         nullable=False,
     )
 
+    phone = Column(
+        String(30),
+        nullable=True,
+    )
+
+    address = Column(
+        String(255),
+        nullable=True,
+    )
+
+    date_of_birth = Column(
+        Date,
+        nullable=True,
+    )
+
+    gender = Column(
+        String(20),
+        nullable=True,
+    )
+
     created_at = Column(
         DateTime,
         default=datetime.utcnow,
@@ -60,6 +81,16 @@ class User(Base):
         default=datetime.utcnow,
         onupdate=datetime.utcnow,
     )
+
+    @property
+    def profile_is_complete(self) -> bool:
+        """Whether the optional personal-data fields have all been filled."""
+        return all((
+            self.phone,
+            self.address,
+            self.date_of_birth,
+            self.gender,
+        ))
 
     def __repr__(self):
 

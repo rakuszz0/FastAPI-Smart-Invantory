@@ -63,3 +63,15 @@ def _apply_profile_changes(db: Session, user, payload: ProfileUpdate):
 
     if payload.password is not None:
         user.password = hash_password(payload.password)
+
+    if payload.phone is not None:
+        user.phone = payload.phone
+
+    if payload.address is not None:
+        user.address = payload.address
+
+    if payload.date_of_birth is not None:
+        user.date_of_birth = payload.date_of_birth
+
+    if payload.gender is not None:
+        user.gender = payload.gender

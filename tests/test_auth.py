@@ -6,7 +6,9 @@ def test_register(client):
 
         "email": "rahmat@gmail.com",
 
-        "password": "Password123"
+        "password": "Password123",
+
+        "confirm_password": "Password123"
 
     }
 
