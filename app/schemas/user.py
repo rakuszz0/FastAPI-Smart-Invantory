@@ -8,6 +8,8 @@ from pydantic import (
     Field,
 )
 
+from app.utils.enums import UserRole
+
 
 # =====================================
 # Base
@@ -52,15 +54,31 @@ class UserLogin(BaseModel):
 # Update
 # =====================================
 
-class UserUpdate(BaseModel):
+class ProfileUpdate(BaseModel):
 
-    fullname: Optional[str] = None
+    fullname: Optional[str] = Field(
+        default=None,
+        min_length=3,
+        max_length=150,
+    )
 
-    password: Optional[str] = None
+    email: Optional[EmailStr] = None
 
-    role: Optional[str] = None
+    password: Optional[str] = Field(
+        default=None,
+        min_length=6,
+        max_length=100,
+    )
 
-    is_active: Optional[bool] = None
+
+class AdminUserUpdate(ProfileUpdate):
+
+    role: Optional[UserRole] = None
+
+
+
+# Backward-compatible name for callers that already import UserUpdate.
+UserUpdate = AdminUserUpdate
 
 
 # =====================================

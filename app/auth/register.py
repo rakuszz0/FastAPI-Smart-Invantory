@@ -6,6 +6,7 @@ from app.schemas.user import UserRegister
 from app.repositories.user_repository import UserRepository
 
 from app.core.security import hash_password
+from app.utils.enums import UserRole
 
 from app.exceptions.authentication import (
     UserAlreadyExistsException
@@ -41,7 +42,10 @@ class RegisterService:
 
             password=hash_password(
                 payload.password
-            )
+            ),
+
+            # Public registration must never create a privileged account.
+            role=UserRole.USER.value,
 
         )
 

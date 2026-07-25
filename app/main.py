@@ -9,6 +9,7 @@ from app.routers.transaction_router import router as transaction_router
 from app.routers.ai_router import router as ai_router
 from app.routers.admin_router import router as admin_router
 from app.routers.payment_router import router as payment_router
+from app.routers.profile_router import router as profile_router
 
 # Dependencies
 from app.dependencies.services import get_product_service
@@ -76,6 +77,11 @@ app.include_router(
 
 app.include_router(
     auth_router,
+    prefix=API_PREFIX
+)
+
+app.include_router(
+    profile_router,
     prefix=API_PREFIX
 )
 

@@ -76,6 +76,27 @@ Aplikasi ini mendukung role-based access control. Role yang umum dipakai adalah:
 
 Jika Anda ingin memperluas sistem izin, role ini dapat dipakai untuk membatasi akses endpoint tertentu agar hanya user dengan hak tertentu yang bisa mengaksesnya.
 
+## Profil dan akses role
+
+- Semua pengguna login dapat melihat profilnya melalui `GET /api/v1/auth/me` dan mengubah profil sendiri melalui `PUT /api/v1/auth/me`.
+- `user` hanya dapat mengubah profil sendiri dan tidak dapat mengubah role.
+- `staff` dapat mengubah profil sendiri serta profil pengguna dengan role `user`, tanpa dapat mengubah role.
+- `admin` dapat mengubah profil dan role `staff` maupun `user` melalui `PUT /api/v1/admin/users/{user_id}`.
+- `super_admin` juga dapat mengelola akun `admin`.
+
+Registrasi publik selalu membuat role `user`, walaupun request mengirim field `role`.
+
+### Migrasi akun super admin dan admin
+
+Migrasi awal membuat tabel `users` bila belum ada dan menambahkan akun berikut:
+
+| Email | Password | Role |
+| --- | --- | --- |
+| `ilahir6@gmail.com` | `SuperAdmin@01` | `super_admin` |
+| `ilahir66@gmail.com` | `SuperAdmin@01` | `admin` |
+
+Jalankan dengan `alembic upgrade head`. Setelah login pertama, sebaiknya ubah password kedua akun.
+
 ## Panduan pembayaran Midtrans
 Aplikasi ini sudah dilengkapi dengan alur pembayaran dasar yang siap diuji di sandbox Midtrans.
 

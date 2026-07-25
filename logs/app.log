@@ -23811,3 +23811,1906 @@ WHERE transactions.id = ?
 2026-07-26 00:24:59,679 | INFO | POST /api/v1/transactions/ | 200 | 0.0035s
 2026-07-26 00:24:59,679 | INFO | ROLLBACK
 2026-07-26 00:24:59,680 | INFO | HTTP Request: POST http://testserver/api/v1/transactions/ "HTTP/1.1 200 OK"
+2026-07-26 01:33:48,269 | INFO | BEGIN (implicit)
+2026-07-26 01:33:48,271 | INFO | PRAGMA main.table_info("products")
+2026-07-26 01:33:48,271 | INFO | [raw sql] ()
+2026-07-26 01:33:48,273 | INFO | PRAGMA temp.table_info("products")
+2026-07-26 01:33:48,273 | INFO | [raw sql] ()
+2026-07-26 01:33:48,274 | INFO | PRAGMA main.table_info("suppliers")
+2026-07-26 01:33:48,274 | INFO | [raw sql] ()
+2026-07-26 01:33:48,274 | INFO | PRAGMA temp.table_info("suppliers")
+2026-07-26 01:33:48,275 | INFO | [raw sql] ()
+2026-07-26 01:33:48,275 | INFO | PRAGMA main.table_info("customers")
+2026-07-26 01:33:48,275 | INFO | [raw sql] ()
+2026-07-26 01:33:48,275 | INFO | PRAGMA temp.table_info("customers")
+2026-07-26 01:33:48,276 | INFO | [raw sql] ()
+2026-07-26 01:33:48,276 | INFO | PRAGMA main.table_info("transactions")
+2026-07-26 01:33:48,276 | INFO | [raw sql] ()
+2026-07-26 01:33:48,277 | INFO | PRAGMA temp.table_info("transactions")
+2026-07-26 01:33:48,277 | INFO | [raw sql] ()
+2026-07-26 01:33:48,277 | INFO | PRAGMA main.table_info("payments")
+2026-07-26 01:33:48,277 | INFO | [raw sql] ()
+2026-07-26 01:33:48,278 | INFO | PRAGMA temp.table_info("payments")
+2026-07-26 01:33:48,278 | INFO | [raw sql] ()
+2026-07-26 01:33:48,278 | INFO | PRAGMA main.table_info("users")
+2026-07-26 01:33:48,279 | INFO | [raw sql] ()
+2026-07-26 01:33:48,279 | INFO | PRAGMA temp.table_info("users")
+2026-07-26 01:33:48,279 | INFO | [raw sql] ()
+2026-07-26 01:33:48,280 | INFO | COMMIT
+2026-07-26 01:33:48,281 | INFO | BEGIN (implicit)
+2026-07-26 01:33:48,281 | INFO | PRAGMA main.table_info("products")
+2026-07-26 01:33:48,281 | INFO | [raw sql] ()
+2026-07-26 01:33:48,281 | INFO | PRAGMA temp.table_info("products")
+2026-07-26 01:33:48,282 | INFO | [raw sql] ()
+2026-07-26 01:33:48,282 | INFO | PRAGMA main.table_info("suppliers")
+2026-07-26 01:33:48,282 | INFO | [raw sql] ()
+2026-07-26 01:33:48,283 | INFO | PRAGMA temp.table_info("suppliers")
+2026-07-26 01:33:48,283 | INFO | [raw sql] ()
+2026-07-26 01:33:48,283 | INFO | PRAGMA main.table_info("customers")
+2026-07-26 01:33:48,283 | INFO | [raw sql] ()
+2026-07-26 01:33:48,284 | INFO | PRAGMA temp.table_info("customers")
+2026-07-26 01:33:48,284 | INFO | [raw sql] ()
+2026-07-26 01:33:48,284 | INFO | PRAGMA main.table_info("transactions")
+2026-07-26 01:33:48,285 | INFO | [raw sql] ()
+2026-07-26 01:33:48,285 | INFO | PRAGMA temp.table_info("transactions")
+2026-07-26 01:33:48,285 | INFO | [raw sql] ()
+2026-07-26 01:33:48,285 | INFO | PRAGMA main.table_info("payments")
+2026-07-26 01:33:48,286 | INFO | [raw sql] ()
+2026-07-26 01:33:48,286 | INFO | PRAGMA temp.table_info("payments")
+2026-07-26 01:33:48,286 | INFO | [raw sql] ()
+2026-07-26 01:33:48,287 | INFO | PRAGMA main.table_info("users")
+2026-07-26 01:33:48,287 | INFO | [raw sql] ()
+2026-07-26 01:33:48,287 | INFO | PRAGMA temp.table_info("users")
+2026-07-26 01:33:48,288 | INFO | [raw sql] ()
+2026-07-26 01:33:48,289 | INFO | 
+CREATE TABLE suppliers (
+	id INTEGER NOT NULL, 
+	company_name VARCHAR(150) NOT NULL, 
+	email VARCHAR(100), 
+	phone VARCHAR(30), 
+	address VARCHAR(255), 
+	PRIMARY KEY (id), 
+	UNIQUE (email)
+)
+
+
+2026-07-26 01:33:48,289 | INFO | [no key 0.00030s] ()
+2026-07-26 01:33:48,290 | INFO | CREATE INDEX ix_suppliers_id ON suppliers (id)
+2026-07-26 01:33:48,290 | INFO | [no key 0.00029s] ()
+2026-07-26 01:33:48,291 | INFO | 
+CREATE TABLE customers (
+	id INTEGER NOT NULL, 
+	name VARCHAR(150), 
+	email VARCHAR(150), 
+	phone VARCHAR(50), 
+	PRIMARY KEY (id)
+)
+
+
+2026-07-26 01:33:48,291 | INFO | [no key 0.00028s] ()
+2026-07-26 01:33:48,292 | INFO | 
+CREATE TABLE users (
+	id INTEGER NOT NULL, 
+	fullname VARCHAR(150) NOT NULL, 
+	email VARCHAR(150) NOT NULL, 
+	password VARCHAR(255) NOT NULL, 
+	role VARCHAR(50) NOT NULL, 
+	is_active BOOLEAN NOT NULL, 
+	created_at DATETIME, 
+	updated_at DATETIME, 
+	PRIMARY KEY (id)
+)
+
+
+2026-07-26 01:33:48,292 | INFO | [no key 0.00028s] ()
+2026-07-26 01:33:48,293 | INFO | CREATE INDEX ix_users_id ON users (id)
+2026-07-26 01:33:48,293 | INFO | [no key 0.00028s] ()
+2026-07-26 01:33:48,294 | INFO | CREATE UNIQUE INDEX ix_users_email ON users (email)
+2026-07-26 01:33:48,294 | INFO | [no key 0.00030s] ()
+2026-07-26 01:33:48,294 | INFO | 
+CREATE TABLE products (
+	id INTEGER NOT NULL, 
+	name VARCHAR(150) NOT NULL, 
+	category VARCHAR(100), 
+	stock INTEGER, 
+	price FLOAT, 
+	supplier_id INTEGER, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(supplier_id) REFERENCES suppliers (id)
+)
+
+
+2026-07-26 01:33:48,295 | INFO | [no key 0.00027s] ()
+2026-07-26 01:33:48,295 | INFO | CREATE INDEX ix_products_id ON products (id)
+2026-07-26 01:33:48,296 | INFO | [no key 0.00028s] ()
+2026-07-26 01:33:48,296 | INFO | 
+CREATE TABLE transactions (
+	id INTEGER NOT NULL, 
+	quantity INTEGER, 
+	total FLOAT, 
+	status VARCHAR(50) NOT NULL, 
+	product_id INTEGER, 
+	customer_id INTEGER, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(product_id) REFERENCES products (id), 
+	FOREIGN KEY(customer_id) REFERENCES customers (id)
+)
+
+
+2026-07-26 01:33:48,297 | INFO | [no key 0.00028s] ()
+2026-07-26 01:33:48,297 | INFO | 
+CREATE TABLE payments (
+	id INTEGER NOT NULL, 
+	transaction_id INTEGER NOT NULL, 
+	amount FLOAT NOT NULL, 
+	currency VARCHAR(10), 
+	status VARCHAR(50), 
+	provider VARCHAR(50) NOT NULL, 
+	provider_payment_id VARCHAR(255), 
+	created_at DATETIME, 
+	updated_at DATETIME, 
+	PRIMARY KEY (id), 
+	FOREIGN KEY(transaction_id) REFERENCES transactions (id)
+)
+
+
+2026-07-26 01:33:48,297 | INFO | [no key 0.00030s] ()
+2026-07-26 01:33:48,298 | INFO | CREATE INDEX ix_payments_provider_payment_id ON payments (provider_payment_id)
+2026-07-26 01:33:48,298 | INFO | [no key 0.00031s] ()
+2026-07-26 01:33:48,299 | INFO | COMMIT
+2026-07-26 01:33:48,332 | INFO | BEGIN (implicit)
+2026-07-26 01:33:48,333 | INFO | DELETE FROM payments
+2026-07-26 01:33:48,333 | INFO | [generated in 0.00034s] ()
+2026-07-26 01:33:48,333 | INFO | DELETE FROM transactions
+2026-07-26 01:33:48,334 | INFO | [generated in 0.00030s] ()
+2026-07-26 01:33:48,334 | INFO | DELETE FROM products
+2026-07-26 01:33:48,334 | INFO | [generated in 0.00029s] ()
+2026-07-26 01:33:48,335 | INFO | DELETE FROM customers
+2026-07-26 01:33:48,335 | INFO | [generated in 0.00030s] ()
+2026-07-26 01:33:48,335 | INFO | DELETE FROM suppliers
+2026-07-26 01:33:48,336 | INFO | [generated in 0.00034s] ()
+2026-07-26 01:33:48,337 | INFO | INSERT INTO customers (name, email, phone) VALUES (?, ?, ?)
+2026-07-26 01:33:48,338 | INFO | [generated in 0.00046s] ('Default Customer', None, '08123456789')
+2026-07-26 01:33:48,339 | INFO | INSERT INTO suppliers (company_name, email, phone, address) VALUES (?, ?, ?, ?)
+2026-07-26 01:33:48,339 | INFO | [generated in 0.00032s] ('Default Supplier', None, '08123456789', 'Jakarta')
+2026-07-26 01:33:48,339 | INFO | COMMIT
+2026-07-26 01:33:48,341 | INFO | BEGIN (implicit)
+2026-07-26 01:33:48,344 | INFO | SELECT suppliers.id AS suppliers_id, suppliers.company_name AS suppliers_company_name, suppliers.email AS suppliers_email, suppliers.phone AS suppliers_phone, suppliers.address AS suppliers_address 
+FROM suppliers 
+WHERE suppliers.id = ?
+2026-07-26 01:33:48,344 | INFO | [generated in 0.00037s] (1,)
+2026-07-26 01:33:48,346 | INFO | INSERT INTO products (name, category, stock, price, supplier_id) VALUES (?, ?, ?, ?, ?)
+2026-07-26 01:33:48,346 | INFO | [generated in 0.00085s] ('Default Product', 'General', 100, 10000.0, 1)
+2026-07-26 01:33:48,347 | INFO | COMMIT
+2026-07-26 01:33:48,376 | INFO | GET /api/v1/ai/forecast/1 | 200 | 0.0251s
+2026-07-26 01:33:48,377 | INFO | HTTP Request: GET http://testserver/api/v1/ai/forecast/1 "HTTP/1.1 200 OK"
+2026-07-26 01:33:48,379 | INFO | BEGIN (implicit)
+2026-07-26 01:33:48,379 | INFO | DELETE FROM payments
+2026-07-26 01:33:48,379 | INFO | [cached since 0.04672s ago] ()
+2026-07-26 01:33:48,380 | INFO | DELETE FROM transactions
+2026-07-26 01:33:48,380 | INFO | [cached since 0.04666s ago] ()
+2026-07-26 01:33:48,380 | INFO | DELETE FROM products
+2026-07-26 01:33:48,381 | INFO | [cached since 0.04668s ago] ()
+2026-07-26 01:33:48,381 | INFO | DELETE FROM customers
+2026-07-26 01:33:48,381 | INFO | [cached since 0.04666s ago] ()
+2026-07-26 01:33:48,382 | INFO | DELETE FROM suppliers
+2026-07-26 01:33:48,382 | INFO | [cached since 0.04662s ago] ()
+2026-07-26 01:33:48,383 | INFO | INSERT INTO customers (name, email, phone) VALUES (?, ?, ?)
+2026-07-26 01:33:48,383 | INFO | [cached since 0.0458s ago] ('Default Customer', None, '08123456789')
+2026-07-26 01:33:48,383 | INFO | INSERT INTO suppliers (company_name, email, phone, address) VALUES (?, ?, ?, ?)
+2026-07-26 01:33:48,383 | INFO | [cached since 0.04499s ago] ('Default Supplier', None, '08123456789', 'Jakarta')
+2026-07-26 01:33:48,384 | INFO | COMMIT
+2026-07-26 01:33:48,385 | INFO | BEGIN (implicit)
+2026-07-26 01:33:48,385 | INFO | SELECT suppliers.id AS suppliers_id, suppliers.company_name AS suppliers_company_name, suppliers.email AS suppliers_email, suppliers.phone AS suppliers_phone, suppliers.address AS suppliers_address 
+FROM suppliers 
+WHERE suppliers.id = ?
+2026-07-26 01:33:48,385 | INFO | [cached since 0.04134s ago] (1,)
+2026-07-26 01:33:48,386 | INFO | INSERT INTO products (name, category, stock, price, supplier_id) VALUES (?, ?, ?, ?, ?)
+2026-07-26 01:33:48,386 | INFO | [cached since 0.0409s ago] ('Default Product', 'General', 100, 10000.0, 1)
+2026-07-26 01:33:48,387 | INFO | COMMIT
+2026-07-26 01:33:48,389 | INFO | GET /api/v1/ai/recommendation/1 | 200 | 0.0005s
+2026-07-26 01:33:48,390 | INFO | HTTP Request: GET http://testserver/api/v1/ai/recommendation/1 "HTTP/1.1 200 OK"
+2026-07-26 01:33:48,391 | INFO | BEGIN (implicit)
+2026-07-26 01:33:48,391 | INFO | DELETE FROM payments
+2026-07-26 01:33:48,391 | INFO | [cached since 0.05898s ago] ()
+2026-07-26 01:33:48,392 | INFO | DELETE FROM transactions
+2026-07-26 01:33:48,392 | INFO | [cached since 0.05878s ago] ()
+2026-07-26 01:33:48,393 | INFO | DELETE FROM products
+2026-07-26 01:33:48,393 | INFO | [cached since 0.05871s ago] ()
+2026-07-26 01:33:48,393 | INFO | DELETE FROM customers
+2026-07-26 01:33:48,393 | INFO | [cached since 0.05867s ago] ()
+2026-07-26 01:33:48,394 | INFO | DELETE FROM suppliers
+2026-07-26 01:33:48,394 | INFO | [cached since 0.05862s ago] ()
+2026-07-26 01:33:48,394 | INFO | INSERT INTO customers (name, email, phone) VALUES (?, ?, ?)
+2026-07-26 01:33:48,395 | INFO | [cached since 0.05772s ago] ('Default Customer', None, '08123456789')
+2026-07-26 01:33:48,395 | INFO | INSERT INTO suppliers (company_name, email, phone, address) VALUES (?, ?, ?, ?)
+2026-07-26 01:33:48,395 | INFO | [cached since 0.05688s ago] ('Default Supplier', None, '08123456789', 'Jakarta')
+2026-07-26 01:33:48,396 | INFO | COMMIT
+2026-07-26 01:33:48,397 | INFO | BEGIN (implicit)
+2026-07-26 01:33:48,397 | INFO | SELECT suppliers.id AS suppliers_id, suppliers.company_name AS suppliers_company_name, suppliers.email AS suppliers_email, suppliers.phone AS suppliers_phone, suppliers.address AS suppliers_address 
+FROM suppliers 
+WHERE suppliers.id = ?
+2026-07-26 01:33:48,398 | INFO | [cached since 0.05367s ago] (1,)
+2026-07-26 01:33:48,398 | INFO | INSERT INTO products (name, category, stock, price, supplier_id) VALUES (?, ?, ?, ?, ?)
+2026-07-26 01:33:48,399 | INFO | [cached since 0.05365s ago] ('Default Product', 'General', 100, 10000.0, 1)
+2026-07-26 01:33:48,400 | INFO | COMMIT
+2026-07-26 01:33:48,456 | INFO | GET /api/v1/ai/anomaly | 200 | 0.0527s
+2026-07-26 01:33:48,458 | INFO | HTTP Request: GET http://testserver/api/v1/ai/anomaly "HTTP/1.1 200 OK"
+2026-07-26 01:33:48,461 | INFO | BEGIN (implicit)
+2026-07-26 01:33:48,461 | INFO | DELETE FROM payments
+2026-07-26 01:33:48,462 | INFO | [cached since 0.1291s ago] ()
+2026-07-26 01:33:48,462 | INFO | DELETE FROM transactions
+2026-07-26 01:33:48,463 | INFO | [cached since 0.1293s ago] ()
+2026-07-26 01:33:48,463 | INFO | DELETE FROM products
+2026-07-26 01:33:48,464 | INFO | [cached since 0.1294s ago] ()
+2026-07-26 01:33:48,464 | INFO | DELETE FROM customers
+2026-07-26 01:33:48,464 | INFO | [cached since 0.1295s ago] ()
+2026-07-26 01:33:48,465 | INFO | DELETE FROM suppliers
+2026-07-26 01:33:48,465 | INFO | [cached since 0.1295s ago] ()
+2026-07-26 01:33:48,465 | INFO | INSERT INTO customers (name, email, phone) VALUES (?, ?, ?)
+2026-07-26 01:33:48,466 | INFO | [cached since 0.1286s ago] ('Default Customer', None, '08123456789')
+2026-07-26 01:33:48,466 | INFO | INSERT INTO suppliers (company_name, email, phone, address) VALUES (?, ?, ?, ?)
+2026-07-26 01:33:48,467 | INFO | [cached since 0.1284s ago] ('Default Supplier', None, '08123456789', 'Jakarta')
+2026-07-26 01:33:48,468 | INFO | COMMIT
+2026-07-26 01:33:48,470 | INFO | BEGIN (implicit)
+2026-07-26 01:33:48,471 | INFO | SELECT suppliers.id AS suppliers_id, suppliers.company_name AS suppliers_company_name, suppliers.email AS suppliers_email, suppliers.phone AS suppliers_phone, suppliers.address AS suppliers_address 
+FROM suppliers 
+WHERE suppliers.id = ?
+2026-07-26 01:33:48,471 | INFO | [cached since 0.1273s ago] (1,)
+2026-07-26 01:33:48,472 | INFO | INSERT INTO products (name, category, stock, price, supplier_id) VALUES (?, ?, ?, ?, ?)
+2026-07-26 01:33:48,473 | INFO | [cached since 0.1276s ago] ('Default Product', 'General', 100, 10000.0, 1)
+2026-07-26 01:33:48,473 | INFO | COMMIT
+2026-07-26 01:33:48,483 | INFO | BEGIN (implicit)
+2026-07-26 01:33:48,487 | INFO | SELECT users.id AS users_id, users.fullname AS users_fullname, users.email AS users_email, users.password AS users_password, users.role AS users_role, users.is_active AS users_is_active, users.created_at AS users_created_at, users.updated_at AS users_updated_at 
+FROM users 
+WHERE users.email = ?
+ LIMIT ? OFFSET ?
+2026-07-26 01:33:48,488 | INFO | [generated in 0.00054s] ('rahmat@gmail.com', 1, 0)
+2026-07-26 01:33:48,676 | INFO | INSERT INTO users (fullname, email, password, role, is_active, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?)
+2026-07-26 01:33:48,677 | INFO | [generated in 0.00055s] ('Rahmat', 'rahmat@gmail.com', '$5$rounds=535000$UfN08uENQSOkXwkc$Ed7.ovU1kCkGXgV5vGo/TeJ9ID0IMZ94kiceMjYpaMB', 'user', 1, '2026-07-25 18:33:48.676680', '2026-07-25 18:33:48.676685')
+2026-07-26 01:33:48,677 | INFO | COMMIT
+2026-07-26 01:33:48,678 | INFO | BEGIN (implicit)
+2026-07-26 01:33:48,679 | INFO | SELECT users.id, users.fullname, users.email, users.password, users.role, users.is_active, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+2026-07-26 01:33:48,679 | INFO | [generated in 0.00033s] (1,)
+2026-07-26 01:33:48,682 | INFO | POST /api/v1/auth/register | 201 | 0.2052s
+2026-07-26 01:33:48,682 | INFO | ROLLBACK
+2026-07-26 01:33:48,683 | INFO | HTTP Request: POST http://testserver/api/v1/auth/register "HTTP/1.1 201 Created"
+2026-07-26 01:33:48,685 | INFO | BEGIN (implicit)
+2026-07-26 01:33:48,686 | INFO | DELETE FROM payments
+2026-07-26 01:33:48,686 | INFO | [cached since 0.3536s ago] ()
+2026-07-26 01:33:48,687 | INFO | DELETE FROM transactions
+2026-07-26 01:33:48,687 | INFO | [cached since 0.3534s ago] ()
+2026-07-26 01:33:48,687 | INFO | DELETE FROM products
+2026-07-26 01:33:48,687 | INFO | [cached since 0.3533s ago] ()
+2026-07-26 01:33:48,688 | INFO | DELETE FROM customers
+2026-07-26 01:33:48,688 | INFO | [cached since 0.3533s ago] ()
+2026-07-26 01:33:48,688 | INFO | DELETE FROM suppliers
+2026-07-26 01:33:48,689 | INFO | [cached since 0.3533s ago] ()
+2026-07-26 01:33:48,689 | INFO | INSERT INTO customers (name, email, phone) VALUES (?, ?, ?)
+2026-07-26 01:33:48,689 | INFO | [cached since 0.3524s ago] ('Default Customer', None, '08123456789')
+2026-07-26 01:33:48,690 | INFO | INSERT INTO suppliers (company_name, email, phone, address) VALUES (?, ?, ?, ?)
+2026-07-26 01:33:48,690 | INFO | [cached since 0.3516s ago] ('Default Supplier', None, '08123456789', 'Jakarta')
+2026-07-26 01:33:48,690 | INFO | COMMIT
+2026-07-26 01:33:48,691 | INFO | BEGIN (implicit)
+2026-07-26 01:33:48,691 | INFO | SELECT suppliers.id AS suppliers_id, suppliers.company_name AS suppliers_company_name, suppliers.email AS suppliers_email, suppliers.phone AS suppliers_phone, suppliers.address AS suppliers_address 
+FROM suppliers 
+WHERE suppliers.id = ?
+2026-07-26 01:33:48,692 | INFO | [cached since 0.3478s ago] (1,)
+2026-07-26 01:33:48,692 | INFO | INSERT INTO products (name, category, stock, price, supplier_id) VALUES (?, ?, ?, ?, ?)
+2026-07-26 01:33:48,692 | INFO | [cached since 0.3473s ago] ('Default Product', 'General', 100, 10000.0, 1)
+2026-07-26 01:33:48,693 | INFO | COMMIT
+2026-07-26 01:33:48,696 | INFO | BEGIN (implicit)
+2026-07-26 01:33:48,696 | INFO | SELECT users.id AS users_id, users.fullname AS users_fullname, users.email AS users_email, users.password AS users_password, users.role AS users_role, users.is_active AS users_is_active, users.created_at AS users_created_at, users.updated_at AS users_updated_at 
+FROM users 
+WHERE users.email = ?
+ LIMIT ? OFFSET ?
+2026-07-26 01:33:48,696 | INFO | [cached since 0.2091s ago] ('rahmat@gmail.com', 1, 0)
+2026-07-26 01:33:48,894 | INFO | POST /api/v1/auth/login | 200 | 0.1993s
+2026-07-26 01:33:48,895 | INFO | ROLLBACK
+2026-07-26 01:33:48,895 | INFO | HTTP Request: POST http://testserver/api/v1/auth/login "HTTP/1.1 200 OK"
+2026-07-26 01:33:48,897 | INFO | BEGIN (implicit)
+2026-07-26 01:33:48,897 | INFO | DELETE FROM payments
+2026-07-26 01:33:48,897 | INFO | [cached since 0.5649s ago] ()
+2026-07-26 01:33:48,898 | INFO | DELETE FROM transactions
+2026-07-26 01:33:48,898 | INFO | [cached since 0.5648s ago] ()
+2026-07-26 01:33:48,899 | INFO | DELETE FROM products
+2026-07-26 01:33:48,899 | INFO | [cached since 0.5647s ago] ()
+2026-07-26 01:33:48,899 | INFO | DELETE FROM customers
+2026-07-26 01:33:48,899 | INFO | [cached since 0.5647s ago] ()
+2026-07-26 01:33:48,900 | INFO | DELETE FROM suppliers
+2026-07-26 01:33:48,900 | INFO | [cached since 0.5647s ago] ()
+2026-07-26 01:33:48,901 | INFO | INSERT INTO customers (name, email, phone) VALUES (?, ?, ?)
+2026-07-26 01:33:48,901 | INFO | [cached since 0.5638s ago] ('Default Customer', None, '08123456789')
+2026-07-26 01:33:48,901 | INFO | INSERT INTO suppliers (company_name, email, phone, address) VALUES (?, ?, ?, ?)
+2026-07-26 01:33:48,901 | INFO | [cached since 0.563s ago] ('Default Supplier', None, '08123456789', 'Jakarta')
+2026-07-26 01:33:48,902 | INFO | COMMIT
+2026-07-26 01:33:48,903 | INFO | BEGIN (implicit)
+2026-07-26 01:33:48,903 | INFO | SELECT suppliers.id AS suppliers_id, suppliers.company_name AS suppliers_company_name, suppliers.email AS suppliers_email, suppliers.phone AS suppliers_phone, suppliers.address AS suppliers_address 
+FROM suppliers 
+WHERE suppliers.id = ?
+2026-07-26 01:33:48,903 | INFO | [cached since 0.5594s ago] (1,)
+2026-07-26 01:33:48,905 | INFO | INSERT INTO products (name, category, stock, price, supplier_id) VALUES (?, ?, ?, ?, ?)
+2026-07-26 01:33:48,906 | INFO | [cached since 0.5609s ago] ('Default Product', 'General', 100, 10000.0, 1)
+2026-07-26 01:33:48,907 | INFO | COMMIT
+2026-07-26 01:33:48,916 | INFO | BEGIN (implicit)
+2026-07-26 01:33:48,917 | INFO | SELECT users.id AS users_id, users.fullname AS users_fullname, users.email AS users_email, users.password AS users_password, users.role AS users_role, users.is_active AS users_is_active, users.created_at AS users_created_at, users.updated_at AS users_updated_at 
+FROM users 
+WHERE users.email = ?
+ LIMIT ? OFFSET ?
+2026-07-26 01:33:48,918 | INFO | [cached since 0.4312s ago] ('rahmat@gmail.com', 1, 0)
+2026-07-26 01:33:49,092 | INFO | POST /api/v1/auth/login | 200 | 0.1811s
+2026-07-26 01:33:49,093 | INFO | ROLLBACK
+2026-07-26 01:33:49,094 | INFO | HTTP Request: POST http://testserver/api/v1/auth/login "HTTP/1.1 200 OK"
+2026-07-26 01:33:49,096 | INFO | BEGIN (implicit)
+2026-07-26 01:33:49,096 | INFO | SELECT users.id AS users_id, users.fullname AS users_fullname, users.email AS users_email, users.password AS users_password, users.role AS users_role, users.is_active AS users_is_active, users.created_at AS users_created_at, users.updated_at AS users_updated_at 
+FROM users 
+WHERE users.id = ?
+ LIMIT ? OFFSET ?
+2026-07-26 01:33:49,097 | INFO | [generated in 0.00041s] (1, 1, 0)
+2026-07-26 01:33:49,098 | INFO | GET /api/v1/auth/me | 200 | 0.0038s
+2026-07-26 01:33:49,099 | INFO | ROLLBACK
+2026-07-26 01:33:49,100 | INFO | HTTP Request: GET http://testserver/api/v1/auth/me "HTTP/1.1 200 OK"
+2026-07-26 01:33:49,102 | INFO | BEGIN (implicit)
+2026-07-26 01:33:49,102 | INFO | DELETE FROM payments
+2026-07-26 01:33:49,102 | INFO | [cached since 0.7698s ago] ()
+2026-07-26 01:33:49,103 | INFO | DELETE FROM transactions
+2026-07-26 01:33:49,103 | INFO | [cached since 0.7697s ago] ()
+2026-07-26 01:33:49,104 | INFO | DELETE FROM products
+2026-07-26 01:33:49,104 | INFO | [cached since 0.7697s ago] ()
+2026-07-26 01:33:49,104 | INFO | DELETE FROM customers
+2026-07-26 01:33:49,104 | INFO | [cached since 0.7696s ago] ()
+2026-07-26 01:33:49,105 | INFO | DELETE FROM suppliers
+2026-07-26 01:33:49,105 | INFO | [cached since 0.7696s ago] ()
+2026-07-26 01:33:49,106 | INFO | INSERT INTO customers (name, email, phone) VALUES (?, ?, ?)
+2026-07-26 01:33:49,106 | INFO | [cached since 0.7688s ago] ('Default Customer', None, '08123456789')
+2026-07-26 01:33:49,106 | INFO | INSERT INTO suppliers (company_name, email, phone, address) VALUES (?, ?, ?, ?)
+2026-07-26 01:33:49,107 | INFO | [cached since 0.768s ago] ('Default Supplier', None, '08123456789', 'Jakarta')
+2026-07-26 01:33:49,107 | INFO | COMMIT
+2026-07-26 01:33:49,108 | INFO | BEGIN (implicit)
+2026-07-26 01:33:49,108 | INFO | SELECT suppliers.id AS suppliers_id, suppliers.company_name AS suppliers_company_name, suppliers.email AS suppliers_email, suppliers.phone AS suppliers_phone, suppliers.address AS suppliers_address 
+FROM suppliers 
+WHERE suppliers.id = ?
+2026-07-26 01:33:49,108 | INFO | [cached since 0.7645s ago] (1,)
+2026-07-26 01:33:49,109 | INFO | INSERT INTO products (name, category, stock, price, supplier_id) VALUES (?, ?, ?, ?, ?)
+2026-07-26 01:33:49,109 | INFO | [cached since 0.7639s ago] ('Default Product', 'General', 100, 10000.0, 1)
+2026-07-26 01:33:49,110 | INFO | COMMIT
+2026-07-26 01:33:49,112 | INFO | BEGIN (implicit)
+2026-07-26 01:33:49,114 | INFO | SELECT customers.id AS customers_id, customers.name AS customers_name, customers.email AS customers_email, customers.phone AS customers_phone 
+FROM customers
+2026-07-26 01:33:49,115 | INFO | [generated in 0.00034s] ()
+2026-07-26 01:33:49,115 | INFO | GET /api/v1/customers/ | 200 | 0.0042s
+2026-07-26 01:33:49,116 | INFO | ROLLBACK
+2026-07-26 01:33:49,117 | INFO | HTTP Request: GET http://testserver/api/v1/customers/ "HTTP/1.1 200 OK"
+2026-07-26 01:33:49,118 | INFO | BEGIN (implicit)
+2026-07-26 01:33:49,118 | INFO | DELETE FROM payments
+2026-07-26 01:33:49,119 | INFO | [cached since 0.786s ago] ()
+2026-07-26 01:33:49,119 | INFO | DELETE FROM transactions
+2026-07-26 01:33:49,119 | INFO | [cached since 0.786s ago] ()
+2026-07-26 01:33:49,120 | INFO | DELETE FROM products
+2026-07-26 01:33:49,120 | INFO | [cached since 0.786s ago] ()
+2026-07-26 01:33:49,120 | INFO | DELETE FROM customers
+2026-07-26 01:33:49,121 | INFO | [cached since 0.786s ago] ()
+2026-07-26 01:33:49,121 | INFO | DELETE FROM suppliers
+2026-07-26 01:33:49,121 | INFO | [cached since 0.7859s ago] ()
+2026-07-26 01:33:49,122 | INFO | INSERT INTO customers (name, email, phone) VALUES (?, ?, ?)
+2026-07-26 01:33:49,122 | INFO | [cached since 0.7851s ago] ('Default Customer', None, '08123456789')
+2026-07-26 01:33:49,122 | INFO | INSERT INTO suppliers (company_name, email, phone, address) VALUES (?, ?, ?, ?)
+2026-07-26 01:33:49,123 | INFO | [cached since 0.7843s ago] ('Default Supplier', None, '08123456789', 'Jakarta')
+2026-07-26 01:33:49,123 | INFO | COMMIT
+2026-07-26 01:33:49,124 | INFO | BEGIN (implicit)
+2026-07-26 01:33:49,124 | INFO | SELECT suppliers.id AS suppliers_id, suppliers.company_name AS suppliers_company_name, suppliers.email AS suppliers_email, suppliers.phone AS suppliers_phone, suppliers.address AS suppliers_address 
+FROM suppliers 
+WHERE suppliers.id = ?
+2026-07-26 01:33:49,125 | INFO | [cached since 0.7807s ago] (1,)
+2026-07-26 01:33:49,125 | INFO | INSERT INTO products (name, category, stock, price, supplier_id) VALUES (?, ?, ?, ?, ?)
+2026-07-26 01:33:49,125 | INFO | [cached since 0.7801s ago] ('Default Product', 'General', 100, 10000.0, 1)
+2026-07-26 01:33:49,126 | INFO | COMMIT
+2026-07-26 01:33:49,129 | INFO | BEGIN (implicit)
+2026-07-26 01:33:49,129 | INFO | INSERT INTO customers (name, email, phone) VALUES (?, ?, ?)
+2026-07-26 01:33:49,129 | INFO | [cached since 0.7921s ago] ('Rahmat', 'rahmat@gmail.com', '081111111111')
+2026-07-26 01:33:49,130 | INFO | COMMIT
+2026-07-26 01:33:49,130 | INFO | BEGIN (implicit)
+2026-07-26 01:33:49,131 | INFO | SELECT customers.id, customers.name, customers.email, customers.phone 
+FROM customers 
+WHERE customers.id = ?
+2026-07-26 01:33:49,131 | INFO | [generated in 0.00030s] (2,)
+2026-07-26 01:33:49,132 | INFO | POST /api/v1/customers/ | 201 | 0.0042s
+2026-07-26 01:33:49,132 | INFO | ROLLBACK
+2026-07-26 01:33:49,133 | INFO | HTTP Request: POST http://testserver/api/v1/customers/ "HTTP/1.1 201 Created"
+2026-07-26 01:33:49,134 | INFO | BEGIN (implicit)
+2026-07-26 01:33:49,134 | INFO | DELETE FROM payments
+2026-07-26 01:33:49,134 | INFO | [cached since 0.8019s ago] ()
+2026-07-26 01:33:49,135 | INFO | DELETE FROM transactions
+2026-07-26 01:33:49,135 | INFO | [cached since 0.8017s ago] ()
+2026-07-26 01:33:49,136 | INFO | DELETE FROM products
+2026-07-26 01:33:49,136 | INFO | [cached since 0.8017s ago] ()
+2026-07-26 01:33:49,136 | INFO | DELETE FROM customers
+2026-07-26 01:33:49,137 | INFO | [cached since 0.8017s ago] ()
+2026-07-26 01:33:49,137 | INFO | DELETE FROM suppliers
+2026-07-26 01:33:49,137 | INFO | [cached since 0.8017s ago] ()
+2026-07-26 01:33:49,138 | INFO | INSERT INTO customers (name, email, phone) VALUES (?, ?, ?)
+2026-07-26 01:33:49,138 | INFO | [cached since 0.8008s ago] ('Default Customer', None, '08123456789')
+2026-07-26 01:33:49,138 | INFO | INSERT INTO suppliers (company_name, email, phone, address) VALUES (?, ?, ?, ?)
+2026-07-26 01:33:49,138 | INFO | [cached since 0.8s ago] ('Default Supplier', None, '08123456789', 'Jakarta')
+2026-07-26 01:33:49,139 | INFO | COMMIT
+2026-07-26 01:33:49,139 | INFO | BEGIN (implicit)
+2026-07-26 01:33:49,140 | INFO | SELECT suppliers.id AS suppliers_id, suppliers.company_name AS suppliers_company_name, suppliers.email AS suppliers_email, suppliers.phone AS suppliers_phone, suppliers.address AS suppliers_address 
+FROM suppliers 
+WHERE suppliers.id = ?
+2026-07-26 01:33:49,140 | INFO | [cached since 0.7961s ago] (1,)
+2026-07-26 01:33:49,140 | INFO | INSERT INTO products (name, category, stock, price, supplier_id) VALUES (?, ?, ?, ?, ?)
+2026-07-26 01:33:49,141 | INFO | [cached since 0.7955s ago] ('Default Product', 'General', 100, 10000.0, 1)
+2026-07-26 01:33:49,141 | INFO | COMMIT
+2026-07-26 01:33:49,143 | INFO | BEGIN (implicit)
+2026-07-26 01:33:49,144 | INFO | SELECT customers.id AS customers_id, customers.name AS customers_name, customers.email AS customers_email, customers.phone AS customers_phone 
+FROM customers 
+WHERE customers.id = ?
+ LIMIT ? OFFSET ?
+2026-07-26 01:33:49,144 | INFO | [generated in 0.00030s] (1, 1, 0)
+2026-07-26 01:33:49,145 | INFO | GET /api/v1/customers/1 | 200 | 0.0020s
+2026-07-26 01:33:49,145 | INFO | ROLLBACK
+2026-07-26 01:33:49,146 | INFO | HTTP Request: GET http://testserver/api/v1/customers/1 "HTTP/1.1 200 OK"
+2026-07-26 01:33:49,147 | INFO | BEGIN (implicit)
+2026-07-26 01:33:49,147 | INFO | DELETE FROM payments
+2026-07-26 01:33:49,147 | INFO | [cached since 0.8149s ago] ()
+2026-07-26 01:33:49,148 | INFO | DELETE FROM transactions
+2026-07-26 01:33:49,148 | INFO | [cached since 0.8147s ago] ()
+2026-07-26 01:33:49,148 | INFO | DELETE FROM products
+2026-07-26 01:33:49,149 | INFO | [cached since 0.8146s ago] ()
+2026-07-26 01:33:49,149 | INFO | DELETE FROM customers
+2026-07-26 01:33:49,149 | INFO | [cached since 0.8146s ago] ()
+2026-07-26 01:33:49,150 | INFO | DELETE FROM suppliers
+2026-07-26 01:33:49,150 | INFO | [cached since 0.8145s ago] ()
+2026-07-26 01:33:49,150 | INFO | INSERT INTO customers (name, email, phone) VALUES (?, ?, ?)
+2026-07-26 01:33:49,151 | INFO | [cached since 0.8136s ago] ('Default Customer', None, '08123456789')
+2026-07-26 01:33:49,151 | INFO | INSERT INTO suppliers (company_name, email, phone, address) VALUES (?, ?, ?, ?)
+2026-07-26 01:33:49,151 | INFO | [cached since 0.8128s ago] ('Default Supplier', None, '08123456789', 'Jakarta')
+2026-07-26 01:33:49,152 | INFO | COMMIT
+2026-07-26 01:33:49,153 | INFO | BEGIN (implicit)
+2026-07-26 01:33:49,154 | INFO | SELECT suppliers.id AS suppliers_id, suppliers.company_name AS suppliers_company_name, suppliers.email AS suppliers_email, suppliers.phone AS suppliers_phone, suppliers.address AS suppliers_address 
+FROM suppliers 
+WHERE suppliers.id = ?
+2026-07-26 01:33:49,155 | INFO | [cached since 0.8108s ago] (1,)
+2026-07-26 01:33:49,156 | INFO | INSERT INTO products (name, category, stock, price, supplier_id) VALUES (?, ?, ?, ?, ?)
+2026-07-26 01:33:49,156 | INFO | [cached since 0.8108s ago] ('Default Product', 'General', 100, 10000.0, 1)
+2026-07-26 01:33:49,157 | INFO | COMMIT
+2026-07-26 01:33:49,158 | INFO | BEGIN (implicit)
+2026-07-26 01:33:49,159 | INFO | SELECT products.id AS products_id, products.name AS products_name, products.category AS products_category, products.stock AS products_stock, products.price AS products_price, products.supplier_id AS products_supplier_id 
+FROM products
+ LIMIT ? OFFSET ?
+2026-07-26 01:33:49,159 | INFO | [generated in 0.00031s] (1, 0)
+2026-07-26 01:33:49,160 | INFO | SELECT customers.id AS customers_id, customers.name AS customers_name, customers.email AS customers_email, customers.phone AS customers_phone 
+FROM customers
+ LIMIT ? OFFSET ?
+2026-07-26 01:33:49,160 | INFO | [generated in 0.00030s] (1, 0)
+2026-07-26 01:33:49,161 | INFO | INSERT INTO transactions (quantity, total, status, product_id, customer_id) VALUES (?, ?, ?, ?, ?)
+2026-07-26 01:33:49,162 | INFO | [generated in 0.00032s] (1, 10000.0, 'pending', 1, 1)
+2026-07-26 01:33:49,162 | INFO | COMMIT
+2026-07-26 01:33:49,163 | INFO | BEGIN (implicit)
+2026-07-26 01:33:49,163 | INFO | SELECT transactions.id, transactions.quantity, transactions.total, transactions.status, transactions.product_id, transactions.customer_id 
+FROM transactions 
+WHERE transactions.id = ?
+2026-07-26 01:33:49,164 | INFO | [generated in 0.00030s] (1,)
+2026-07-26 01:33:49,169 | INFO | BEGIN (implicit)
+2026-07-26 01:33:49,170 | INFO | SELECT transactions.id AS transactions_id, transactions.quantity AS transactions_quantity, transactions.total AS transactions_total, transactions.status AS transactions_status, transactions.product_id AS transactions_product_id, transactions.customer_id AS transactions_customer_id 
+FROM transactions 
+WHERE transactions.id = ?
+ LIMIT ? OFFSET ?
+2026-07-26 01:33:49,170 | INFO | [generated in 0.00032s] (1, 1, 0)
+2026-07-26 01:33:49,171 | INFO | INSERT INTO payments (transaction_id, amount, currency, status, provider, provider_payment_id, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+2026-07-26 01:33:49,171 | INFO | [generated in 0.00034s] (1, 10000.0, 'IDR', 'pending', 'midtrans', None, '2026-07-25 18:33:49.171522', '2026-07-25 18:33:49.171525')
+2026-07-26 01:33:49,172 | INFO | COMMIT
+2026-07-26 01:33:49,173 | INFO | BEGIN (implicit)
+2026-07-26 01:33:49,173 | INFO | SELECT payments.id, payments.transaction_id, payments.amount, payments.currency, payments.status, payments.provider, payments.provider_payment_id, payments.created_at, payments.updated_at 
+FROM payments 
+WHERE payments.id = ?
+2026-07-26 01:33:49,173 | INFO | [generated in 0.00031s] (1,)
+2026-07-26 01:33:49,174 | INFO | SELECT transactions.id AS transactions_id, transactions.quantity AS transactions_quantity, transactions.total AS transactions_total, transactions.status AS transactions_status, transactions.product_id AS transactions_product_id, transactions.customer_id AS transactions_customer_id 
+FROM transactions 
+WHERE transactions.id = ?
+2026-07-26 01:33:49,174 | INFO | [generated in 0.00030s] (1,)
+2026-07-26 01:33:49,175 | INFO | UPDATE payments SET provider_payment_id=?, updated_at=? WHERE payments.id = ?
+2026-07-26 01:33:49,176 | INFO | [generated in 0.00033s] ('txn-1', '2026-07-25 18:33:49.175770', 1)
+2026-07-26 01:33:49,176 | INFO | COMMIT
+2026-07-26 01:33:49,177 | INFO | BEGIN (implicit)
+2026-07-26 01:33:49,177 | INFO | SELECT payments.id, payments.transaction_id, payments.amount, payments.currency, payments.status, payments.provider, payments.provider_payment_id, payments.created_at, payments.updated_at 
+FROM payments 
+WHERE payments.id = ?
+2026-07-26 01:33:49,177 | INFO | [cached since 0.004134s ago] (1,)
+2026-07-26 01:33:49,178 | INFO | POST /api/v1/payments/initiate | 200 | 0.0135s
+2026-07-26 01:33:49,178 | INFO | ROLLBACK
+2026-07-26 01:33:49,179 | INFO | HTTP Request: POST http://testserver/api/v1/payments/initiate "HTTP/1.1 200 OK"
+2026-07-26 01:33:49,181 | INFO | BEGIN (implicit)
+2026-07-26 01:33:49,181 | INFO | DELETE FROM payments
+2026-07-26 01:33:49,181 | INFO | [cached since 0.8489s ago] ()
+2026-07-26 01:33:49,182 | INFO | DELETE FROM transactions
+2026-07-26 01:33:49,182 | INFO | [cached since 0.8489s ago] ()
+2026-07-26 01:33:49,183 | INFO | DELETE FROM products
+2026-07-26 01:33:49,183 | INFO | [cached since 0.849s ago] ()
+2026-07-26 01:33:49,184 | INFO | DELETE FROM customers
+2026-07-26 01:33:49,184 | INFO | [cached since 0.8492s ago] ()
+2026-07-26 01:33:49,184 | INFO | DELETE FROM suppliers
+2026-07-26 01:33:49,185 | INFO | [cached since 0.8495s ago] ()
+2026-07-26 01:33:49,186 | INFO | INSERT INTO customers (name, email, phone) VALUES (?, ?, ?)
+2026-07-26 01:33:49,186 | INFO | [cached since 0.849s ago] ('Default Customer', None, '08123456789')
+2026-07-26 01:33:49,186 | INFO | INSERT INTO suppliers (company_name, email, phone, address) VALUES (?, ?, ?, ?)
+2026-07-26 01:33:49,187 | INFO | [cached since 0.8482s ago] ('Default Supplier', None, '08123456789', 'Jakarta')
+2026-07-26 01:33:49,187 | INFO | COMMIT
+2026-07-26 01:33:49,188 | INFO | BEGIN (implicit)
+2026-07-26 01:33:49,188 | INFO | SELECT suppliers.id AS suppliers_id, suppliers.company_name AS suppliers_company_name, suppliers.email AS suppliers_email, suppliers.phone AS suppliers_phone, suppliers.address AS suppliers_address 
+FROM suppliers 
+WHERE suppliers.id = ?
+2026-07-26 01:33:49,188 | INFO | [cached since 0.8444s ago] (1,)
+2026-07-26 01:33:49,189 | INFO | INSERT INTO products (name, category, stock, price, supplier_id) VALUES (?, ?, ?, ?, ?)
+2026-07-26 01:33:49,189 | INFO | [cached since 0.8438s ago] ('Default Product', 'General', 100, 10000.0, 1)
+2026-07-26 01:33:49,189 | INFO | COMMIT
+2026-07-26 01:33:49,191 | INFO | BEGIN (implicit)
+2026-07-26 01:33:49,191 | INFO | SELECT products.id AS products_id, products.name AS products_name, products.category AS products_category, products.stock AS products_stock, products.price AS products_price, products.supplier_id AS products_supplier_id 
+FROM products
+ LIMIT ? OFFSET ?
+2026-07-26 01:33:49,192 | INFO | [cached since 0.03246s ago] (1, 0)
+2026-07-26 01:33:49,192 | INFO | SELECT customers.id AS customers_id, customers.name AS customers_name, customers.email AS customers_email, customers.phone AS customers_phone 
+FROM customers
+ LIMIT ? OFFSET ?
+2026-07-26 01:33:49,192 | INFO | [cached since 0.03227s ago] (1, 0)
+2026-07-26 01:33:49,193 | INFO | INSERT INTO transactions (quantity, total, status, product_id, customer_id) VALUES (?, ?, ?, ?, ?)
+2026-07-26 01:33:49,193 | INFO | [cached since 0.03167s ago] (1, 10000.0, 'pending', 1, 1)
+2026-07-26 01:33:49,193 | INFO | COMMIT
+2026-07-26 01:33:49,194 | INFO | BEGIN (implicit)
+2026-07-26 01:33:49,194 | INFO | SELECT transactions.id, transactions.quantity, transactions.total, transactions.status, transactions.product_id, transactions.customer_id 
+FROM transactions 
+WHERE transactions.id = ?
+2026-07-26 01:33:49,195 | INFO | [cached since 0.03134s ago] (1,)
+2026-07-26 01:33:49,195 | INFO | INSERT INTO payments (transaction_id, amount, currency, status, provider, provider_payment_id, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+2026-07-26 01:33:49,195 | INFO | [cached since 0.02426s ago] (1, 10000.0, 'IDR', 'pending', 'midtrans', None, '2026-07-25 18:33:49.195472', '2026-07-25 18:33:49.195474')
+2026-07-26 01:33:49,196 | INFO | COMMIT
+2026-07-26 01:33:49,196 | INFO | BEGIN (implicit)
+2026-07-26 01:33:49,197 | INFO | SELECT payments.id, payments.transaction_id, payments.amount, payments.currency, payments.status, payments.provider, payments.provider_payment_id, payments.created_at, payments.updated_at 
+FROM payments 
+WHERE payments.id = ?
+2026-07-26 01:33:49,197 | INFO | [cached since 0.02367s ago] (1,)
+2026-07-26 01:33:49,197 | INFO | COMMIT
+2026-07-26 01:33:49,199 | INFO | BEGIN (implicit)
+2026-07-26 01:33:49,200 | INFO | SELECT payments.id AS payments_id, payments.transaction_id AS payments_transaction_id, payments.amount AS payments_amount, payments.currency AS payments_currency, payments.status AS payments_status, payments.provider AS payments_provider, payments.provider_payment_id AS payments_provider_payment_id, payments.created_at AS payments_created_at, payments.updated_at AS payments_updated_at 
+FROM payments 
+WHERE payments.provider_payment_id = ?
+ LIMIT ? OFFSET ?
+2026-07-26 01:33:49,200 | INFO | [generated in 0.00031s] ('order-1', 1, 0)
+2026-07-26 01:33:49,201 | INFO | SELECT payments.id AS payments_id, payments.transaction_id AS payments_transaction_id, payments.amount AS payments_amount, payments.currency AS payments_currency, payments.status AS payments_status, payments.provider AS payments_provider, payments.provider_payment_id AS payments_provider_payment_id, payments.created_at AS payments_created_at, payments.updated_at AS payments_updated_at 
+FROM payments 
+WHERE payments.provider = ? AND payments.status = ? ORDER BY payments.id DESC
+ LIMIT ? OFFSET ?
+2026-07-26 01:33:49,201 | INFO | [generated in 0.00030s] ('midtrans', 'pending', 1, 0)
+2026-07-26 01:33:49,202 | INFO | UPDATE payments SET status=?, provider_payment_id=?, updated_at=? WHERE payments.id = ?
+2026-07-26 01:33:49,202 | INFO | [generated in 0.00030s] ('paid', 'order-1', '2026-07-25 18:33:49.202215', 1)
+2026-07-26 01:33:49,202 | INFO | COMMIT
+2026-07-26 01:33:49,203 | INFO | BEGIN (implicit)
+2026-07-26 01:33:49,203 | INFO | SELECT payments.id, payments.transaction_id, payments.amount, payments.currency, payments.status, payments.provider, payments.provider_payment_id, payments.created_at, payments.updated_at 
+FROM payments 
+WHERE payments.id = ?
+2026-07-26 01:33:49,204 | INFO | [cached since 0.0306s ago] (1,)
+2026-07-26 01:33:49,204 | INFO | SELECT transactions.id AS transactions_id, transactions.quantity AS transactions_quantity, transactions.total AS transactions_total, transactions.status AS transactions_status, transactions.product_id AS transactions_product_id, transactions.customer_id AS transactions_customer_id 
+FROM transactions 
+WHERE transactions.id = ?
+ LIMIT ? OFFSET ?
+2026-07-26 01:33:49,204 | INFO | [cached since 0.03461s ago] (1, 1, 0)
+2026-07-26 01:33:49,205 | INFO | UPDATE transactions SET status=? WHERE transactions.id = ?
+2026-07-26 01:33:49,205 | INFO | [generated in 0.00030s] ('completed', 1)
+2026-07-26 01:33:49,206 | INFO | COMMIT
+2026-07-26 01:33:49,206 | INFO | POST /api/v1/payments/webhook | 200 | 0.0085s
+2026-07-26 01:33:49,207 | INFO | HTTP Request: POST http://testserver/api/v1/payments/webhook "HTTP/1.1 200 OK"
+2026-07-26 01:33:49,207 | INFO | BEGIN (implicit)
+2026-07-26 01:33:49,208 | INFO | SELECT transactions.id, transactions.quantity, transactions.total, transactions.status, transactions.product_id, transactions.customer_id 
+FROM transactions 
+WHERE transactions.id = ?
+2026-07-26 01:33:49,208 | INFO | [cached since 0.04483s ago] (1,)
+2026-07-26 01:33:49,208 | INFO | SELECT payments.id, payments.transaction_id, payments.amount, payments.currency, payments.status, payments.provider, payments.provider_payment_id, payments.created_at, payments.updated_at 
+FROM payments 
+WHERE payments.id = ?
+2026-07-26 01:33:49,209 | INFO | [cached since 0.03559s ago] (1,)
+2026-07-26 01:33:49,210 | INFO | BEGIN (implicit)
+2026-07-26 01:33:49,210 | INFO | DELETE FROM payments
+2026-07-26 01:33:49,211 | INFO | [cached since 0.8782s ago] ()
+2026-07-26 01:33:49,211 | INFO | DELETE FROM transactions
+2026-07-26 01:33:49,211 | INFO | [cached since 0.8781s ago] ()
+2026-07-26 01:33:49,212 | INFO | DELETE FROM products
+2026-07-26 01:33:49,212 | INFO | [cached since 0.878s ago] ()
+2026-07-26 01:33:49,212 | INFO | DELETE FROM customers
+2026-07-26 01:33:49,213 | INFO | [cached since 0.8779s ago] ()
+2026-07-26 01:33:49,213 | INFO | DELETE FROM suppliers
+2026-07-26 01:33:49,213 | INFO | [cached since 0.8779s ago] ()
+2026-07-26 01:33:49,214 | INFO | INSERT INTO customers (name, email, phone) VALUES (?, ?, ?)
+2026-07-26 01:33:49,214 | INFO | [cached since 0.8771s ago] ('Default Customer', None, '08123456789')
+2026-07-26 01:33:49,214 | INFO | INSERT INTO suppliers (company_name, email, phone, address) VALUES (?, ?, ?, ?)
+2026-07-26 01:33:49,215 | INFO | [cached since 0.8762s ago] ('Default Supplier', None, '08123456789', 'Jakarta')
+2026-07-26 01:33:49,215 | INFO | COMMIT
+2026-07-26 01:33:49,216 | INFO | BEGIN (implicit)
+2026-07-26 01:33:49,216 | INFO | SELECT suppliers.id AS suppliers_id, suppliers.company_name AS suppliers_company_name, suppliers.email AS suppliers_email, suppliers.phone AS suppliers_phone, suppliers.address AS suppliers_address 
+FROM suppliers 
+WHERE suppliers.id = ?
+2026-07-26 01:33:49,216 | INFO | [cached since 0.8725s ago] (1,)
+2026-07-26 01:33:49,217 | INFO | INSERT INTO products (name, category, stock, price, supplier_id) VALUES (?, ?, ?, ?, ?)
+2026-07-26 01:33:49,217 | INFO | [cached since 0.8719s ago] ('Default Product', 'General', 100, 10000.0, 1)
+2026-07-26 01:33:49,218 | INFO | COMMIT
+2026-07-26 01:33:49,219 | INFO | BEGIN (implicit)
+2026-07-26 01:33:49,219 | INFO | SELECT products.id AS products_id, products.name AS products_name, products.category AS products_category, products.stock AS products_stock, products.price AS products_price, products.supplier_id AS products_supplier_id 
+FROM products
+ LIMIT ? OFFSET ?
+2026-07-26 01:33:49,220 | INFO | [cached since 0.06059s ago] (1, 0)
+2026-07-26 01:33:49,220 | INFO | SELECT customers.id AS customers_id, customers.name AS customers_name, customers.email AS customers_email, customers.phone AS customers_phone 
+FROM customers
+ LIMIT ? OFFSET ?
+2026-07-26 01:33:49,220 | INFO | [cached since 0.06041s ago] (1, 0)
+2026-07-26 01:33:49,221 | INFO | INSERT INTO transactions (quantity, total, status, product_id, customer_id) VALUES (?, ?, ?, ?, ?)
+2026-07-26 01:33:49,221 | INFO | [cached since 0.05983s ago] (1, 10000.0, 'pending', 1, 1)
+2026-07-26 01:33:49,221 | INFO | COMMIT
+2026-07-26 01:33:49,222 | INFO | BEGIN (implicit)
+2026-07-26 01:33:49,222 | INFO | SELECT transactions.id, transactions.quantity, transactions.total, transactions.status, transactions.product_id, transactions.customer_id 
+FROM transactions 
+WHERE transactions.id = ?
+2026-07-26 01:33:49,223 | INFO | [cached since 0.05946s ago] (1,)
+2026-07-26 01:33:49,223 | INFO | INSERT INTO payments (transaction_id, amount, currency, status, provider, provider_payment_id, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+2026-07-26 01:33:49,223 | INFO | [cached since 0.05237s ago] (1, 10000.0, 'IDR', 'pending', 'midtrans', None, '2026-07-25 18:33:49.223573', '2026-07-25 18:33:49.223576')
+2026-07-26 01:33:49,224 | INFO | COMMIT
+2026-07-26 01:33:49,224 | INFO | BEGIN (implicit)
+2026-07-26 01:33:49,225 | INFO | SELECT payments.id, payments.transaction_id, payments.amount, payments.currency, payments.status, payments.provider, payments.provider_payment_id, payments.created_at, payments.updated_at 
+FROM payments 
+WHERE payments.id = ?
+2026-07-26 01:33:49,225 | INFO | [cached since 0.0518s ago] (1,)
+2026-07-26 01:33:49,225 | INFO | COMMIT
+2026-07-26 01:33:49,226 | INFO | BEGIN (implicit)
+2026-07-26 01:33:49,226 | INFO | SELECT transactions.id AS transactions_id, transactions.quantity AS transactions_quantity, transactions.total AS transactions_total, transactions.status AS transactions_status, transactions.product_id AS transactions_product_id, transactions.customer_id AS transactions_customer_id 
+FROM transactions 
+WHERE transactions.id = ?
+2026-07-26 01:33:49,226 | INFO | [cached since 0.05213s ago] (1,)
+2026-07-26 01:33:49,228 | INFO | BEGIN (implicit)
+2026-07-26 01:33:49,228 | INFO | SELECT payments.id AS payments_id, payments.transaction_id AS payments_transaction_id, payments.amount AS payments_amount, payments.currency AS payments_currency, payments.status AS payments_status, payments.provider AS payments_provider, payments.provider_payment_id AS payments_provider_payment_id, payments.created_at AS payments_created_at, payments.updated_at AS payments_updated_at 
+FROM payments 
+WHERE payments.provider_payment_id = ?
+ LIMIT ? OFFSET ?
+2026-07-26 01:33:49,228 | INFO | [cached since 0.0286s ago] ('midtrans-sandbox-001', 1, 0)
+2026-07-26 01:33:49,229 | INFO | SELECT payments.id AS payments_id, payments.transaction_id AS payments_transaction_id, payments.amount AS payments_amount, payments.currency AS payments_currency, payments.status AS payments_status, payments.provider AS payments_provider, payments.provider_payment_id AS payments_provider_payment_id, payments.created_at AS payments_created_at, payments.updated_at AS payments_updated_at 
+FROM payments 
+WHERE payments.provider = ? AND payments.status = ? ORDER BY payments.id DESC
+ LIMIT ? OFFSET ?
+2026-07-26 01:33:49,229 | INFO | [cached since 0.02831s ago] ('midtrans', 'pending', 1, 0)
+2026-07-26 01:33:49,230 | INFO | UPDATE payments SET status=?, provider_payment_id=?, updated_at=? WHERE payments.id = ?
+2026-07-26 01:33:49,230 | INFO | [cached since 0.02819s ago] ('paid', 'midtrans-sandbox-001', '2026-07-25 18:33:49.230108', 1)
+2026-07-26 01:33:49,230 | INFO | COMMIT
+2026-07-26 01:33:49,231 | INFO | BEGIN (implicit)
+2026-07-26 01:33:49,231 | INFO | SELECT payments.id, payments.transaction_id, payments.amount, payments.currency, payments.status, payments.provider, payments.provider_payment_id, payments.created_at, payments.updated_at 
+FROM payments 
+WHERE payments.id = ?
+2026-07-26 01:33:49,232 | INFO | [cached since 0.05841s ago] (1,)
+2026-07-26 01:33:49,232 | INFO | SELECT transactions.id AS transactions_id, transactions.quantity AS transactions_quantity, transactions.total AS transactions_total, transactions.status AS transactions_status, transactions.product_id AS transactions_product_id, transactions.customer_id AS transactions_customer_id 
+FROM transactions 
+WHERE transactions.id = ?
+ LIMIT ? OFFSET ?
+2026-07-26 01:33:49,232 | INFO | [cached since 0.0624s ago] (1, 1, 0)
+2026-07-26 01:33:49,233 | INFO | UPDATE transactions SET status=? WHERE transactions.id = ?
+2026-07-26 01:33:49,233 | INFO | [cached since 0.02796s ago] ('completed', 1)
+2026-07-26 01:33:49,233 | INFO | COMMIT
+2026-07-26 01:33:49,234 | INFO | POST /api/v1/payments/webhook | 200 | 0.0070s
+2026-07-26 01:33:49,235 | INFO | HTTP Request: POST http://testserver/api/v1/payments/webhook "HTTP/1.1 200 OK"
+2026-07-26 01:33:49,235 | INFO | SELECT transactions.id, transactions.quantity, transactions.total, transactions.status, transactions.product_id, transactions.customer_id 
+FROM transactions 
+WHERE transactions.id = ?
+2026-07-26 01:33:49,235 | INFO | [cached since 0.07213s ago] (1,)
+2026-07-26 01:33:49,236 | INFO | SELECT payments.id, payments.transaction_id, payments.amount, payments.currency, payments.status, payments.provider, payments.provider_payment_id, payments.created_at, payments.updated_at 
+FROM payments 
+WHERE payments.id = ?
+2026-07-26 01:33:49,236 | INFO | [cached since 0.06294s ago] (1,)
+2026-07-26 01:33:49,237 | INFO | BEGIN (implicit)
+2026-07-26 01:33:49,238 | INFO | DELETE FROM payments
+2026-07-26 01:33:49,238 | INFO | [cached since 0.9056s ago] ()
+2026-07-26 01:33:49,239 | INFO | DELETE FROM transactions
+2026-07-26 01:33:49,239 | INFO | [cached since 0.9054s ago] ()
+2026-07-26 01:33:49,239 | INFO | DELETE FROM products
+2026-07-26 01:33:49,239 | INFO | [cached since 0.9053s ago] ()
+2026-07-26 01:33:49,240 | INFO | DELETE FROM customers
+2026-07-26 01:33:49,240 | INFO | [cached since 0.9053s ago] ()
+2026-07-26 01:33:49,240 | INFO | DELETE FROM suppliers
+2026-07-26 01:33:49,241 | INFO | [cached since 0.9052s ago] ()
+2026-07-26 01:33:49,241 | INFO | INSERT INTO customers (name, email, phone) VALUES (?, ?, ?)
+2026-07-26 01:33:49,241 | INFO | [cached since 0.9044s ago] ('Default Customer', None, '08123456789')
+2026-07-26 01:33:49,242 | INFO | INSERT INTO suppliers (company_name, email, phone, address) VALUES (?, ?, ?, ?)
+2026-07-26 01:33:49,242 | INFO | [cached since 0.9036s ago] ('Default Supplier', None, '08123456789', 'Jakarta')
+2026-07-26 01:33:49,242 | INFO | COMMIT
+2026-07-26 01:33:49,243 | INFO | BEGIN (implicit)
+2026-07-26 01:33:49,243 | INFO | SELECT suppliers.id AS suppliers_id, suppliers.company_name AS suppliers_company_name, suppliers.email AS suppliers_email, suppliers.phone AS suppliers_phone, suppliers.address AS suppliers_address 
+FROM suppliers 
+WHERE suppliers.id = ?
+2026-07-26 01:33:49,244 | INFO | [cached since 0.8999s ago] (1,)
+2026-07-26 01:33:49,244 | INFO | INSERT INTO products (name, category, stock, price, supplier_id) VALUES (?, ?, ?, ?, ?)
+2026-07-26 01:33:49,245 | INFO | [cached since 0.8993s ago] ('Default Product', 'General', 100, 10000.0, 1)
+2026-07-26 01:33:49,245 | INFO | COMMIT
+2026-07-26 01:33:49,247 | INFO | BEGIN (implicit)
+2026-07-26 01:33:49,247 | INFO | SELECT products.id AS products_id, products.name AS products_name, products.category AS products_category, products.stock AS products_stock, products.price AS products_price, products.supplier_id AS products_supplier_id 
+FROM products
+ LIMIT ? OFFSET ?
+2026-07-26 01:33:49,248 | INFO | [cached since 0.08882s ago] (1, 0)
+2026-07-26 01:33:49,248 | INFO | SELECT customers.id AS customers_id, customers.name AS customers_name, customers.email AS customers_email, customers.phone AS customers_phone 
+FROM customers
+ LIMIT ? OFFSET ?
+2026-07-26 01:33:49,249 | INFO | [cached since 0.08885s ago] (1, 0)
+2026-07-26 01:33:49,250 | INFO | INSERT INTO transactions (quantity, total, status, product_id, customer_id) VALUES (?, ?, ?, ?, ?)
+2026-07-26 01:33:49,250 | INFO | [cached since 0.08891s ago] (1, 10000.0, 'pending', 1, 1)
+2026-07-26 01:33:49,251 | INFO | COMMIT
+2026-07-26 01:33:49,252 | INFO | BEGIN (implicit)
+2026-07-26 01:33:49,254 | INFO | SELECT transactions.id, transactions.quantity, transactions.total, transactions.status, transactions.product_id, transactions.customer_id 
+FROM transactions 
+WHERE transactions.id = ?
+2026-07-26 01:33:49,254 | INFO | [cached since 0.09072s ago] (1,)
+2026-07-26 01:33:49,254 | INFO | INSERT INTO payments (transaction_id, amount, currency, status, provider, provider_payment_id, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+2026-07-26 01:33:49,255 | INFO | [cached since 0.08379s ago] (1, 10000.0, 'IDR', 'pending', 'midtrans', None, '2026-07-25 18:33:49.254970', '2026-07-25 18:33:49.254973')
+2026-07-26 01:33:49,255 | INFO | COMMIT
+2026-07-26 01:33:49,256 | INFO | BEGIN (implicit)
+2026-07-26 01:33:49,256 | INFO | SELECT payments.id, payments.transaction_id, payments.amount, payments.currency, payments.status, payments.provider, payments.provider_payment_id, payments.created_at, payments.updated_at 
+FROM payments 
+WHERE payments.id = ?
+2026-07-26 01:33:49,257 | INFO | [cached since 0.08345s ago] (1,)
+2026-07-26 01:33:49,257 | INFO | COMMIT
+2026-07-26 01:33:49,426 | INFO | BEGIN (implicit)
+2026-07-26 01:33:49,427 | INFO | INSERT INTO users (fullname, email, password, role, is_active, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?)
+2026-07-26 01:33:49,427 | INFO | [cached since 0.7511s ago] ('Admin User', 'admin-84ea130f@example.com', '$5$rounds=535000$7YwLAog/hrPfYH.D$aV10eXJPh8ULU6QihTRrzZxQ5gvUTP.28KGnp0hHoPA', 'admin', 1, '2026-07-25 18:33:49.427448', '2026-07-25 18:33:49.427451')
+2026-07-26 01:33:49,428 | INFO | COMMIT
+2026-07-26 01:33:49,428 | INFO | BEGIN (implicit)
+2026-07-26 01:33:49,429 | INFO | SELECT users.id, users.fullname, users.email, users.password, users.role, users.is_active, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+2026-07-26 01:33:49,429 | INFO | [cached since 0.7502s ago] (2,)
+2026-07-26 01:33:49,431 | INFO | BEGIN (implicit)
+2026-07-26 01:33:49,432 | INFO | SELECT users.id AS users_id, users.fullname AS users_fullname, users.email AS users_email, users.password AS users_password, users.role AS users_role, users.is_active AS users_is_active, users.created_at AS users_created_at, users.updated_at AS users_updated_at 
+FROM users 
+WHERE users.id = ?
+ LIMIT ? OFFSET ?
+2026-07-26 01:33:49,432 | INFO | [cached since 0.3356s ago] (2, 1, 0)
+2026-07-26 01:33:49,433 | INFO | SELECT payments.id AS payments_id, payments.transaction_id AS payments_transaction_id, payments.amount AS payments_amount, payments.currency AS payments_currency, payments.status AS payments_status, payments.provider AS payments_provider, payments.provider_payment_id AS payments_provider_payment_id, payments.created_at AS payments_created_at, payments.updated_at AS payments_updated_at 
+FROM payments
+2026-07-26 01:33:49,433 | INFO | [generated in 0.00031s] ()
+2026-07-26 01:33:49,434 | INFO | GET /api/v1/admin/payments/ | 200 | 0.0036s
+2026-07-26 01:33:49,434 | INFO | ROLLBACK
+2026-07-26 01:33:49,435 | INFO | HTTP Request: GET http://testserver/api/v1/admin/payments/ "HTTP/1.1 200 OK"
+2026-07-26 01:33:49,435 | INFO | SELECT payments.id AS payments_id, payments.transaction_id AS payments_transaction_id, payments.amount AS payments_amount, payments.currency AS payments_currency, payments.status AS payments_status, payments.provider AS payments_provider, payments.provider_payment_id AS payments_provider_payment_id, payments.created_at AS payments_created_at, payments.updated_at AS payments_updated_at 
+FROM payments 
+WHERE payments.id = ?
+2026-07-26 01:33:49,436 | INFO | [generated in 0.00033s] (1,)
+2026-07-26 01:33:49,437 | INFO | BEGIN (implicit)
+2026-07-26 01:33:49,438 | INFO | SELECT users.id AS users_id, users.fullname AS users_fullname, users.email AS users_email, users.password AS users_password, users.role AS users_role, users.is_active AS users_is_active, users.created_at AS users_created_at, users.updated_at AS users_updated_at 
+FROM users 
+WHERE users.id = ?
+ LIMIT ? OFFSET ?
+2026-07-26 01:33:49,438 | INFO | [cached since 0.3414s ago] (2, 1, 0)
+2026-07-26 01:33:49,439 | INFO | SELECT payments.id AS payments_id, payments.transaction_id AS payments_transaction_id, payments.amount AS payments_amount, payments.currency AS payments_currency, payments.status AS payments_status, payments.provider AS payments_provider, payments.provider_payment_id AS payments_provider_payment_id, payments.created_at AS payments_created_at, payments.updated_at AS payments_updated_at 
+FROM payments 
+WHERE payments.id = ?
+ LIMIT ? OFFSET ?
+2026-07-26 01:33:49,439 | INFO | [generated in 0.00035s] (1, 1, 0)
+2026-07-26 01:33:49,440 | INFO | SELECT transactions.id AS transactions_id, transactions.quantity AS transactions_quantity, transactions.total AS transactions_total, transactions.status AS transactions_status, transactions.product_id AS transactions_product_id, transactions.customer_id AS transactions_customer_id 
+FROM transactions 
+WHERE transactions.id = ?
+ LIMIT ? OFFSET ?
+2026-07-26 01:33:49,440 | INFO | [cached since 0.27s ago] (1, 1, 0)
+2026-07-26 01:33:49,440 | INFO | COMMIT
+2026-07-26 01:33:49,441 | INFO | BEGIN (implicit)
+2026-07-26 01:33:49,441 | INFO | SELECT payments.id AS payments_id, payments.transaction_id AS payments_transaction_id, payments.amount AS payments_amount, payments.currency AS payments_currency, payments.status AS payments_status, payments.provider AS payments_provider, payments.provider_payment_id AS payments_provider_payment_id, payments.created_at AS payments_created_at, payments.updated_at AS payments_updated_at 
+FROM payments 
+WHERE payments.id = ?
+2026-07-26 01:33:49,441 | INFO | [cached since 0.005952s ago] (1,)
+2026-07-26 01:33:49,442 | INFO | POST /api/v1/admin/payments/1/retry | 200 | 0.0053s
+2026-07-26 01:33:49,442 | INFO | ROLLBACK
+2026-07-26 01:33:49,443 | INFO | HTTP Request: POST http://testserver/api/v1/admin/payments/1/retry "HTTP/1.1 200 OK"
+2026-07-26 01:33:49,444 | INFO | BEGIN (implicit)
+2026-07-26 01:33:49,445 | INFO | DELETE FROM payments
+2026-07-26 01:33:49,445 | INFO | [cached since 1.112s ago] ()
+2026-07-26 01:33:49,445 | INFO | DELETE FROM transactions
+2026-07-26 01:33:49,446 | INFO | [cached since 1.112s ago] ()
+2026-07-26 01:33:49,446 | INFO | DELETE FROM products
+2026-07-26 01:33:49,446 | INFO | [cached since 1.112s ago] ()
+2026-07-26 01:33:49,447 | INFO | DELETE FROM customers
+2026-07-26 01:33:49,447 | INFO | [cached since 1.112s ago] ()
+2026-07-26 01:33:49,447 | INFO | DELETE FROM suppliers
+2026-07-26 01:33:49,447 | INFO | [cached since 1.112s ago] ()
+2026-07-26 01:33:49,448 | INFO | INSERT INTO customers (name, email, phone) VALUES (?, ?, ?)
+2026-07-26 01:33:49,448 | INFO | [cached since 1.111s ago] ('Default Customer', None, '08123456789')
+2026-07-26 01:33:49,449 | INFO | INSERT INTO suppliers (company_name, email, phone, address) VALUES (?, ?, ?, ?)
+2026-07-26 01:33:49,449 | INFO | [cached since 1.11s ago] ('Default Supplier', None, '08123456789', 'Jakarta')
+2026-07-26 01:33:49,449 | INFO | COMMIT
+2026-07-26 01:33:49,450 | INFO | BEGIN (implicit)
+2026-07-26 01:33:49,450 | INFO | SELECT suppliers.id AS suppliers_id, suppliers.company_name AS suppliers_company_name, suppliers.email AS suppliers_email, suppliers.phone AS suppliers_phone, suppliers.address AS suppliers_address 
+FROM suppliers 
+WHERE suppliers.id = ?
+2026-07-26 01:33:49,450 | INFO | [cached since 1.107s ago] (1,)
+2026-07-26 01:33:49,451 | INFO | INSERT INTO products (name, category, stock, price, supplier_id) VALUES (?, ?, ?, ?, ?)
+2026-07-26 01:33:49,451 | INFO | [cached since 1.106s ago] ('Default Product', 'General', 100, 10000.0, 1)
+2026-07-26 01:33:49,452 | INFO | COMMIT
+2026-07-26 01:33:49,453 | INFO | BEGIN (implicit)
+2026-07-26 01:33:49,453 | INFO | SELECT products.id AS products_id, products.name AS products_name, products.category AS products_category, products.stock AS products_stock, products.price AS products_price, products.supplier_id AS products_supplier_id 
+FROM products
+ LIMIT ? OFFSET ?
+2026-07-26 01:33:49,454 | INFO | [cached since 0.2946s ago] (1, 0)
+2026-07-26 01:33:49,454 | INFO | SELECT customers.id AS customers_id, customers.name AS customers_name, customers.email AS customers_email, customers.phone AS customers_phone 
+FROM customers
+ LIMIT ? OFFSET ?
+2026-07-26 01:33:49,454 | INFO | [cached since 0.2945s ago] (1, 0)
+2026-07-26 01:33:49,455 | INFO | INSERT INTO transactions (quantity, total, status, product_id, customer_id) VALUES (?, ?, ?, ?, ?)
+2026-07-26 01:33:49,455 | INFO | [cached since 0.294s ago] (1, 10000.0, 'pending', 1, 1)
+2026-07-26 01:33:49,456 | INFO | COMMIT
+2026-07-26 01:33:49,456 | INFO | BEGIN (implicit)
+2026-07-26 01:33:49,457 | INFO | SELECT transactions.id, transactions.quantity, transactions.total, transactions.status, transactions.product_id, transactions.customer_id 
+FROM transactions 
+WHERE transactions.id = ?
+2026-07-26 01:33:49,457 | INFO | [cached since 0.2938s ago] (1,)
+2026-07-26 01:33:49,457 | INFO | INSERT INTO payments (transaction_id, amount, currency, status, provider, provider_payment_id, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+2026-07-26 01:33:49,458 | INFO | [cached since 0.2867s ago] (1, 10000.0, 'IDR', 'pending', 'midtrans', None, '2026-07-25 18:33:49.457953', '2026-07-25 18:33:49.457955')
+2026-07-26 01:33:49,458 | INFO | COMMIT
+2026-07-26 01:33:49,459 | INFO | BEGIN (implicit)
+2026-07-26 01:33:49,459 | INFO | SELECT payments.id, payments.transaction_id, payments.amount, payments.currency, payments.status, payments.provider, payments.provider_payment_id, payments.created_at, payments.updated_at 
+FROM payments 
+WHERE payments.id = ?
+2026-07-26 01:33:49,459 | INFO | [cached since 0.2862s ago] (1,)
+2026-07-26 01:33:49,460 | INFO | COMMIT
+2026-07-26 01:33:49,460 | INFO | BEGIN (implicit)
+2026-07-26 01:33:49,460 | INFO | SELECT transactions.id AS transactions_id, transactions.quantity AS transactions_quantity, transactions.total AS transactions_total, transactions.status AS transactions_status, transactions.product_id AS transactions_product_id, transactions.customer_id AS transactions_customer_id 
+FROM transactions 
+WHERE transactions.id = ?
+2026-07-26 01:33:49,461 | INFO | [cached since 0.2868s ago] (1,)
+2026-07-26 01:33:49,462 | INFO | BEGIN (implicit)
+2026-07-26 01:33:49,463 | INFO | SELECT payments.id AS payments_id, payments.transaction_id AS payments_transaction_id, payments.amount AS payments_amount, payments.currency AS payments_currency, payments.status AS payments_status, payments.provider AS payments_provider, payments.provider_payment_id AS payments_provider_payment_id, payments.created_at AS payments_created_at, payments.updated_at AS payments_updated_at 
+FROM payments 
+WHERE payments.provider_payment_id = ?
+ LIMIT ? OFFSET ?
+2026-07-26 01:33:49,463 | INFO | [cached since 0.2633s ago] ('order-1', 1, 0)
+2026-07-26 01:33:49,463 | INFO | SELECT payments.id AS payments_id, payments.transaction_id AS payments_transaction_id, payments.amount AS payments_amount, payments.currency AS payments_currency, payments.status AS payments_status, payments.provider AS payments_provider, payments.provider_payment_id AS payments_provider_payment_id, payments.created_at AS payments_created_at, payments.updated_at AS payments_updated_at 
+FROM payments 
+WHERE payments.provider = ? AND payments.status = ? ORDER BY payments.id DESC
+ LIMIT ? OFFSET ?
+2026-07-26 01:33:49,464 | INFO | [cached since 0.2629s ago] ('midtrans', 'pending', 1, 0)
+2026-07-26 01:33:49,464 | INFO | UPDATE payments SET status=?, provider_payment_id=?, updated_at=? WHERE payments.id = ?
+2026-07-26 01:33:49,464 | INFO | [cached since 0.2628s ago] ('failed', 'order-1', '2026-07-25 18:33:49.464695', 1)
+2026-07-26 01:33:49,465 | INFO | COMMIT
+2026-07-26 01:33:49,465 | INFO | BEGIN (implicit)
+2026-07-26 01:33:49,466 | INFO | SELECT payments.id, payments.transaction_id, payments.amount, payments.currency, payments.status, payments.provider, payments.provider_payment_id, payments.created_at, payments.updated_at 
+FROM payments 
+WHERE payments.id = ?
+2026-07-26 01:33:49,466 | INFO | [cached since 0.2929s ago] (1,)
+2026-07-26 01:33:49,466 | INFO | SELECT transactions.id AS transactions_id, transactions.quantity AS transactions_quantity, transactions.total AS transactions_total, transactions.status AS transactions_status, transactions.product_id AS transactions_product_id, transactions.customer_id AS transactions_customer_id 
+FROM transactions 
+WHERE transactions.id = ?
+ LIMIT ? OFFSET ?
+2026-07-26 01:33:49,467 | INFO | [cached since 0.2969s ago] (1, 1, 0)
+2026-07-26 01:33:49,467 | INFO | UPDATE transactions SET status=? WHERE transactions.id = ?
+2026-07-26 01:33:49,467 | INFO | [cached since 0.2624s ago] ('failed', 1)
+2026-07-26 01:33:49,468 | INFO | COMMIT
+2026-07-26 01:33:49,468 | INFO | POST /api/v1/payments/webhook | 200 | 0.0068s
+2026-07-26 01:33:49,469 | INFO | HTTP Request: POST http://testserver/api/v1/payments/webhook "HTTP/1.1 200 OK"
+2026-07-26 01:33:49,470 | INFO | SELECT transactions.id, transactions.quantity, transactions.total, transactions.status, transactions.product_id, transactions.customer_id 
+FROM transactions 
+WHERE transactions.id = ?
+2026-07-26 01:33:49,470 | INFO | [cached since 0.3068s ago] (1,)
+2026-07-26 01:33:49,470 | INFO | SELECT payments.id, payments.transaction_id, payments.amount, payments.currency, payments.status, payments.provider, payments.provider_payment_id, payments.created_at, payments.updated_at 
+FROM payments 
+WHERE payments.id = ?
+2026-07-26 01:33:49,471 | INFO | [cached since 0.2976s ago] (1,)
+2026-07-26 01:33:49,471 | INFO | SELECT products.id AS products_id, products.name AS products_name, products.category AS products_category, products.stock AS products_stock, products.price AS products_price, products.supplier_id AS products_supplier_id 
+FROM products 
+WHERE products.id = ?
+2026-07-26 01:33:49,472 | INFO | [generated in 0.00031s] (1,)
+2026-07-26 01:33:49,472 | INFO | SELECT customers.id AS customers_id, customers.name AS customers_name, customers.email AS customers_email, customers.phone AS customers_phone 
+FROM customers 
+WHERE customers.id = ?
+2026-07-26 01:33:49,472 | INFO | [generated in 0.00029s] (1,)
+2026-07-26 01:33:49,473 | INFO | INSERT INTO transactions (quantity, total, status, product_id, customer_id) VALUES (?, ?, ?, ?, ?)
+2026-07-26 01:33:49,473 | INFO | [cached since 0.3119s ago] (1, 10000.0, 'pending', 1, 1)
+2026-07-26 01:33:49,474 | INFO | COMMIT
+2026-07-26 01:33:49,474 | INFO | BEGIN (implicit)
+2026-07-26 01:33:49,475 | INFO | SELECT transactions.id, transactions.quantity, transactions.total, transactions.status, transactions.product_id, transactions.customer_id 
+FROM transactions 
+WHERE transactions.id = ?
+2026-07-26 01:33:49,475 | INFO | [cached since 0.3116s ago] (2,)
+2026-07-26 01:33:49,475 | INFO | INSERT INTO payments (transaction_id, amount, currency, status, provider, provider_payment_id, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+2026-07-26 01:33:49,476 | INFO | [cached since 0.3045s ago] (2, 10000.0, 'IDR', 'pending', 'midtrans', None, '2026-07-25 18:33:49.475710', '2026-07-25 18:33:49.475712')
+2026-07-26 01:33:49,476 | INFO | COMMIT
+2026-07-26 01:33:49,476 | INFO | BEGIN (implicit)
+2026-07-26 01:33:49,477 | INFO | SELECT payments.id, payments.transaction_id, payments.amount, payments.currency, payments.status, payments.provider, payments.provider_payment_id, payments.created_at, payments.updated_at 
+FROM payments 
+WHERE payments.id = ?
+2026-07-26 01:33:49,477 | INFO | [cached since 0.3039s ago] (2,)
+2026-07-26 01:33:49,477 | INFO | COMMIT
+2026-07-26 01:33:49,478 | INFO | BEGIN (implicit)
+2026-07-26 01:33:49,478 | INFO | SELECT transactions.id AS transactions_id, transactions.quantity AS transactions_quantity, transactions.total AS transactions_total, transactions.status AS transactions_status, transactions.product_id AS transactions_product_id, transactions.customer_id AS transactions_customer_id 
+FROM transactions 
+WHERE transactions.id = ?
+2026-07-26 01:33:49,478 | INFO | [cached since 0.3043s ago] (2,)
+2026-07-26 01:33:49,480 | INFO | BEGIN (implicit)
+2026-07-26 01:33:49,480 | INFO | SELECT payments.id AS payments_id, payments.transaction_id AS payments_transaction_id, payments.amount AS payments_amount, payments.currency AS payments_currency, payments.status AS payments_status, payments.provider AS payments_provider, payments.provider_payment_id AS payments_provider_payment_id, payments.created_at AS payments_created_at, payments.updated_at AS payments_updated_at 
+FROM payments 
+WHERE payments.provider_payment_id = ?
+ LIMIT ? OFFSET ?
+2026-07-26 01:33:49,481 | INFO | [cached since 0.2809s ago] ('order-2', 1, 0)
+2026-07-26 01:33:49,481 | INFO | SELECT payments.id AS payments_id, payments.transaction_id AS payments_transaction_id, payments.amount AS payments_amount, payments.currency AS payments_currency, payments.status AS payments_status, payments.provider AS payments_provider, payments.provider_payment_id AS payments_provider_payment_id, payments.created_at AS payments_created_at, payments.updated_at AS payments_updated_at 
+FROM payments 
+WHERE payments.provider = ? AND payments.status = ? ORDER BY payments.id DESC
+ LIMIT ? OFFSET ?
+2026-07-26 01:33:49,481 | INFO | [cached since 0.2805s ago] ('midtrans', 'pending', 1, 0)
+2026-07-26 01:33:49,482 | INFO | UPDATE payments SET status=?, provider_payment_id=?, updated_at=? WHERE payments.id = ?
+2026-07-26 01:33:49,482 | INFO | [cached since 0.2804s ago] ('expired', 'order-2', '2026-07-25 18:33:49.482328', 2)
+2026-07-26 01:33:49,483 | INFO | COMMIT
+2026-07-26 01:33:49,483 | INFO | BEGIN (implicit)
+2026-07-26 01:33:49,484 | INFO | SELECT payments.id, payments.transaction_id, payments.amount, payments.currency, payments.status, payments.provider, payments.provider_payment_id, payments.created_at, payments.updated_at 
+FROM payments 
+WHERE payments.id = ?
+2026-07-26 01:33:49,484 | INFO | [cached since 0.3108s ago] (2,)
+2026-07-26 01:33:49,484 | INFO | SELECT transactions.id AS transactions_id, transactions.quantity AS transactions_quantity, transactions.total AS transactions_total, transactions.status AS transactions_status, transactions.product_id AS transactions_product_id, transactions.customer_id AS transactions_customer_id 
+FROM transactions 
+WHERE transactions.id = ?
+ LIMIT ? OFFSET ?
+2026-07-26 01:33:49,485 | INFO | [cached since 0.3148s ago] (2, 1, 0)
+2026-07-26 01:33:49,485 | INFO | UPDATE transactions SET status=? WHERE transactions.id = ?
+2026-07-26 01:33:49,485 | INFO | [cached since 0.2804s ago] ('expired', 2)
+2026-07-26 01:33:49,486 | INFO | COMMIT
+2026-07-26 01:33:49,487 | INFO | POST /api/v1/payments/webhook | 200 | 0.0079s
+2026-07-26 01:33:49,488 | INFO | HTTP Request: POST http://testserver/api/v1/payments/webhook "HTTP/1.1 200 OK"
+2026-07-26 01:33:49,488 | INFO | SELECT transactions.id, transactions.quantity, transactions.total, transactions.status, transactions.product_id, transactions.customer_id 
+FROM transactions 
+WHERE transactions.id = ?
+2026-07-26 01:33:49,489 | INFO | [cached since 0.3253s ago] (2,)
+2026-07-26 01:33:49,489 | INFO | SELECT payments.id, payments.transaction_id, payments.amount, payments.currency, payments.status, payments.provider, payments.provider_payment_id, payments.created_at, payments.updated_at 
+FROM payments 
+WHERE payments.id = ?
+2026-07-26 01:33:49,489 | INFO | [cached since 0.3161s ago] (2,)
+2026-07-26 01:33:49,491 | INFO | BEGIN (implicit)
+2026-07-26 01:33:49,491 | INFO | DELETE FROM payments
+2026-07-26 01:33:49,491 | INFO | [cached since 1.159s ago] ()
+2026-07-26 01:33:49,492 | INFO | DELETE FROM transactions
+2026-07-26 01:33:49,492 | INFO | [cached since 1.159s ago] ()
+2026-07-26 01:33:49,492 | INFO | DELETE FROM products
+2026-07-26 01:33:49,493 | INFO | [cached since 1.159s ago] ()
+2026-07-26 01:33:49,493 | INFO | DELETE FROM customers
+2026-07-26 01:33:49,493 | INFO | [cached since 1.158s ago] ()
+2026-07-26 01:33:49,494 | INFO | DELETE FROM suppliers
+2026-07-26 01:33:49,494 | INFO | [cached since 1.158s ago] ()
+2026-07-26 01:33:49,494 | INFO | INSERT INTO customers (name, email, phone) VALUES (?, ?, ?)
+2026-07-26 01:33:49,495 | INFO | [cached since 1.158s ago] ('Default Customer', None, '08123456789')
+2026-07-26 01:33:49,495 | INFO | INSERT INTO suppliers (company_name, email, phone, address) VALUES (?, ?, ?, ?)
+2026-07-26 01:33:49,495 | INFO | [cached since 1.157s ago] ('Default Supplier', None, '08123456789', 'Jakarta')
+2026-07-26 01:33:49,496 | INFO | COMMIT
+2026-07-26 01:33:49,496 | INFO | BEGIN (implicit)
+2026-07-26 01:33:49,497 | INFO | SELECT suppliers.id AS suppliers_id, suppliers.company_name AS suppliers_company_name, suppliers.email AS suppliers_email, suppliers.phone AS suppliers_phone, suppliers.address AS suppliers_address 
+FROM suppliers 
+WHERE suppliers.id = ?
+2026-07-26 01:33:49,497 | INFO | [cached since 1.153s ago] (1,)
+2026-07-26 01:33:49,497 | INFO | INSERT INTO products (name, category, stock, price, supplier_id) VALUES (?, ?, ?, ?, ?)
+2026-07-26 01:33:49,498 | INFO | [cached since 1.153s ago] ('Default Product', 'General', 100, 10000.0, 1)
+2026-07-26 01:33:49,498 | INFO | COMMIT
+2026-07-26 01:33:49,500 | INFO | BEGIN (implicit)
+2026-07-26 01:33:49,500 | INFO | SELECT products.id AS products_id, products.name AS products_name, products.category AS products_category, products.stock AS products_stock, products.price AS products_price, products.supplier_id AS products_supplier_id 
+FROM products
+ LIMIT ? OFFSET ?
+2026-07-26 01:33:49,500 | INFO | [cached since 0.3414s ago] (1, 0)
+2026-07-26 01:33:49,501 | INFO | SELECT customers.id AS customers_id, customers.name AS customers_name, customers.email AS customers_email, customers.phone AS customers_phone 
+FROM customers
+ LIMIT ? OFFSET ?
+2026-07-26 01:33:49,501 | INFO | [cached since 0.3413s ago] (1, 0)
+2026-07-26 01:33:49,674 | INFO | INSERT INTO users (fullname, email, password, role, is_active, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?)
+2026-07-26 01:33:49,674 | INFO | [cached since 0.998s ago] ('Admin User', 'admin-1bb897e4@example.com', '$5$rounds=535000$062vmwfcU/E.RXNl$xWN03gC.1GzCdyIQ0n0IBD9hUTkQURjVyINa7B4XVGC', 'admin', 1, '2026-07-25 18:33:49.674151', '2026-07-25 18:33:49.674156')
+2026-07-26 01:33:49,675 | INFO | COMMIT
+2026-07-26 01:33:49,675 | INFO | BEGIN (implicit)
+2026-07-26 01:33:49,676 | INFO | SELECT users.id, users.fullname, users.email, users.password, users.role, users.is_active, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+2026-07-26 01:33:49,676 | INFO | [cached since 0.9971s ago] (3,)
+2026-07-26 01:33:49,677 | INFO | SELECT products.id AS products_id, products.name AS products_name, products.category AS products_category, products.stock AS products_stock, products.price AS products_price, products.supplier_id AS products_supplier_id 
+FROM products 
+WHERE products.id = ?
+2026-07-26 01:33:49,677 | INFO | [cached since 0.2056s ago] (1,)
+2026-07-26 01:33:49,677 | INFO | SELECT customers.id AS customers_id, customers.name AS customers_name, customers.email AS customers_email, customers.phone AS customers_phone 
+FROM customers 
+WHERE customers.id = ?
+2026-07-26 01:33:49,678 | INFO | [cached since 0.2054s ago] (1,)
+2026-07-26 01:33:49,678 | INFO | INSERT INTO transactions (quantity, total, status, product_id, customer_id) VALUES (?, ?, ?, ?, ?)
+2026-07-26 01:33:49,678 | INFO | [cached since 0.5171s ago] (1, 10000.0, 'pending', 1, 1)
+2026-07-26 01:33:49,679 | INFO | COMMIT
+2026-07-26 01:33:49,679 | INFO | BEGIN (implicit)
+2026-07-26 01:33:49,680 | INFO | SELECT transactions.id, transactions.quantity, transactions.total, transactions.status, transactions.product_id, transactions.customer_id 
+FROM transactions 
+WHERE transactions.id = ?
+2026-07-26 01:33:49,680 | INFO | [cached since 0.5169s ago] (1,)
+2026-07-26 01:33:49,681 | INFO | INSERT INTO payments (transaction_id, amount, currency, status, provider, provider_payment_id, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+2026-07-26 01:33:49,681 | INFO | [cached since 0.5099s ago] (1, 10000.0, 'IDR', 'pending', 'midtrans', None, '2026-07-25 18:33:49.681062', '2026-07-25 18:33:49.681064')
+2026-07-26 01:33:49,681 | INFO | COMMIT
+2026-07-26 01:33:49,682 | INFO | BEGIN (implicit)
+2026-07-26 01:33:49,682 | INFO | SELECT payments.id, payments.transaction_id, payments.amount, payments.currency, payments.status, payments.provider, payments.provider_payment_id, payments.created_at, payments.updated_at 
+FROM payments 
+WHERE payments.id = ?
+2026-07-26 01:33:49,682 | INFO | [cached since 0.5093s ago] (1,)
+2026-07-26 01:33:49,683 | INFO | SELECT transactions.id AS transactions_id, transactions.quantity AS transactions_quantity, transactions.total AS transactions_total, transactions.product_id AS transactions_product_id, transactions.customer_id AS transactions_customer_id 
+FROM transactions 
+WHERE transactions.id = ?
+2026-07-26 01:33:49,683 | INFO | [generated in 0.00031s] (1,)
+2026-07-26 01:33:49,684 | INFO | UPDATE transactions SET status=? WHERE transactions.id = ?
+2026-07-26 01:33:49,684 | INFO | [cached since 0.479s ago] ('completed', 1)
+2026-07-26 01:33:49,684 | INFO | UPDATE payments SET status=?, updated_at=? WHERE payments.id = ?
+2026-07-26 01:33:49,685 | INFO | [generated in 0.00032s] ('paid', '2026-07-25 18:33:49.684981', 1)
+2026-07-26 01:33:49,685 | INFO | COMMIT
+2026-07-26 01:33:49,686 | INFO | BEGIN (implicit)
+2026-07-26 01:33:49,686 | INFO | SELECT payments.id, payments.transaction_id, payments.amount, payments.currency, payments.status, payments.provider, payments.provider_payment_id, payments.created_at, payments.updated_at 
+FROM payments 
+WHERE payments.id = ?
+2026-07-26 01:33:49,687 | INFO | [cached since 0.5134s ago] (1,)
+2026-07-26 01:33:49,687 | INFO | SELECT transactions.id, transactions.quantity, transactions.total, transactions.status, transactions.product_id, transactions.customer_id 
+FROM transactions 
+WHERE transactions.id = ?
+2026-07-26 01:33:49,687 | INFO | [cached since 0.5241s ago] (1,)
+2026-07-26 01:33:49,689 | INFO | BEGIN (implicit)
+2026-07-26 01:33:49,689 | INFO | SELECT users.id AS users_id, users.fullname AS users_fullname, users.email AS users_email, users.password AS users_password, users.role AS users_role, users.is_active AS users_is_active, users.created_at AS users_created_at, users.updated_at AS users_updated_at 
+FROM users 
+WHERE users.id = ?
+ LIMIT ? OFFSET ?
+2026-07-26 01:33:49,690 | INFO | [cached since 0.5933s ago] (3, 1, 0)
+2026-07-26 01:33:49,690 | INFO | SELECT payments.id AS payments_id, payments.transaction_id AS payments_transaction_id, payments.amount AS payments_amount, payments.currency AS payments_currency, payments.status AS payments_status, payments.provider AS payments_provider, payments.provider_payment_id AS payments_provider_payment_id, payments.created_at AS payments_created_at, payments.updated_at AS payments_updated_at 
+FROM payments 
+WHERE payments.id = ?
+ LIMIT ? OFFSET ?
+2026-07-26 01:33:49,691 | INFO | [cached since 0.252s ago] (1, 1, 0)
+2026-07-26 01:33:49,691 | INFO | SELECT transactions.id AS transactions_id, transactions.quantity AS transactions_quantity, transactions.total AS transactions_total, transactions.status AS transactions_status, transactions.product_id AS transactions_product_id, transactions.customer_id AS transactions_customer_id 
+FROM transactions 
+WHERE transactions.id = ?
+ LIMIT ? OFFSET ?
+2026-07-26 01:33:49,691 | INFO | [cached since 0.5216s ago] (1, 1, 0)
+2026-07-26 01:33:49,692 | INFO | UPDATE transactions SET status=? WHERE transactions.id = ?
+2026-07-26 01:33:49,692 | INFO | [cached since 0.4872s ago] ('refunded', 1)
+2026-07-26 01:33:49,693 | INFO | UPDATE payments SET status=?, updated_at=? WHERE payments.id = ?
+2026-07-26 01:33:49,693 | INFO | [cached since 0.008414s ago] ('refunded', '2026-07-25 18:33:49.693089', 1)
+2026-07-26 01:33:49,693 | INFO | COMMIT
+2026-07-26 01:33:49,694 | INFO | BEGIN (implicit)
+2026-07-26 01:33:49,694 | INFO | SELECT payments.id AS payments_id, payments.transaction_id AS payments_transaction_id, payments.amount AS payments_amount, payments.currency AS payments_currency, payments.status AS payments_status, payments.provider AS payments_provider, payments.provider_payment_id AS payments_provider_payment_id, payments.created_at AS payments_created_at, payments.updated_at AS payments_updated_at 
+FROM payments 
+WHERE payments.id = ?
+2026-07-26 01:33:49,694 | INFO | [cached since 0.2591s ago] (1,)
+2026-07-26 01:33:49,695 | INFO | POST /api/v1/admin/payments/1/refund | 200 | 0.0068s
+2026-07-26 01:33:49,695 | INFO | ROLLBACK
+2026-07-26 01:33:49,696 | INFO | HTTP Request: POST http://testserver/api/v1/admin/payments/1/refund "HTTP/1.1 200 OK"
+2026-07-26 01:33:49,696 | INFO | SELECT payments.id, payments.transaction_id, payments.amount, payments.currency, payments.status, payments.provider, payments.provider_payment_id, payments.created_at, payments.updated_at 
+FROM payments 
+WHERE payments.id = ?
+2026-07-26 01:33:49,697 | INFO | [cached since 0.5236s ago] (1,)
+2026-07-26 01:33:49,697 | INFO | SELECT transactions.id, transactions.quantity, transactions.total, transactions.status, transactions.product_id, transactions.customer_id 
+FROM transactions 
+WHERE transactions.id = ?
+2026-07-26 01:33:49,697 | INFO | [cached since 0.5343s ago] (1,)
+2026-07-26 01:33:49,698 | INFO | SELECT products.id AS products_id, products.name AS products_name, products.category AS products_category, products.stock AS products_stock, products.price AS products_price, products.supplier_id AS products_supplier_id 
+FROM products 
+WHERE products.id = ?
+2026-07-26 01:33:49,698 | INFO | [cached since 0.2269s ago] (1,)
+2026-07-26 01:33:49,699 | INFO | SELECT customers.id AS customers_id, customers.name AS customers_name, customers.email AS customers_email, customers.phone AS customers_phone 
+FROM customers 
+WHERE customers.id = ?
+2026-07-26 01:33:49,699 | INFO | [cached since 0.2267s ago] (1,)
+2026-07-26 01:33:49,699 | INFO | INSERT INTO transactions (quantity, total, status, product_id, customer_id) VALUES (?, ?, ?, ?, ?)
+2026-07-26 01:33:49,700 | INFO | [cached since 0.5383s ago] (1, 10000.0, 'pending', 1, 1)
+2026-07-26 01:33:49,700 | INFO | COMMIT
+2026-07-26 01:33:49,701 | INFO | BEGIN (implicit)
+2026-07-26 01:33:49,701 | INFO | SELECT transactions.id, transactions.quantity, transactions.total, transactions.status, transactions.product_id, transactions.customer_id 
+FROM transactions 
+WHERE transactions.id = ?
+2026-07-26 01:33:49,701 | INFO | [cached since 0.5379s ago] (2,)
+2026-07-26 01:33:49,702 | INFO | INSERT INTO payments (transaction_id, amount, currency, status, provider, provider_payment_id, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+2026-07-26 01:33:49,702 | INFO | [cached since 0.5308s ago] (2, 10000.0, 'IDR', 'pending', 'midtrans', None, '2026-07-25 18:33:49.702007', '2026-07-25 18:33:49.702009')
+2026-07-26 01:33:49,702 | INFO | COMMIT
+2026-07-26 01:33:49,703 | INFO | BEGIN (implicit)
+2026-07-26 01:33:49,703 | INFO | SELECT payments.id, payments.transaction_id, payments.amount, payments.currency, payments.status, payments.provider, payments.provider_payment_id, payments.created_at, payments.updated_at 
+FROM payments 
+WHERE payments.id = ?
+2026-07-26 01:33:49,703 | INFO | [cached since 0.5303s ago] (2,)
+2026-07-26 01:33:49,704 | INFO | SELECT transactions.id AS transactions_id, transactions.quantity AS transactions_quantity, transactions.total AS transactions_total, transactions.product_id AS transactions_product_id, transactions.customer_id AS transactions_customer_id 
+FROM transactions 
+WHERE transactions.id = ?
+2026-07-26 01:33:49,704 | INFO | [cached since 0.02109s ago] (2,)
+2026-07-26 01:33:49,704 | INFO | UPDATE transactions SET status=? WHERE transactions.id = ?
+2026-07-26 01:33:49,705 | INFO | [cached since 0.4998s ago] ('pending', 2)
+2026-07-26 01:33:49,705 | INFO | COMMIT
+2026-07-26 01:33:49,705 | INFO | BEGIN (implicit)
+2026-07-26 01:33:49,706 | INFO | SELECT payments.id, payments.transaction_id, payments.amount, payments.currency, payments.status, payments.provider, payments.provider_payment_id, payments.created_at, payments.updated_at 
+FROM payments 
+WHERE payments.id = ?
+2026-07-26 01:33:49,706 | INFO | [cached since 0.5328s ago] (2,)
+2026-07-26 01:33:49,706 | INFO | SELECT transactions.id, transactions.quantity, transactions.total, transactions.status, transactions.product_id, transactions.customer_id 
+FROM transactions 
+WHERE transactions.id = ?
+2026-07-26 01:33:49,707 | INFO | [cached since 0.5434s ago] (2,)
+2026-07-26 01:33:49,708 | INFO | BEGIN (implicit)
+2026-07-26 01:33:49,708 | INFO | SELECT users.id AS users_id, users.fullname AS users_fullname, users.email AS users_email, users.password AS users_password, users.role AS users_role, users.is_active AS users_is_active, users.created_at AS users_created_at, users.updated_at AS users_updated_at 
+FROM users 
+WHERE users.id = ?
+ LIMIT ? OFFSET ?
+2026-07-26 01:33:49,709 | INFO | [cached since 0.6122s ago] (3, 1, 0)
+2026-07-26 01:33:49,709 | INFO | SELECT payments.id AS payments_id, payments.transaction_id AS payments_transaction_id, payments.amount AS payments_amount, payments.currency AS payments_currency, payments.status AS payments_status, payments.provider AS payments_provider, payments.provider_payment_id AS payments_provider_payment_id, payments.created_at AS payments_created_at, payments.updated_at AS payments_updated_at 
+FROM payments 
+WHERE payments.id = ?
+ LIMIT ? OFFSET ?
+2026-07-26 01:33:49,710 | INFO | [cached since 0.271s ago] (2, 1, 0)
+2026-07-26 01:33:49,710 | INFO | SELECT transactions.id AS transactions_id, transactions.quantity AS transactions_quantity, transactions.total AS transactions_total, transactions.status AS transactions_status, transactions.product_id AS transactions_product_id, transactions.customer_id AS transactions_customer_id 
+FROM transactions 
+WHERE transactions.id = ?
+ LIMIT ? OFFSET ?
+2026-07-26 01:33:49,710 | INFO | [cached since 0.5406s ago] (2, 1, 0)
+2026-07-26 01:33:49,711 | INFO | UPDATE transactions SET status=? WHERE transactions.id = ?
+2026-07-26 01:33:49,711 | INFO | [cached since 0.5062s ago] ('canceled', 2)
+2026-07-26 01:33:49,712 | INFO | UPDATE payments SET status=?, updated_at=? WHERE payments.id = ?
+2026-07-26 01:33:49,712 | INFO | [cached since 0.02742s ago] ('canceled', '2026-07-25 18:33:49.712096', 2)
+2026-07-26 01:33:49,712 | INFO | COMMIT
+2026-07-26 01:33:49,713 | INFO | BEGIN (implicit)
+2026-07-26 01:33:49,713 | INFO | SELECT payments.id AS payments_id, payments.transaction_id AS payments_transaction_id, payments.amount AS payments_amount, payments.currency AS payments_currency, payments.status AS payments_status, payments.provider AS payments_provider, payments.provider_payment_id AS payments_provider_payment_id, payments.created_at AS payments_created_at, payments.updated_at AS payments_updated_at 
+FROM payments 
+WHERE payments.id = ?
+2026-07-26 01:33:49,713 | INFO | [cached since 0.278s ago] (2,)
+2026-07-26 01:33:49,714 | INFO | POST /api/v1/admin/payments/2/cancel | 200 | 0.0065s
+2026-07-26 01:33:49,714 | INFO | ROLLBACK
+2026-07-26 01:33:49,715 | INFO | HTTP Request: POST http://testserver/api/v1/admin/payments/2/cancel "HTTP/1.1 200 OK"
+2026-07-26 01:33:49,715 | INFO | SELECT payments.id, payments.transaction_id, payments.amount, payments.currency, payments.status, payments.provider, payments.provider_payment_id, payments.created_at, payments.updated_at 
+FROM payments 
+WHERE payments.id = ?
+2026-07-26 01:33:49,715 | INFO | [cached since 0.5423s ago] (2,)
+2026-07-26 01:33:49,716 | INFO | SELECT transactions.id, transactions.quantity, transactions.total, transactions.status, transactions.product_id, transactions.customer_id 
+FROM transactions 
+WHERE transactions.id = ?
+2026-07-26 01:33:49,716 | INFO | [cached since 0.5529s ago] (2,)
+2026-07-26 01:33:49,718 | INFO | BEGIN (implicit)
+2026-07-26 01:33:49,718 | INFO | DELETE FROM payments
+2026-07-26 01:33:49,718 | INFO | [cached since 1.386s ago] ()
+2026-07-26 01:33:49,719 | INFO | DELETE FROM transactions
+2026-07-26 01:33:49,719 | INFO | [cached since 1.386s ago] ()
+2026-07-26 01:33:49,720 | INFO | DELETE FROM products
+2026-07-26 01:33:49,720 | INFO | [cached since 1.386s ago] ()
+2026-07-26 01:33:49,720 | INFO | DELETE FROM customers
+2026-07-26 01:33:49,721 | INFO | [cached since 1.386s ago] ()
+2026-07-26 01:33:49,721 | INFO | DELETE FROM suppliers
+2026-07-26 01:33:49,721 | INFO | [cached since 1.386s ago] ()
+2026-07-26 01:33:49,722 | INFO | INSERT INTO customers (name, email, phone) VALUES (?, ?, ?)
+2026-07-26 01:33:49,722 | INFO | [cached since 1.385s ago] ('Default Customer', None, '08123456789')
+2026-07-26 01:33:49,722 | INFO | INSERT INTO suppliers (company_name, email, phone, address) VALUES (?, ?, ?, ?)
+2026-07-26 01:33:49,723 | INFO | [cached since 1.384s ago] ('Default Supplier', None, '08123456789', 'Jakarta')
+2026-07-26 01:33:49,723 | INFO | COMMIT
+2026-07-26 01:33:49,724 | INFO | BEGIN (implicit)
+2026-07-26 01:33:49,724 | INFO | SELECT suppliers.id AS suppliers_id, suppliers.company_name AS suppliers_company_name, suppliers.email AS suppliers_email, suppliers.phone AS suppliers_phone, suppliers.address AS suppliers_address 
+FROM suppliers 
+WHERE suppliers.id = ?
+2026-07-26 01:33:49,724 | INFO | [cached since 1.38s ago] (1,)
+2026-07-26 01:33:49,725 | INFO | INSERT INTO products (name, category, stock, price, supplier_id) VALUES (?, ?, ?, ?, ?)
+2026-07-26 01:33:49,725 | INFO | [cached since 1.38s ago] ('Default Product', 'General', 100, 10000.0, 1)
+2026-07-26 01:33:49,725 | INFO | COMMIT
+2026-07-26 01:33:49,728 | INFO | BEGIN (implicit)
+2026-07-26 01:33:49,728 | INFO | SELECT products.id AS products_id, products.name AS products_name, products.category AS products_category, products.stock AS products_stock, products.price AS products_price, products.supplier_id AS products_supplier_id 
+FROM products
+2026-07-26 01:33:49,729 | INFO | [generated in 0.00029s] ()
+2026-07-26 01:33:49,729 | INFO | GET /api/v1/products/ | 200 | 0.0024s
+2026-07-26 01:33:49,730 | INFO | ROLLBACK
+2026-07-26 01:33:49,730 | INFO | HTTP Request: GET http://testserver/api/v1/products/ "HTTP/1.1 200 OK"
+2026-07-26 01:33:49,731 | INFO | BEGIN (implicit)
+2026-07-26 01:33:49,732 | INFO | DELETE FROM payments
+2026-07-26 01:33:49,732 | INFO | [cached since 1.399s ago] ()
+2026-07-26 01:33:49,732 | INFO | DELETE FROM transactions
+2026-07-26 01:33:49,733 | INFO | [cached since 1.399s ago] ()
+2026-07-26 01:33:49,733 | INFO | DELETE FROM products
+2026-07-26 01:33:49,733 | INFO | [cached since 1.399s ago] ()
+2026-07-26 01:33:49,734 | INFO | DELETE FROM customers
+2026-07-26 01:33:49,734 | INFO | [cached since 1.399s ago] ()
+2026-07-26 01:33:49,734 | INFO | DELETE FROM suppliers
+2026-07-26 01:33:49,735 | INFO | [cached since 1.399s ago] ()
+2026-07-26 01:33:49,735 | INFO | INSERT INTO customers (name, email, phone) VALUES (?, ?, ?)
+2026-07-26 01:33:49,735 | INFO | [cached since 1.398s ago] ('Default Customer', None, '08123456789')
+2026-07-26 01:33:49,736 | INFO | INSERT INTO suppliers (company_name, email, phone, address) VALUES (?, ?, ?, ?)
+2026-07-26 01:33:49,736 | INFO | [cached since 1.398s ago] ('Default Supplier', None, '08123456789', 'Jakarta')
+2026-07-26 01:33:49,736 | INFO | COMMIT
+2026-07-26 01:33:49,737 | INFO | BEGIN (implicit)
+2026-07-26 01:33:49,737 | INFO | SELECT suppliers.id AS suppliers_id, suppliers.company_name AS suppliers_company_name, suppliers.email AS suppliers_email, suppliers.phone AS suppliers_phone, suppliers.address AS suppliers_address 
+FROM suppliers 
+WHERE suppliers.id = ?
+2026-07-26 01:33:49,738 | INFO | [cached since 1.394s ago] (1,)
+2026-07-26 01:33:49,738 | INFO | INSERT INTO products (name, category, stock, price, supplier_id) VALUES (?, ?, ?, ?, ?)
+2026-07-26 01:33:49,738 | INFO | [cached since 1.393s ago] ('Default Product', 'General', 100, 10000.0, 1)
+2026-07-26 01:33:49,739 | INFO | COMMIT
+2026-07-26 01:33:49,741 | INFO | BEGIN (implicit)
+2026-07-26 01:33:49,742 | INFO | SELECT suppliers.id AS suppliers_id, suppliers.company_name AS suppliers_company_name, suppliers.email AS suppliers_email, suppliers.phone AS suppliers_phone, suppliers.address AS suppliers_address 
+FROM suppliers 
+WHERE suppliers.id = ?
+ LIMIT ? OFFSET ?
+2026-07-26 01:33:49,742 | INFO | [generated in 0.00029s] (1, 1, 0)
+2026-07-26 01:33:49,743 | INFO | INSERT INTO products (name, category, stock, price, supplier_id) VALUES (?, ?, ?, ?, ?)
+2026-07-26 01:33:49,743 | INFO | [cached since 1.398s ago] ('Keyboard Mechanical', 'Electronics', 20, 750000.0, 1)
+2026-07-26 01:33:49,743 | INFO | COMMIT
+2026-07-26 01:33:49,744 | INFO | BEGIN (implicit)
+2026-07-26 01:33:49,744 | INFO | SELECT products.id, products.name, products.category, products.stock, products.price, products.supplier_id 
+FROM products 
+WHERE products.id = ?
+2026-07-26 01:33:49,745 | INFO | [generated in 0.00029s] (2,)
+2026-07-26 01:33:49,745 | INFO | POST /api/v1/products/ | 201 | 0.0050s
+2026-07-26 01:33:49,746 | INFO | ROLLBACK
+2026-07-26 01:33:49,746 | INFO | HTTP Request: POST http://testserver/api/v1/products/ "HTTP/1.1 201 Created"
+2026-07-26 01:33:49,747 | INFO | BEGIN (implicit)
+2026-07-26 01:33:49,748 | INFO | DELETE FROM payments
+2026-07-26 01:33:49,748 | INFO | [cached since 1.415s ago] ()
+2026-07-26 01:33:49,748 | INFO | DELETE FROM transactions
+2026-07-26 01:33:49,749 | INFO | [cached since 1.415s ago] ()
+2026-07-26 01:33:49,749 | INFO | DELETE FROM products
+2026-07-26 01:33:49,749 | INFO | [cached since 1.415s ago] ()
+2026-07-26 01:33:49,750 | INFO | DELETE FROM customers
+2026-07-26 01:33:49,750 | INFO | [cached since 1.415s ago] ()
+2026-07-26 01:33:49,750 | INFO | DELETE FROM suppliers
+2026-07-26 01:33:49,750 | INFO | [cached since 1.415s ago] ()
+2026-07-26 01:33:49,751 | INFO | INSERT INTO customers (name, email, phone) VALUES (?, ?, ?)
+2026-07-26 01:33:49,751 | INFO | [cached since 1.414s ago] ('Default Customer', None, '08123456789')
+2026-07-26 01:33:49,751 | INFO | INSERT INTO suppliers (company_name, email, phone, address) VALUES (?, ?, ?, ?)
+2026-07-26 01:33:49,752 | INFO | [cached since 1.413s ago] ('Default Supplier', None, '08123456789', 'Jakarta')
+2026-07-26 01:33:49,752 | INFO | COMMIT
+2026-07-26 01:33:49,753 | INFO | BEGIN (implicit)
+2026-07-26 01:33:49,753 | INFO | SELECT suppliers.id AS suppliers_id, suppliers.company_name AS suppliers_company_name, suppliers.email AS suppliers_email, suppliers.phone AS suppliers_phone, suppliers.address AS suppliers_address 
+FROM suppliers 
+WHERE suppliers.id = ?
+2026-07-26 01:33:49,753 | INFO | [cached since 1.409s ago] (1,)
+2026-07-26 01:33:49,754 | INFO | INSERT INTO products (name, category, stock, price, supplier_id) VALUES (?, ?, ?, ?, ?)
+2026-07-26 01:33:49,754 | INFO | [cached since 1.409s ago] ('Default Product', 'General', 100, 10000.0, 1)
+2026-07-26 01:33:49,754 | INFO | COMMIT
+2026-07-26 01:33:49,756 | INFO | BEGIN (implicit)
+2026-07-26 01:33:49,757 | INFO | SELECT products.id AS products_id, products.name AS products_name, products.category AS products_category, products.stock AS products_stock, products.price AS products_price, products.supplier_id AS products_supplier_id 
+FROM products 
+WHERE products.id = ?
+ LIMIT ? OFFSET ?
+2026-07-26 01:33:49,757 | INFO | [generated in 0.00030s] (1, 1, 0)
+2026-07-26 01:33:49,758 | INFO | GET /api/v1/products/1 | 200 | 0.0019s
+2026-07-26 01:33:49,758 | INFO | ROLLBACK
+2026-07-26 01:33:49,759 | INFO | HTTP Request: GET http://testserver/api/v1/products/1 "HTTP/1.1 200 OK"
+2026-07-26 01:33:49,760 | INFO | BEGIN (implicit)
+2026-07-26 01:33:49,760 | INFO | DELETE FROM payments
+2026-07-26 01:33:49,760 | INFO | [cached since 1.428s ago] ()
+2026-07-26 01:33:49,761 | INFO | DELETE FROM transactions
+2026-07-26 01:33:49,761 | INFO | [cached since 1.427s ago] ()
+2026-07-26 01:33:49,761 | INFO | DELETE FROM products
+2026-07-26 01:33:49,761 | INFO | [cached since 1.427s ago] ()
+2026-07-26 01:33:49,762 | INFO | DELETE FROM customers
+2026-07-26 01:33:49,762 | INFO | [cached since 1.427s ago] ()
+2026-07-26 01:33:49,762 | INFO | DELETE FROM suppliers
+2026-07-26 01:33:49,763 | INFO | [cached since 1.427s ago] ()
+2026-07-26 01:33:49,763 | INFO | INSERT INTO customers (name, email, phone) VALUES (?, ?, ?)
+2026-07-26 01:33:49,763 | INFO | [cached since 1.426s ago] ('Default Customer', None, '08123456789')
+2026-07-26 01:33:49,764 | INFO | INSERT INTO suppliers (company_name, email, phone, address) VALUES (?, ?, ?, ?)
+2026-07-26 01:33:49,764 | INFO | [cached since 1.425s ago] ('Default Supplier', None, '08123456789', 'Jakarta')
+2026-07-26 01:33:49,764 | INFO | COMMIT
+2026-07-26 01:33:49,765 | INFO | BEGIN (implicit)
+2026-07-26 01:33:49,765 | INFO | SELECT suppliers.id AS suppliers_id, suppliers.company_name AS suppliers_company_name, suppliers.email AS suppliers_email, suppliers.phone AS suppliers_phone, suppliers.address AS suppliers_address 
+FROM suppliers 
+WHERE suppliers.id = ?
+2026-07-26 01:33:49,765 | INFO | [cached since 1.421s ago] (1,)
+2026-07-26 01:33:49,766 | INFO | INSERT INTO products (name, category, stock, price, supplier_id) VALUES (?, ?, ?, ?, ?)
+2026-07-26 01:33:49,766 | INFO | [cached since 1.421s ago] ('Default Product', 'General', 100, 10000.0, 1)
+2026-07-26 01:33:49,766 | INFO | COMMIT
+2026-07-26 01:33:49,769 | INFO | BEGIN (implicit)
+2026-07-26 01:33:49,769 | INFO | SELECT products.id AS products_id, products.name AS products_name, products.category AS products_category, products.stock AS products_stock, products.price AS products_price, products.supplier_id AS products_supplier_id 
+FROM products 
+WHERE products.id = ?
+ LIMIT ? OFFSET ?
+2026-07-26 01:33:49,769 | INFO | [cached since 0.01265s ago] (1, 1, 0)
+2026-07-26 01:33:49,770 | INFO | UPDATE products SET stock=?, price=? WHERE products.id = ?
+2026-07-26 01:33:49,770 | INFO | [generated in 0.00031s] (30, 800000.0, 1)
+2026-07-26 01:33:49,771 | INFO | COMMIT
+2026-07-26 01:33:49,771 | INFO | BEGIN (implicit)
+2026-07-26 01:33:49,772 | INFO | SELECT products.id, products.name, products.category, products.stock, products.price, products.supplier_id 
+FROM products 
+WHERE products.id = ?
+2026-07-26 01:33:49,772 | INFO | [cached since 0.02765s ago] (1,)
+2026-07-26 01:33:49,773 | INFO | PUT /api/v1/products/1 | 200 | 0.0047s
+2026-07-26 01:33:49,773 | INFO | ROLLBACK
+2026-07-26 01:33:49,774 | INFO | HTTP Request: PUT http://testserver/api/v1/products/1 "HTTP/1.1 200 OK"
+2026-07-26 01:33:49,775 | INFO | BEGIN (implicit)
+2026-07-26 01:33:49,775 | INFO | DELETE FROM payments
+2026-07-26 01:33:49,775 | INFO | [cached since 1.443s ago] ()
+2026-07-26 01:33:49,776 | INFO | DELETE FROM transactions
+2026-07-26 01:33:49,776 | INFO | [cached since 1.443s ago] ()
+2026-07-26 01:33:49,777 | INFO | DELETE FROM products
+2026-07-26 01:33:49,777 | INFO | [cached since 1.443s ago] ()
+2026-07-26 01:33:49,778 | INFO | DELETE FROM customers
+2026-07-26 01:33:49,778 | INFO | [cached since 1.443s ago] ()
+2026-07-26 01:33:49,779 | INFO | DELETE FROM suppliers
+2026-07-26 01:33:49,779 | INFO | [cached since 1.444s ago] ()
+2026-07-26 01:33:49,780 | INFO | INSERT INTO customers (name, email, phone) VALUES (?, ?, ?)
+2026-07-26 01:33:49,781 | INFO | [cached since 1.443s ago] ('Default Customer', None, '08123456789')
+2026-07-26 01:33:49,781 | INFO | INSERT INTO suppliers (company_name, email, phone, address) VALUES (?, ?, ?, ?)
+2026-07-26 01:33:49,782 | INFO | [cached since 1.443s ago] ('Default Supplier', None, '08123456789', 'Jakarta')
+2026-07-26 01:33:49,782 | INFO | COMMIT
+2026-07-26 01:33:49,784 | INFO | BEGIN (implicit)
+2026-07-26 01:33:49,785 | INFO | SELECT suppliers.id AS suppliers_id, suppliers.company_name AS suppliers_company_name, suppliers.email AS suppliers_email, suppliers.phone AS suppliers_phone, suppliers.address AS suppliers_address 
+FROM suppliers 
+WHERE suppliers.id = ?
+2026-07-26 01:33:49,785 | INFO | [cached since 1.441s ago] (1,)
+2026-07-26 01:33:49,786 | INFO | INSERT INTO products (name, category, stock, price, supplier_id) VALUES (?, ?, ?, ?, ?)
+2026-07-26 01:33:49,786 | INFO | [cached since 1.441s ago] ('Default Product', 'General', 100, 10000.0, 1)
+2026-07-26 01:33:49,786 | INFO | COMMIT
+2026-07-26 01:33:49,789 | INFO | BEGIN (implicit)
+2026-07-26 01:33:49,789 | INFO | SELECT products.id AS products_id, products.name AS products_name, products.category AS products_category, products.stock AS products_stock, products.price AS products_price, products.supplier_id AS products_supplier_id 
+FROM products 
+WHERE products.id = ?
+ LIMIT ? OFFSET ?
+2026-07-26 01:33:49,790 | INFO | [cached since 0.03293s ago] (1, 1, 0)
+2026-07-26 01:33:49,791 | INFO | SELECT transactions.id AS transactions_id, transactions.quantity AS transactions_quantity, transactions.total AS transactions_total, transactions.status AS transactions_status, transactions.product_id AS transactions_product_id, transactions.customer_id AS transactions_customer_id 
+FROM transactions 
+WHERE ? = transactions.product_id
+2026-07-26 01:33:49,791 | INFO | [generated in 0.00032s] (1,)
+2026-07-26 01:33:49,792 | INFO | DELETE FROM products WHERE products.id = ?
+2026-07-26 01:33:49,792 | INFO | [generated in 0.00030s] (1,)
+2026-07-26 01:33:49,792 | INFO | COMMIT
+2026-07-26 01:33:49,793 | INFO | DELETE /api/v1/products/1 | 200 | 0.0051s
+2026-07-26 01:33:49,794 | INFO | HTTP Request: DELETE http://testserver/api/v1/products/1 "HTTP/1.1 200 OK"
+2026-07-26 01:33:49,795 | INFO | BEGIN (implicit)
+2026-07-26 01:33:49,796 | INFO | DELETE FROM payments
+2026-07-26 01:33:49,796 | INFO | [cached since 1.463s ago] ()
+2026-07-26 01:33:49,796 | INFO | DELETE FROM transactions
+2026-07-26 01:33:49,797 | INFO | [cached since 1.463s ago] ()
+2026-07-26 01:33:49,797 | INFO | DELETE FROM products
+2026-07-26 01:33:49,797 | INFO | [cached since 1.463s ago] ()
+2026-07-26 01:33:49,798 | INFO | DELETE FROM customers
+2026-07-26 01:33:49,798 | INFO | [cached since 1.463s ago] ()
+2026-07-26 01:33:49,798 | INFO | DELETE FROM suppliers
+2026-07-26 01:33:49,799 | INFO | [cached since 1.463s ago] ()
+2026-07-26 01:33:49,799 | INFO | INSERT INTO customers (name, email, phone) VALUES (?, ?, ?)
+2026-07-26 01:33:49,799 | INFO | [cached since 1.462s ago] ('Default Customer', None, '08123456789')
+2026-07-26 01:33:49,800 | INFO | INSERT INTO suppliers (company_name, email, phone, address) VALUES (?, ?, ?, ?)
+2026-07-26 01:33:49,800 | INFO | [cached since 1.461s ago] ('Default Supplier', None, '08123456789', 'Jakarta')
+2026-07-26 01:33:49,800 | INFO | COMMIT
+2026-07-26 01:33:49,801 | INFO | BEGIN (implicit)
+2026-07-26 01:33:49,801 | INFO | SELECT suppliers.id AS suppliers_id, suppliers.company_name AS suppliers_company_name, suppliers.email AS suppliers_email, suppliers.phone AS suppliers_phone, suppliers.address AS suppliers_address 
+FROM suppliers 
+WHERE suppliers.id = ?
+2026-07-26 01:33:49,801 | INFO | [cached since 1.458s ago] (1,)
+2026-07-26 01:33:49,802 | INFO | INSERT INTO products (name, category, stock, price, supplier_id) VALUES (?, ?, ?, ?, ?)
+2026-07-26 01:33:49,802 | INFO | [cached since 1.457s ago] ('Default Product', 'General', 100, 10000.0, 1)
+2026-07-26 01:33:49,803 | INFO | COMMIT
+2026-07-26 01:33:49,978 | INFO | BEGIN (implicit)
+2026-07-26 01:33:49,978 | INFO | INSERT INTO users (fullname, email, password, role, is_active, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?)
+2026-07-26 01:33:49,979 | INFO | [cached since 1.303s ago] ('user account', 'user.030c1f92@example.com', '$5$rounds=535000$bERuWTS8VSE8XDQQ$7qMRr5kQvlXxvG4O/AmxC0PFu4o/zrdi9RXKjEH4W8.', 'user', 1, '2026-07-25 18:33:49.978908', '2026-07-25 18:33:49.978911')
+2026-07-26 01:33:49,979 | INFO | COMMIT
+2026-07-26 01:33:49,980 | INFO | BEGIN (implicit)
+2026-07-26 01:33:49,980 | INFO | SELECT users.id, users.fullname, users.email, users.password, users.role, users.is_active, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+2026-07-26 01:33:49,981 | INFO | [cached since 1.302s ago] (4,)
+2026-07-26 01:33:50,153 | INFO | INSERT INTO users (fullname, email, password, role, is_active, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?)
+2026-07-26 01:33:50,153 | INFO | [cached since 1.477s ago] ('user account', 'user.7cd5c34a@example.com', '$5$rounds=535000$hlWO83o488van0E9$hNkndf9K/9GV9yD45dp9kLSPNLZqO3rJUNVelXz9h65', 'user', 1, '2026-07-25 18:33:50.153452', '2026-07-25 18:33:50.153456')
+2026-07-26 01:33:50,154 | INFO | COMMIT
+2026-07-26 01:33:50,155 | INFO | BEGIN (implicit)
+2026-07-26 01:33:50,155 | INFO | SELECT users.id, users.fullname, users.email, users.password, users.role, users.is_active, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+2026-07-26 01:33:50,155 | INFO | [cached since 1.476s ago] (5,)
+2026-07-26 01:33:50,158 | INFO | BEGIN (implicit)
+2026-07-26 01:33:50,158 | INFO | SELECT users.id AS users_id, users.fullname AS users_fullname, users.email AS users_email, users.password AS users_password, users.role AS users_role, users.is_active AS users_is_active, users.created_at AS users_created_at, users.updated_at AS users_updated_at 
+FROM users 
+WHERE users.id = ?
+ LIMIT ? OFFSET ?
+2026-07-26 01:33:50,159 | INFO | [cached since 1.062s ago] (4, 1, 0)
+2026-07-26 01:33:50,159 | INFO | UPDATE users SET fullname=?, updated_at=? WHERE users.id = ?
+2026-07-26 01:33:50,160 | INFO | [generated in 0.00032s] ('Updated Regular User', '2026-07-25 18:33:50.159797', 4)
+2026-07-26 01:33:50,160 | INFO | COMMIT
+2026-07-26 01:33:50,161 | INFO | BEGIN (implicit)
+2026-07-26 01:33:50,161 | INFO | SELECT users.id, users.fullname, users.email, users.password, users.role, users.is_active, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+2026-07-26 01:33:50,161 | INFO | [cached since 1.482s ago] (4,)
+2026-07-26 01:33:50,162 | INFO | PUT /api/v1/auth/me | 200 | 0.0053s
+2026-07-26 01:33:50,162 | INFO | ROLLBACK
+2026-07-26 01:33:50,163 | INFO | HTTP Request: PUT http://testserver/api/v1/auth/me "HTTP/1.1 200 OK"
+2026-07-26 01:33:50,165 | INFO | BEGIN (implicit)
+2026-07-26 01:33:50,165 | INFO | SELECT users.id AS users_id, users.fullname AS users_fullname, users.email AS users_email, users.password AS users_password, users.role AS users_role, users.is_active AS users_is_active, users.created_at AS users_created_at, users.updated_at AS users_updated_at 
+FROM users 
+WHERE users.id = ?
+ LIMIT ? OFFSET ?
+2026-07-26 01:33:50,168 | INFO | [cached since 1.071s ago] (4, 1, 0)
+2026-07-26 01:33:50,169 | INFO | ROLLBACK
+2026-07-26 01:33:50,169 | INFO | PUT /api/v1/users/5 | 403 | 0.0054s
+2026-07-26 01:33:50,170 | INFO | HTTP Request: PUT http://testserver/api/v1/users/5 "HTTP/1.1 403 Forbidden"
+2026-07-26 01:33:50,170 | INFO | ROLLBACK
+2026-07-26 01:33:50,172 | INFO | BEGIN (implicit)
+2026-07-26 01:33:50,172 | INFO | DELETE FROM payments
+2026-07-26 01:33:50,172 | INFO | [cached since 1.84s ago] ()
+2026-07-26 01:33:50,173 | INFO | DELETE FROM transactions
+2026-07-26 01:33:50,173 | INFO | [cached since 1.839s ago] ()
+2026-07-26 01:33:50,173 | INFO | DELETE FROM products
+2026-07-26 01:33:50,174 | INFO | [cached since 1.839s ago] ()
+2026-07-26 01:33:50,174 | INFO | DELETE FROM customers
+2026-07-26 01:33:50,174 | INFO | [cached since 1.839s ago] ()
+2026-07-26 01:33:50,174 | INFO | DELETE FROM suppliers
+2026-07-26 01:33:50,175 | INFO | [cached since 1.839s ago] ()
+2026-07-26 01:33:50,175 | INFO | INSERT INTO customers (name, email, phone) VALUES (?, ?, ?)
+2026-07-26 01:33:50,175 | INFO | [cached since 1.838s ago] ('Default Customer', None, '08123456789')
+2026-07-26 01:33:50,176 | INFO | INSERT INTO suppliers (company_name, email, phone, address) VALUES (?, ?, ?, ?)
+2026-07-26 01:33:50,176 | INFO | [cached since 1.838s ago] ('Default Supplier', None, '08123456789', 'Jakarta')
+2026-07-26 01:33:50,176 | INFO | COMMIT
+2026-07-26 01:33:50,177 | INFO | BEGIN (implicit)
+2026-07-26 01:33:50,177 | INFO | SELECT suppliers.id AS suppliers_id, suppliers.company_name AS suppliers_company_name, suppliers.email AS suppliers_email, suppliers.phone AS suppliers_phone, suppliers.address AS suppliers_address 
+FROM suppliers 
+WHERE suppliers.id = ?
+2026-07-26 01:33:50,178 | INFO | [cached since 1.834s ago] (1,)
+2026-07-26 01:33:50,178 | INFO | INSERT INTO products (name, category, stock, price, supplier_id) VALUES (?, ?, ?, ?, ?)
+2026-07-26 01:33:50,178 | INFO | [cached since 1.833s ago] ('Default Product', 'General', 100, 10000.0, 1)
+2026-07-26 01:33:50,179 | INFO | COMMIT
+2026-07-26 01:33:50,353 | INFO | BEGIN (implicit)
+2026-07-26 01:33:50,354 | INFO | INSERT INTO users (fullname, email, password, role, is_active, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?)
+2026-07-26 01:33:50,354 | INFO | [cached since 1.678s ago] ('staff account', 'staff.caa0eac9@example.com', '$5$rounds=535000$OG9tHptiAK4lCMJl$bXUbHK4ff1Dnwg28tvqNodt6wMdV7ZaYGE1E5LqtgM/', 'staff', 1, '2026-07-25 18:33:50.354251', '2026-07-25 18:33:50.354254')
+2026-07-26 01:33:50,355 | INFO | COMMIT
+2026-07-26 01:33:50,355 | INFO | BEGIN (implicit)
+2026-07-26 01:33:50,356 | INFO | SELECT users.id, users.fullname, users.email, users.password, users.role, users.is_active, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+2026-07-26 01:33:50,356 | INFO | [cached since 1.677s ago] (6,)
+2026-07-26 01:33:50,525 | INFO | INSERT INTO users (fullname, email, password, role, is_active, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?)
+2026-07-26 01:33:50,526 | INFO | [cached since 1.85s ago] ('user account', 'user.0695ac01@example.com', '$5$rounds=535000$7q3lfUEb.ZcCjsfP$hupcK986euSpe8gESBl9aT6Gq1uwurDmhVdgrSO6K6D', 'user', 1, '2026-07-25 18:33:50.525680', '2026-07-25 18:33:50.525684')
+2026-07-26 01:33:50,526 | INFO | COMMIT
+2026-07-26 01:33:50,527 | INFO | BEGIN (implicit)
+2026-07-26 01:33:50,527 | INFO | SELECT users.id, users.fullname, users.email, users.password, users.role, users.is_active, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+2026-07-26 01:33:50,528 | INFO | [cached since 1.849s ago] (7,)
+2026-07-26 01:33:50,530 | INFO | BEGIN (implicit)
+2026-07-26 01:33:50,530 | INFO | SELECT users.id AS users_id, users.fullname AS users_fullname, users.email AS users_email, users.password AS users_password, users.role AS users_role, users.is_active AS users_is_active, users.created_at AS users_created_at, users.updated_at AS users_updated_at 
+FROM users 
+WHERE users.id = ?
+ LIMIT ? OFFSET ?
+2026-07-26 01:33:50,530 | INFO | [cached since 1.434s ago] (6, 1, 0)
+2026-07-26 01:33:50,531 | INFO | SELECT users.id AS users_id, users.fullname AS users_fullname, users.email AS users_email, users.password AS users_password, users.role AS users_role, users.is_active AS users_is_active, users.created_at AS users_created_at, users.updated_at AS users_updated_at 
+FROM users 
+WHERE users.id = ?
+ LIMIT ? OFFSET ?
+2026-07-26 01:33:50,531 | INFO | [cached since 1.435s ago] (7, 1, 0)
+2026-07-26 01:33:50,532 | INFO | UPDATE users SET fullname=?, updated_at=? WHERE users.id = ?
+2026-07-26 01:33:50,532 | INFO | [cached since 0.3728s ago] ('Updated By Staff', '2026-07-25 18:33:50.532266', 7)
+2026-07-26 01:33:50,533 | INFO | COMMIT
+2026-07-26 01:33:50,533 | INFO | BEGIN (implicit)
+2026-07-26 01:33:50,534 | INFO | SELECT users.id, users.fullname, users.email, users.password, users.role, users.is_active, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+2026-07-26 01:33:50,534 | INFO | [cached since 1.855s ago] (7,)
+2026-07-26 01:33:50,535 | INFO | PUT /api/v1/users/7 | 200 | 0.0058s
+2026-07-26 01:33:50,535 | INFO | ROLLBACK
+2026-07-26 01:33:50,536 | INFO | HTTP Request: PUT http://testserver/api/v1/users/7 "HTTP/1.1 200 OK"
+2026-07-26 01:33:50,536 | INFO | ROLLBACK
+2026-07-26 01:33:50,538 | INFO | BEGIN (implicit)
+2026-07-26 01:33:50,538 | INFO | DELETE FROM payments
+2026-07-26 01:33:50,538 | INFO | [cached since 2.206s ago] ()
+2026-07-26 01:33:50,539 | INFO | DELETE FROM transactions
+2026-07-26 01:33:50,539 | INFO | [cached since 2.206s ago] ()
+2026-07-26 01:33:50,539 | INFO | DELETE FROM products
+2026-07-26 01:33:50,540 | INFO | [cached since 2.205s ago] ()
+2026-07-26 01:33:50,540 | INFO | DELETE FROM customers
+2026-07-26 01:33:50,540 | INFO | [cached since 2.205s ago] ()
+2026-07-26 01:33:50,541 | INFO | DELETE FROM suppliers
+2026-07-26 01:33:50,541 | INFO | [cached since 2.205s ago] ()
+2026-07-26 01:33:50,541 | INFO | INSERT INTO customers (name, email, phone) VALUES (?, ?, ?)
+2026-07-26 01:33:50,541 | INFO | [cached since 2.204s ago] ('Default Customer', None, '08123456789')
+2026-07-26 01:33:50,542 | INFO | INSERT INTO suppliers (company_name, email, phone, address) VALUES (?, ?, ?, ?)
+2026-07-26 01:33:50,542 | INFO | [cached since 2.204s ago] ('Default Supplier', None, '08123456789', 'Jakarta')
+2026-07-26 01:33:50,542 | INFO | COMMIT
+2026-07-26 01:33:50,543 | INFO | BEGIN (implicit)
+2026-07-26 01:33:50,543 | INFO | SELECT suppliers.id AS suppliers_id, suppliers.company_name AS suppliers_company_name, suppliers.email AS suppliers_email, suppliers.phone AS suppliers_phone, suppliers.address AS suppliers_address 
+FROM suppliers 
+WHERE suppliers.id = ?
+2026-07-26 01:33:50,544 | INFO | [cached since 2.2s ago] (1,)
+2026-07-26 01:33:50,544 | INFO | INSERT INTO products (name, category, stock, price, supplier_id) VALUES (?, ?, ?, ?, ?)
+2026-07-26 01:33:50,544 | INFO | [cached since 2.199s ago] ('Default Product', 'General', 100, 10000.0, 1)
+2026-07-26 01:33:50,545 | INFO | COMMIT
+2026-07-26 01:33:50,715 | INFO | BEGIN (implicit)
+2026-07-26 01:33:50,715 | INFO | INSERT INTO users (fullname, email, password, role, is_active, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?)
+2026-07-26 01:33:50,716 | INFO | [cached since 2.039s ago] ('admin account', 'admin.5d7881b9@example.com', '$5$rounds=535000$MjhmmF3/jmz1nvEG$RaVKq.2y3MDr6Pohba05B7vvNIM5Z6B73wgMkXrhO01', 'admin', 1, '2026-07-25 18:33:50.715716', '2026-07-25 18:33:50.715718')
+2026-07-26 01:33:50,716 | INFO | COMMIT
+2026-07-26 01:33:50,717 | INFO | BEGIN (implicit)
+2026-07-26 01:33:50,717 | INFO | SELECT users.id, users.fullname, users.email, users.password, users.role, users.is_active, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+2026-07-26 01:33:50,717 | INFO | [cached since 2.038s ago] (8,)
+2026-07-26 01:33:50,888 | INFO | INSERT INTO users (fullname, email, password, role, is_active, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?)
+2026-07-26 01:33:50,888 | INFO | [cached since 2.212s ago] ('staff account', 'staff.57760d2a@example.com', '$5$rounds=535000$1kDJ3219hl/6YpXX$SnYHgB/QwTq8tSSH5JteGAQzgWc3DBq8q3BzaUdK3f.', 'staff', 1, '2026-07-25 18:33:50.888053', '2026-07-25 18:33:50.888056')
+2026-07-26 01:33:50,889 | INFO | COMMIT
+2026-07-26 01:33:50,889 | INFO | BEGIN (implicit)
+2026-07-26 01:33:50,890 | INFO | SELECT users.id, users.fullname, users.email, users.password, users.role, users.is_active, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+2026-07-26 01:33:50,890 | INFO | [cached since 2.211s ago] (9,)
+2026-07-26 01:33:50,892 | INFO | BEGIN (implicit)
+2026-07-26 01:33:50,893 | INFO | SELECT users.id AS users_id, users.fullname AS users_fullname, users.email AS users_email, users.password AS users_password, users.role AS users_role, users.is_active AS users_is_active, users.created_at AS users_created_at, users.updated_at AS users_updated_at 
+FROM users 
+WHERE users.id = ?
+ LIMIT ? OFFSET ?
+2026-07-26 01:33:50,893 | INFO | [cached since 1.797s ago] (8, 1, 0)
+2026-07-26 01:33:50,894 | INFO | SELECT users.id AS users_id, users.fullname AS users_fullname, users.email AS users_email, users.password AS users_password, users.role AS users_role, users.is_active AS users_is_active, users.created_at AS users_created_at, users.updated_at AS users_updated_at 
+FROM users 
+WHERE users.id = ?
+ LIMIT ? OFFSET ?
+2026-07-26 01:33:50,894 | INFO | [cached since 1.798s ago] (9, 1, 0)
+2026-07-26 01:33:50,895 | INFO | UPDATE users SET fullname=?, role=?, updated_at=? WHERE users.id = ?
+2026-07-26 01:33:50,895 | INFO | [generated in 0.00031s] ('Updated Staff', 'user', '2026-07-25 18:33:50.895455', 9)
+2026-07-26 01:33:50,896 | INFO | COMMIT
+2026-07-26 01:33:50,896 | INFO | BEGIN (implicit)
+2026-07-26 01:33:50,897 | INFO | SELECT users.id, users.fullname, users.email, users.password, users.role, users.is_active, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+2026-07-26 01:33:50,897 | INFO | [cached since 2.218s ago] (9,)
+2026-07-26 01:33:50,898 | INFO | PUT /api/v1/admin/users/9 | 200 | 0.0065s
+2026-07-26 01:33:50,898 | INFO | ROLLBACK
+2026-07-26 01:33:50,899 | INFO | HTTP Request: PUT http://testserver/api/v1/admin/users/9 "HTTP/1.1 200 OK"
+2026-07-26 01:33:50,899 | INFO | ROLLBACK
+2026-07-26 01:33:50,900 | INFO | BEGIN (implicit)
+2026-07-26 01:33:50,901 | INFO | DELETE FROM payments
+2026-07-26 01:33:50,901 | INFO | [cached since 2.569s ago] ()
+2026-07-26 01:33:50,902 | INFO | DELETE FROM transactions
+2026-07-26 01:33:50,902 | INFO | [cached since 2.569s ago] ()
+2026-07-26 01:33:50,903 | INFO | DELETE FROM products
+2026-07-26 01:33:50,903 | INFO | [cached since 2.569s ago] ()
+2026-07-26 01:33:50,904 | INFO | DELETE FROM customers
+2026-07-26 01:33:50,904 | INFO | [cached since 2.569s ago] ()
+2026-07-26 01:33:50,904 | INFO | DELETE FROM suppliers
+2026-07-26 01:33:50,905 | INFO | [cached since 2.569s ago] ()
+2026-07-26 01:33:50,905 | INFO | INSERT INTO customers (name, email, phone) VALUES (?, ?, ?)
+2026-07-26 01:33:50,905 | INFO | [cached since 2.568s ago] ('Default Customer', None, '08123456789')
+2026-07-26 01:33:50,906 | INFO | INSERT INTO suppliers (company_name, email, phone, address) VALUES (?, ?, ?, ?)
+2026-07-26 01:33:50,906 | INFO | [cached since 2.568s ago] ('Default Supplier', None, '08123456789', 'Jakarta')
+2026-07-26 01:33:50,906 | INFO | COMMIT
+2026-07-26 01:33:50,907 | INFO | BEGIN (implicit)
+2026-07-26 01:33:50,907 | INFO | SELECT suppliers.id AS suppliers_id, suppliers.company_name AS suppliers_company_name, suppliers.email AS suppliers_email, suppliers.phone AS suppliers_phone, suppliers.address AS suppliers_address 
+FROM suppliers 
+WHERE suppliers.id = ?
+2026-07-26 01:33:50,908 | INFO | [cached since 2.564s ago] (1,)
+2026-07-26 01:33:50,908 | INFO | INSERT INTO products (name, category, stock, price, supplier_id) VALUES (?, ?, ?, ?, ?)
+2026-07-26 01:33:50,908 | INFO | [cached since 2.563s ago] ('Default Product', 'General', 100, 10000.0, 1)
+2026-07-26 01:33:50,909 | INFO | COMMIT
+2026-07-26 01:33:50,912 | INFO | BEGIN (implicit)
+2026-07-26 01:33:50,912 | INFO | SELECT users.id AS users_id, users.fullname AS users_fullname, users.email AS users_email, users.password AS users_password, users.role AS users_role, users.is_active AS users_is_active, users.created_at AS users_created_at, users.updated_at AS users_updated_at 
+FROM users 
+WHERE users.email = ?
+ LIMIT ? OFFSET ?
+2026-07-26 01:33:50,912 | INFO | [cached since 2.425s ago] ('register.a0e68c05@example.com', 1, 0)
+2026-07-26 01:33:51,081 | INFO | INSERT INTO users (fullname, email, password, role, is_active, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?)
+2026-07-26 01:33:51,082 | INFO | [cached since 2.405s ago] ('New Regular User', 'register.a0e68c05@example.com', '$5$rounds=535000$cEk6VxM6QgYnmKfG$CS9uztV8eT0HDQXLBNUwczW95IKTcak2JsacaAuabU5', 'user', 1, '2026-07-25 18:33:51.081556', '2026-07-25 18:33:51.081560')
+2026-07-26 01:33:51,082 | INFO | COMMIT
+2026-07-26 01:33:51,084 | INFO | BEGIN (implicit)
+2026-07-26 01:33:51,085 | INFO | SELECT users.id, users.fullname, users.email, users.password, users.role, users.is_active, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+2026-07-26 01:33:51,085 | INFO | [cached since 2.406s ago] (10,)
+2026-07-26 01:33:51,086 | INFO | POST /api/v1/auth/register | 201 | 0.1757s
+2026-07-26 01:33:51,087 | INFO | ROLLBACK
+2026-07-26 01:33:51,088 | INFO | HTTP Request: POST http://testserver/api/v1/auth/register "HTTP/1.1 201 Created"
+2026-07-26 01:33:51,090 | INFO | BEGIN (implicit)
+2026-07-26 01:33:51,090 | INFO | DELETE FROM payments
+2026-07-26 01:33:51,091 | INFO | [cached since 2.758s ago] ()
+2026-07-26 01:33:51,092 | INFO | DELETE FROM transactions
+2026-07-26 01:33:51,092 | INFO | [cached since 2.759s ago] ()
+2026-07-26 01:33:51,093 | INFO | DELETE FROM products
+2026-07-26 01:33:51,093 | INFO | [cached since 2.759s ago] ()
+2026-07-26 01:33:51,094 | INFO | DELETE FROM customers
+2026-07-26 01:33:51,094 | INFO | [cached since 2.759s ago] ()
+2026-07-26 01:33:51,095 | INFO | DELETE FROM suppliers
+2026-07-26 01:33:51,095 | INFO | [cached since 2.76s ago] ()
+2026-07-26 01:33:51,096 | INFO | INSERT INTO customers (name, email, phone) VALUES (?, ?, ?)
+2026-07-26 01:33:51,096 | INFO | [cached since 2.759s ago] ('Default Customer', None, '08123456789')
+2026-07-26 01:33:51,096 | INFO | INSERT INTO suppliers (company_name, email, phone, address) VALUES (?, ?, ?, ?)
+2026-07-26 01:33:51,097 | INFO | [cached since 2.758s ago] ('Default Supplier', None, '08123456789', 'Jakarta')
+2026-07-26 01:33:51,097 | INFO | COMMIT
+2026-07-26 01:33:51,098 | INFO | BEGIN (implicit)
+2026-07-26 01:33:51,098 | INFO | SELECT suppliers.id AS suppliers_id, suppliers.company_name AS suppliers_company_name, suppliers.email AS suppliers_email, suppliers.phone AS suppliers_phone, suppliers.address AS suppliers_address 
+FROM suppliers 
+WHERE suppliers.id = ?
+2026-07-26 01:33:51,098 | INFO | [cached since 2.755s ago] (1,)
+2026-07-26 01:33:51,099 | INFO | INSERT INTO products (name, category, stock, price, supplier_id) VALUES (?, ?, ?, ?, ?)
+2026-07-26 01:33:51,099 | INFO | [cached since 2.754s ago] ('Default Product', 'General', 100, 10000.0, 1)
+2026-07-26 01:33:51,100 | INFO | COMMIT
+2026-07-26 01:33:51,280 | INFO | BEGIN (implicit)
+2026-07-26 01:33:51,281 | INFO | INSERT INTO users (fullname, email, password, role, is_active, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?)
+2026-07-26 01:33:51,281 | INFO | [cached since 2.605s ago] ('admin user', 'admin+4d970f87@example.com', '$5$rounds=535000$XpeKqpxjiCGRiUdQ$emyfH4mmb/ExWEOK7vBcqjhjjS/EM.ADyTXbEj29/G6', 'admin', 1, '2026-07-25 18:33:51.281298', '2026-07-25 18:33:51.281301')
+2026-07-26 01:33:51,282 | INFO | COMMIT
+2026-07-26 01:33:51,282 | INFO | BEGIN (implicit)
+2026-07-26 01:33:51,283 | INFO | SELECT users.id, users.fullname, users.email, users.password, users.role, users.is_active, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+2026-07-26 01:33:51,283 | INFO | [cached since 2.604s ago] (11,)
+2026-07-26 01:33:51,454 | INFO | INSERT INTO users (fullname, email, password, role, is_active, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?)
+2026-07-26 01:33:51,454 | INFO | [cached since 2.778s ago] ('staff user', 'staff+7aaf9153@example.com', '$5$rounds=535000$uo2oWeCcKLSB0yRe$IoXtNz3bIDNuWryymMIAwUsnQ5psWtzE3otxY42qmf/', 'staff', 1, '2026-07-25 18:33:51.454361', '2026-07-25 18:33:51.454365')
+2026-07-26 01:33:51,455 | INFO | COMMIT
+2026-07-26 01:33:51,456 | INFO | BEGIN (implicit)
+2026-07-26 01:33:51,456 | INFO | SELECT users.id, users.fullname, users.email, users.password, users.role, users.is_active, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+2026-07-26 01:33:51,456 | INFO | [cached since 2.778s ago] (12,)
+2026-07-26 01:33:51,634 | INFO | INSERT INTO users (fullname, email, password, role, is_active, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?)
+2026-07-26 01:33:51,635 | INFO | [cached since 2.959s ago] ('user user', 'user+92ee5628@example.com', '$5$rounds=535000$S8P8Lu5FNlZCdTPU$AhWEGKSvcxxwp8sN9sP.A3Yzcyk6yKcreYqKSuiE.u4', 'user', 1, '2026-07-25 18:33:51.634930', '2026-07-25 18:33:51.634934')
+2026-07-26 01:33:51,636 | INFO | COMMIT
+2026-07-26 01:33:51,636 | INFO | BEGIN (implicit)
+2026-07-26 01:33:51,637 | INFO | SELECT users.id, users.fullname, users.email, users.password, users.role, users.is_active, users.created_at, users.updated_at 
+FROM users 
+WHERE users.id = ?
+2026-07-26 01:33:51,637 | INFO | [cached since 2.958s ago] (13,)
+2026-07-26 01:33:51,640 | INFO | BEGIN (implicit)
+2026-07-26 01:33:51,640 | INFO | SELECT users.id AS users_id, users.fullname AS users_fullname, users.email AS users_email, users.password AS users_password, users.role AS users_role, users.is_active AS users_is_active, users.created_at AS users_created_at, users.updated_at AS users_updated_at 
+FROM users 
+WHERE users.id = ?
+ LIMIT ? OFFSET ?
+2026-07-26 01:33:51,641 | INFO | [cached since 2.544s ago] (11, 1, 0)
+2026-07-26 01:33:51,642 | INFO | SELECT users.id AS users_id, users.fullname AS users_fullname, users.email AS users_email, users.password AS users_password, users.role AS users_role, users.is_active AS users_is_active, users.created_at AS users_created_at, users.updated_at AS users_updated_at 
+FROM users
+2026-07-26 01:33:51,642 | INFO | [generated in 0.00032s] ()
+2026-07-26 01:33:51,644 | INFO | GET /api/v1/admin/users/ | 200 | 0.0051s
+2026-07-26 01:33:51,644 | INFO | ROLLBACK
+2026-07-26 01:33:51,645 | INFO | HTTP Request: GET http://testserver/api/v1/admin/users/ "HTTP/1.1 200 OK"
+2026-07-26 01:33:51,646 | INFO | BEGIN (implicit)
+2026-07-26 01:33:51,646 | INFO | SELECT users.id AS users_id, users.fullname AS users_fullname, users.email AS users_email, users.password AS users_password, users.role AS users_role, users.is_active AS users_is_active, users.created_at AS users_created_at, users.updated_at AS users_updated_at 
+FROM users 
+WHERE users.id = ?
+ LIMIT ? OFFSET ?
+2026-07-26 01:33:51,647 | INFO | [cached since 2.55s ago] (12, 1, 0)
+2026-07-26 01:33:51,647 | INFO | ROLLBACK
+2026-07-26 01:33:51,648 | INFO | GET /api/v1/admin/users/ | 403 | 0.0021s
+2026-07-26 01:33:51,648 | INFO | HTTP Request: GET http://testserver/api/v1/admin/users/ "HTTP/1.1 403 Forbidden"
+2026-07-26 01:33:51,649 | INFO | GET /api/v1/admin/users/ | 401 | 0.0005s
+2026-07-26 01:33:51,650 | INFO | HTTP Request: GET http://testserver/api/v1/admin/users/ "HTTP/1.1 401 Unauthorized"
+2026-07-26 01:33:51,650 | INFO | ROLLBACK
+2026-07-26 01:33:51,652 | INFO | BEGIN (implicit)
+2026-07-26 01:33:51,652 | INFO | DELETE FROM payments
+2026-07-26 01:33:51,653 | INFO | [cached since 3.32s ago] ()
+2026-07-26 01:33:51,653 | INFO | DELETE FROM transactions
+2026-07-26 01:33:51,653 | INFO | [cached since 3.32s ago] ()
+2026-07-26 01:33:51,654 | INFO | DELETE FROM products
+2026-07-26 01:33:51,654 | INFO | [cached since 3.32s ago] ()
+2026-07-26 01:33:51,654 | INFO | DELETE FROM customers
+2026-07-26 01:33:51,655 | INFO | [cached since 3.32s ago] ()
+2026-07-26 01:33:51,655 | INFO | DELETE FROM suppliers
+2026-07-26 01:33:51,655 | INFO | [cached since 3.32s ago] ()
+2026-07-26 01:33:51,656 | INFO | INSERT INTO customers (name, email, phone) VALUES (?, ?, ?)
+2026-07-26 01:33:51,656 | INFO | [cached since 3.319s ago] ('Default Customer', None, '08123456789')
+2026-07-26 01:33:51,656 | INFO | INSERT INTO suppliers (company_name, email, phone, address) VALUES (?, ?, ?, ?)
+2026-07-26 01:33:51,657 | INFO | [cached since 3.318s ago] ('Default Supplier', None, '08123456789', 'Jakarta')
+2026-07-26 01:33:51,657 | INFO | COMMIT
+2026-07-26 01:33:51,658 | INFO | BEGIN (implicit)
+2026-07-26 01:33:51,658 | INFO | SELECT suppliers.id AS suppliers_id, suppliers.company_name AS suppliers_company_name, suppliers.email AS suppliers_email, suppliers.phone AS suppliers_phone, suppliers.address AS suppliers_address 
+FROM suppliers 
+WHERE suppliers.id = ?
+2026-07-26 01:33:51,658 | INFO | [cached since 3.314s ago] (1,)
+2026-07-26 01:33:51,659 | INFO | INSERT INTO products (name, category, stock, price, supplier_id) VALUES (?, ?, ?, ?, ?)
+2026-07-26 01:33:51,659 | INFO | [cached since 3.314s ago] ('Default Product', 'General', 100, 10000.0, 1)
+2026-07-26 01:33:51,659 | INFO | COMMIT
+2026-07-26 01:33:51,662 | INFO | BEGIN (implicit)
+2026-07-26 01:33:51,662 | INFO | SELECT suppliers.id AS suppliers_id, suppliers.company_name AS suppliers_company_name, suppliers.email AS suppliers_email, suppliers.phone AS suppliers_phone, suppliers.address AS suppliers_address 
+FROM suppliers
+2026-07-26 01:33:51,663 | INFO | [generated in 0.00031s] ()
+2026-07-26 01:33:51,664 | INFO | GET /api/v1/suppliers/ | 200 | 0.0029s
+2026-07-26 01:33:51,664 | INFO | ROLLBACK
+2026-07-26 01:33:51,665 | INFO | HTTP Request: GET http://testserver/api/v1/suppliers/ "HTTP/1.1 200 OK"
+2026-07-26 01:33:51,666 | INFO | BEGIN (implicit)
+2026-07-26 01:33:51,666 | INFO | DELETE FROM payments
+2026-07-26 01:33:51,667 | INFO | [cached since 3.334s ago] ()
+2026-07-26 01:33:51,667 | INFO | DELETE FROM transactions
+2026-07-26 01:33:51,667 | INFO | [cached since 3.334s ago] ()
+2026-07-26 01:33:51,668 | INFO | DELETE FROM products
+2026-07-26 01:33:51,668 | INFO | [cached since 3.334s ago] ()
+2026-07-26 01:33:51,668 | INFO | DELETE FROM customers
+2026-07-26 01:33:51,669 | INFO | [cached since 3.334s ago] ()
+2026-07-26 01:33:51,669 | INFO | DELETE FROM suppliers
+2026-07-26 01:33:51,669 | INFO | [cached since 3.334s ago] ()
+2026-07-26 01:33:51,670 | INFO | INSERT INTO customers (name, email, phone) VALUES (?, ?, ?)
+2026-07-26 01:33:51,670 | INFO | [cached since 3.333s ago] ('Default Customer', None, '08123456789')
+2026-07-26 01:33:51,670 | INFO | INSERT INTO suppliers (company_name, email, phone, address) VALUES (?, ?, ?, ?)
+2026-07-26 01:33:51,671 | INFO | [cached since 3.332s ago] ('Default Supplier', None, '08123456789', 'Jakarta')
+2026-07-26 01:33:51,671 | INFO | COMMIT
+2026-07-26 01:33:51,672 | INFO | BEGIN (implicit)
+2026-07-26 01:33:51,672 | INFO | SELECT suppliers.id AS suppliers_id, suppliers.company_name AS suppliers_company_name, suppliers.email AS suppliers_email, suppliers.phone AS suppliers_phone, suppliers.address AS suppliers_address 
+FROM suppliers 
+WHERE suppliers.id = ?
+2026-07-26 01:33:51,672 | INFO | [cached since 3.328s ago] (1,)
+2026-07-26 01:33:51,673 | INFO | INSERT INTO products (name, category, stock, price, supplier_id) VALUES (?, ?, ?, ?, ?)
+2026-07-26 01:33:51,673 | INFO | [cached since 3.328s ago] ('Default Product', 'General', 100, 10000.0, 1)
+2026-07-26 01:33:51,673 | INFO | COMMIT
+2026-07-26 01:33:51,676 | INFO | BEGIN (implicit)
+2026-07-26 01:33:51,676 | INFO | INSERT INTO suppliers (company_name, email, phone, address) VALUES (?, ?, ?, ?)
+2026-07-26 01:33:51,676 | INFO | [cached since 3.338s ago] ('PT Supplier Indonesia', None, '08123456789', 'Jakarta')
+2026-07-26 01:33:51,677 | INFO | COMMIT
+2026-07-26 01:33:51,677 | INFO | BEGIN (implicit)
+2026-07-26 01:33:51,678 | INFO | SELECT suppliers.id, suppliers.company_name, suppliers.email, suppliers.phone, suppliers.address 
+FROM suppliers 
+WHERE suppliers.id = ?
+2026-07-26 01:33:51,678 | INFO | [generated in 0.00032s] (2,)
+2026-07-26 01:33:51,680 | INFO | POST /api/v1/suppliers/ | 201 | 0.0055s
+2026-07-26 01:33:51,681 | INFO | ROLLBACK
+2026-07-26 01:33:51,681 | INFO | HTTP Request: POST http://testserver/api/v1/suppliers/ "HTTP/1.1 201 Created"
+2026-07-26 01:33:51,682 | INFO | BEGIN (implicit)
+2026-07-26 01:33:51,683 | INFO | DELETE FROM payments
+2026-07-26 01:33:51,683 | INFO | [cached since 3.351s ago] ()
+2026-07-26 01:33:51,683 | INFO | DELETE FROM transactions
+2026-07-26 01:33:51,684 | INFO | [cached since 3.35s ago] ()
+2026-07-26 01:33:51,684 | INFO | DELETE FROM products
+2026-07-26 01:33:51,684 | INFO | [cached since 3.35s ago] ()
+2026-07-26 01:33:51,685 | INFO | DELETE FROM customers
+2026-07-26 01:33:51,685 | INFO | [cached since 3.35s ago] ()
+2026-07-26 01:33:51,685 | INFO | DELETE FROM suppliers
+2026-07-26 01:33:51,685 | INFO | [cached since 3.35s ago] ()
+2026-07-26 01:33:51,686 | INFO | INSERT INTO customers (name, email, phone) VALUES (?, ?, ?)
+2026-07-26 01:33:51,686 | INFO | [cached since 3.349s ago] ('Default Customer', None, '08123456789')
+2026-07-26 01:33:51,687 | INFO | INSERT INTO suppliers (company_name, email, phone, address) VALUES (?, ?, ?, ?)
+2026-07-26 01:33:51,687 | INFO | [cached since 3.348s ago] ('Default Supplier', None, '08123456789', 'Jakarta')
+2026-07-26 01:33:51,687 | INFO | COMMIT
+2026-07-26 01:33:51,688 | INFO | BEGIN (implicit)
+2026-07-26 01:33:51,688 | INFO | SELECT suppliers.id AS suppliers_id, suppliers.company_name AS suppliers_company_name, suppliers.email AS suppliers_email, suppliers.phone AS suppliers_phone, suppliers.address AS suppliers_address 
+FROM suppliers 
+WHERE suppliers.id = ?
+2026-07-26 01:33:51,689 | INFO | [cached since 3.345s ago] (1,)
+2026-07-26 01:33:51,689 | INFO | INSERT INTO products (name, category, stock, price, supplier_id) VALUES (?, ?, ?, ?, ?)
+2026-07-26 01:33:51,689 | INFO | [cached since 3.344s ago] ('Default Product', 'General', 100, 10000.0, 1)
+2026-07-26 01:33:51,690 | INFO | COMMIT
+2026-07-26 01:33:51,692 | INFO | BEGIN (implicit)
+2026-07-26 01:33:51,692 | INFO | SELECT suppliers.id AS suppliers_id, suppliers.company_name AS suppliers_company_name, suppliers.email AS suppliers_email, suppliers.phone AS suppliers_phone, suppliers.address AS suppliers_address 
+FROM suppliers 
+WHERE suppliers.id = ?
+ LIMIT ? OFFSET ?
+2026-07-26 01:33:51,692 | INFO | [cached since 1.951s ago] (1, 1, 0)
+2026-07-26 01:33:51,693 | INFO | GET /api/v1/suppliers/1 | 200 | 0.0018s
+2026-07-26 01:33:51,693 | INFO | ROLLBACK
+2026-07-26 01:33:51,694 | INFO | HTTP Request: GET http://testserver/api/v1/suppliers/1 "HTTP/1.1 200 OK"
+2026-07-26 01:33:51,695 | INFO | BEGIN (implicit)
+2026-07-26 01:33:51,695 | INFO | DELETE FROM payments
+2026-07-26 01:33:51,696 | INFO | [cached since 3.363s ago] ()
+2026-07-26 01:33:51,696 | INFO | DELETE FROM transactions
+2026-07-26 01:33:51,696 | INFO | [cached since 3.363s ago] ()
+2026-07-26 01:33:51,697 | INFO | DELETE FROM products
+2026-07-26 01:33:51,697 | INFO | [cached since 3.363s ago] ()
+2026-07-26 01:33:51,697 | INFO | DELETE FROM customers
+2026-07-26 01:33:51,698 | INFO | [cached since 3.363s ago] ()
+2026-07-26 01:33:51,698 | INFO | DELETE FROM suppliers
+2026-07-26 01:33:51,698 | INFO | [cached since 3.363s ago] ()
+2026-07-26 01:33:51,699 | INFO | INSERT INTO customers (name, email, phone) VALUES (?, ?, ?)
+2026-07-26 01:33:51,699 | INFO | [cached since 3.362s ago] ('Default Customer', None, '08123456789')
+2026-07-26 01:33:51,699 | INFO | INSERT INTO suppliers (company_name, email, phone, address) VALUES (?, ?, ?, ?)
+2026-07-26 01:33:51,699 | INFO | [cached since 3.361s ago] ('Default Supplier', None, '08123456789', 'Jakarta')
+2026-07-26 01:33:51,700 | INFO | COMMIT
+2026-07-26 01:33:51,700 | INFO | BEGIN (implicit)
+2026-07-26 01:33:51,701 | INFO | SELECT suppliers.id AS suppliers_id, suppliers.company_name AS suppliers_company_name, suppliers.email AS suppliers_email, suppliers.phone AS suppliers_phone, suppliers.address AS suppliers_address 
+FROM suppliers 
+WHERE suppliers.id = ?
+2026-07-26 01:33:51,701 | INFO | [cached since 3.357s ago] (1,)
+2026-07-26 01:33:51,701 | INFO | INSERT INTO products (name, category, stock, price, supplier_id) VALUES (?, ?, ?, ?, ?)
+2026-07-26 01:33:51,702 | INFO | [cached since 3.356s ago] ('Default Product', 'General', 100, 10000.0, 1)
+2026-07-26 01:33:51,702 | INFO | COMMIT
+2026-07-26 01:33:51,705 | INFO | BEGIN (implicit)
+2026-07-26 01:33:51,705 | INFO | SELECT suppliers.id AS suppliers_id, suppliers.company_name AS suppliers_company_name, suppliers.email AS suppliers_email, suppliers.phone AS suppliers_phone, suppliers.address AS suppliers_address 
+FROM suppliers 
+WHERE suppliers.id = ?
+ LIMIT ? OFFSET ?
+2026-07-26 01:33:51,706 | INFO | [cached since 1.964s ago] (1, 1, 0)
+2026-07-26 01:33:51,706 | INFO | UPDATE suppliers SET phone=? WHERE suppliers.id = ?
+2026-07-26 01:33:51,707 | INFO | [generated in 0.00032s] ('082222222222', 1)
+2026-07-26 01:33:51,707 | INFO | COMMIT
+2026-07-26 01:33:51,708 | INFO | BEGIN (implicit)
+2026-07-26 01:33:51,708 | INFO | SELECT suppliers.id, suppliers.company_name, suppliers.email, suppliers.phone, suppliers.address 
+FROM suppliers 
+WHERE suppliers.id = ?
+2026-07-26 01:33:51,708 | INFO | [cached since 0.03067s ago] (1,)
+2026-07-26 01:33:51,709 | INFO | PUT /api/v1/suppliers/1 | 200 | 0.0052s
+2026-07-26 01:33:51,709 | INFO | ROLLBACK
+2026-07-26 01:33:51,710 | INFO | HTTP Request: PUT http://testserver/api/v1/suppliers/1 "HTTP/1.1 200 OK"
+2026-07-26 01:33:51,711 | INFO | BEGIN (implicit)
+2026-07-26 01:33:51,712 | INFO | DELETE FROM payments
+2026-07-26 01:33:51,712 | INFO | [cached since 3.38s ago] ()
+2026-07-26 01:33:51,713 | INFO | DELETE FROM transactions
+2026-07-26 01:33:51,713 | INFO | [cached since 3.38s ago] ()
+2026-07-26 01:33:51,713 | INFO | DELETE FROM products
+2026-07-26 01:33:51,714 | INFO | [cached since 3.379s ago] ()
+2026-07-26 01:33:51,714 | INFO | DELETE FROM customers
+2026-07-26 01:33:51,714 | INFO | [cached since 3.379s ago] ()
+2026-07-26 01:33:51,714 | INFO | DELETE FROM suppliers
+2026-07-26 01:33:51,715 | INFO | [cached since 3.379s ago] ()
+2026-07-26 01:33:51,715 | INFO | INSERT INTO customers (name, email, phone) VALUES (?, ?, ?)
+2026-07-26 01:33:51,715 | INFO | [cached since 3.378s ago] ('Default Customer', None, '08123456789')
+2026-07-26 01:33:51,716 | INFO | INSERT INTO suppliers (company_name, email, phone, address) VALUES (?, ?, ?, ?)
+2026-07-26 01:33:51,716 | INFO | [cached since 3.378s ago] ('Default Supplier', None, '08123456789', 'Jakarta')
+2026-07-26 01:33:51,716 | INFO | COMMIT
+2026-07-26 01:33:51,717 | INFO | BEGIN (implicit)
+2026-07-26 01:33:51,717 | INFO | SELECT suppliers.id AS suppliers_id, suppliers.company_name AS suppliers_company_name, suppliers.email AS suppliers_email, suppliers.phone AS suppliers_phone, suppliers.address AS suppliers_address 
+FROM suppliers 
+WHERE suppliers.id = ?
+2026-07-26 01:33:51,718 | INFO | [cached since 3.374s ago] (1,)
+2026-07-26 01:33:51,718 | INFO | INSERT INTO products (name, category, stock, price, supplier_id) VALUES (?, ?, ?, ?, ?)
+2026-07-26 01:33:51,718 | INFO | [cached since 3.373s ago] ('Default Product', 'General', 100, 10000.0, 1)
+2026-07-26 01:33:51,719 | INFO | COMMIT
+2026-07-26 01:33:51,721 | INFO | BEGIN (implicit)
+2026-07-26 01:33:51,721 | INFO | SELECT suppliers.id AS suppliers_id, suppliers.company_name AS suppliers_company_name, suppliers.email AS suppliers_email, suppliers.phone AS suppliers_phone, suppliers.address AS suppliers_address 
+FROM suppliers 
+WHERE suppliers.id = ?
+ LIMIT ? OFFSET ?
+2026-07-26 01:33:51,722 | INFO | [cached since 1.98s ago] (1, 1, 0)
+2026-07-26 01:33:51,722 | INFO | SELECT products.id AS products_id, products.name AS products_name, products.category AS products_category, products.stock AS products_stock, products.price AS products_price, products.supplier_id AS products_supplier_id 
+FROM products 
+WHERE ? = products.supplier_id
+2026-07-26 01:33:51,723 | INFO | [generated in 0.00030s] (1,)
+2026-07-26 01:33:51,724 | INFO | UPDATE products SET supplier_id=? WHERE products.id = ?
+2026-07-26 01:33:51,724 | INFO | [generated in 0.00030s] (None, 1)
+2026-07-26 01:33:51,724 | INFO | DELETE FROM suppliers WHERE suppliers.id = ?
+2026-07-26 01:33:51,725 | INFO | [generated in 0.00030s] (1,)
+2026-07-26 01:33:51,725 | INFO | COMMIT
+2026-07-26 01:33:51,726 | INFO | DELETE /api/v1/suppliers/1 | 200 | 0.0053s
+2026-07-26 01:33:51,727 | INFO | HTTP Request: DELETE http://testserver/api/v1/suppliers/1 "HTTP/1.1 200 OK"
+2026-07-26 01:33:51,729 | INFO | BEGIN (implicit)
+2026-07-26 01:33:51,729 | INFO | DELETE FROM payments
+2026-07-26 01:33:51,729 | INFO | [cached since 3.397s ago] ()
+2026-07-26 01:33:51,730 | INFO | DELETE FROM transactions
+2026-07-26 01:33:51,730 | INFO | [cached since 3.397s ago] ()
+2026-07-26 01:33:51,731 | INFO | DELETE FROM products
+2026-07-26 01:33:51,731 | INFO | [cached since 3.397s ago] ()
+2026-07-26 01:33:51,731 | INFO | DELETE FROM customers
+2026-07-26 01:33:51,731 | INFO | [cached since 3.397s ago] ()
+2026-07-26 01:33:51,732 | INFO | DELETE FROM suppliers
+2026-07-26 01:33:51,732 | INFO | [cached since 3.397s ago] ()
+2026-07-26 01:33:51,732 | INFO | INSERT INTO customers (name, email, phone) VALUES (?, ?, ?)
+2026-07-26 01:33:51,733 | INFO | [cached since 3.396s ago] ('Default Customer', None, '08123456789')
+2026-07-26 01:33:51,733 | INFO | INSERT INTO suppliers (company_name, email, phone, address) VALUES (?, ?, ?, ?)
+2026-07-26 01:33:51,733 | INFO | [cached since 3.395s ago] ('Default Supplier', None, '08123456789', 'Jakarta')
+2026-07-26 01:33:51,734 | INFO | COMMIT
+2026-07-26 01:33:51,734 | INFO | BEGIN (implicit)
+2026-07-26 01:33:51,735 | INFO | SELECT suppliers.id AS suppliers_id, suppliers.company_name AS suppliers_company_name, suppliers.email AS suppliers_email, suppliers.phone AS suppliers_phone, suppliers.address AS suppliers_address 
+FROM suppliers 
+WHERE suppliers.id = ?
+2026-07-26 01:33:51,735 | INFO | [cached since 3.391s ago] (1,)
+2026-07-26 01:33:51,735 | INFO | INSERT INTO products (name, category, stock, price, supplier_id) VALUES (?, ?, ?, ?, ?)
+2026-07-26 01:33:51,736 | INFO | [cached since 3.391s ago] ('Default Product', 'General', 100, 10000.0, 1)
+2026-07-26 01:33:51,737 | INFO | COMMIT
+2026-07-26 01:33:51,740 | INFO | BEGIN (implicit)
+2026-07-26 01:33:51,741 | INFO | SELECT transactions.id AS transactions_id, transactions.quantity AS transactions_quantity, transactions.total AS transactions_total, transactions.status AS transactions_status, transactions.product_id AS transactions_product_id, transactions.customer_id AS transactions_customer_id 
+FROM transactions
+2026-07-26 01:33:51,741 | INFO | [generated in 0.00030s] ()
+2026-07-26 01:33:51,741 | INFO | GET /api/v1/transactions/ | 200 | 0.0023s
+2026-07-26 01:33:51,742 | INFO | ROLLBACK
+2026-07-26 01:33:51,743 | INFO | HTTP Request: GET http://testserver/api/v1/transactions/ "HTTP/1.1 200 OK"
+2026-07-26 01:33:51,744 | INFO | BEGIN (implicit)
+2026-07-26 01:33:51,744 | INFO | DELETE FROM payments
+2026-07-26 01:33:51,744 | INFO | [cached since 3.412s ago] ()
+2026-07-26 01:33:51,745 | INFO | DELETE FROM transactions
+2026-07-26 01:33:51,745 | INFO | [cached since 3.411s ago] ()
+2026-07-26 01:33:51,745 | INFO | DELETE FROM products
+2026-07-26 01:33:51,745 | INFO | [cached since 3.411s ago] ()
+2026-07-26 01:33:51,746 | INFO | DELETE FROM customers
+2026-07-26 01:33:51,746 | INFO | [cached since 3.411s ago] ()
+2026-07-26 01:33:51,746 | INFO | DELETE FROM suppliers
+2026-07-26 01:33:51,747 | INFO | [cached since 3.411s ago] ()
+2026-07-26 01:33:51,747 | INFO | INSERT INTO customers (name, email, phone) VALUES (?, ?, ?)
+2026-07-26 01:33:51,747 | INFO | [cached since 3.41s ago] ('Default Customer', None, '08123456789')
+2026-07-26 01:33:51,748 | INFO | INSERT INTO suppliers (company_name, email, phone, address) VALUES (?, ?, ?, ?)
+2026-07-26 01:33:51,748 | INFO | [cached since 3.409s ago] ('Default Supplier', None, '08123456789', 'Jakarta')
+2026-07-26 01:33:51,748 | INFO | COMMIT
+2026-07-26 01:33:51,749 | INFO | BEGIN (implicit)
+2026-07-26 01:33:51,749 | INFO | SELECT suppliers.id AS suppliers_id, suppliers.company_name AS suppliers_company_name, suppliers.email AS suppliers_email, suppliers.phone AS suppliers_phone, suppliers.address AS suppliers_address 
+FROM suppliers 
+WHERE suppliers.id = ?
+2026-07-26 01:33:51,750 | INFO | [cached since 3.406s ago] (1,)
+2026-07-26 01:33:51,750 | INFO | INSERT INTO products (name, category, stock, price, supplier_id) VALUES (?, ?, ?, ?, ?)
+2026-07-26 01:33:51,750 | INFO | [cached since 3.405s ago] ('Default Product', 'General', 100, 10000.0, 1)
+2026-07-26 01:33:51,751 | INFO | COMMIT
+2026-07-26 01:33:51,753 | INFO | BEGIN (implicit)
+2026-07-26 01:33:51,754 | INFO | SELECT products.id AS products_id, products.name AS products_name, products.category AS products_category, products.stock AS products_stock, products.price AS products_price, products.supplier_id AS products_supplier_id 
+FROM products 
+WHERE products.id = ?
+ LIMIT ? OFFSET ?
+2026-07-26 01:33:51,754 | INFO | [cached since 1.997s ago] (1, 1, 0)
+2026-07-26 01:33:51,755 | INFO | SELECT customers.id AS customers_id, customers.name AS customers_name, customers.email AS customers_email, customers.phone AS customers_phone 
+FROM customers 
+WHERE customers.id = ?
+ LIMIT ? OFFSET ?
+2026-07-26 01:33:51,755 | INFO | [cached since 2.611s ago] (1, 1, 0)
+2026-07-26 01:33:51,756 | INFO | UPDATE products SET stock=? WHERE products.id = ?
+2026-07-26 01:33:51,756 | INFO | [generated in 0.00032s] (98, 1)
+2026-07-26 01:33:51,756 | INFO | INSERT INTO transactions (quantity, total, status, product_id, customer_id) VALUES (?, ?, ?, ?, ?)
+2026-07-26 01:33:51,757 | INFO | [cached since 2.595s ago] (2, 20000.0, 'pending', 1, 1)
+2026-07-26 01:33:51,757 | INFO | COMMIT
+2026-07-26 01:33:51,758 | INFO | BEGIN (implicit)
+2026-07-26 01:33:51,758 | INFO | SELECT transactions.id, transactions.quantity, transactions.total, transactions.status, transactions.product_id, transactions.customer_id 
+FROM transactions 
+WHERE transactions.id = ?
+2026-07-26 01:33:51,758 | INFO | [cached since 2.595s ago] (1,)
+2026-07-26 01:33:51,759 | INFO | POST /api/v1/transactions/ | 200 | 0.0065s
+2026-07-26 01:33:51,759 | INFO | ROLLBACK
+2026-07-26 01:33:51,760 | INFO | HTTP Request: POST http://testserver/api/v1/transactions/ "HTTP/1.1 200 OK"
