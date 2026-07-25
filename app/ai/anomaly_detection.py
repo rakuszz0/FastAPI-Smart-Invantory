@@ -46,8 +46,7 @@ class AnomalyDetectionAI:
 
                     "amount": amount,
 
-                    "anomaly":
-                    label == -1
+                    "anomaly": bool(label == -1)
 
                 }
 

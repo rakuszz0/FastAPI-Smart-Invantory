@@ -4,6 +4,11 @@ from fastapi import FastAPI
 from app.routers.product_router import router as product_router
 from app.routers.supplier_router import router as supplier_router
 from app.routers.auth_router import router as auth_router
+from app.routers.customer_router import router as customer_router
+from app.routers.transaction_router import router as transaction_router
+from app.routers.ai_router import router as ai_router
+from app.routers.admin_router import router as admin_router
+from app.routers.payment_router import router as payment_router
 
 # Dependencies
 from app.dependencies.services import get_product_service
@@ -71,6 +76,31 @@ app.include_router(
 
 app.include_router(
     auth_router,
+    prefix=API_PREFIX
+)
+
+app.include_router(
+    customer_router,
+    prefix=API_PREFIX
+)
+
+app.include_router(
+    transaction_router,
+    prefix=API_PREFIX
+)
+
+app.include_router(
+    ai_router,
+    prefix=API_PREFIX
+)
+
+app.include_router(
+    admin_router,
+    prefix=API_PREFIX
+)
+
+app.include_router(
+    payment_router,
     prefix=API_PREFIX
 )
 

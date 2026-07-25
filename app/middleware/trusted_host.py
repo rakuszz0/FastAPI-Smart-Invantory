@@ -10,5 +10,6 @@ def setup_trusted_host(app):
             "127.0.0.1",
             "*.localhost",
             "*.mycompany.com",
+            "testserver",
         ]
     )

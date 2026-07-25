@@ -4,7 +4,6 @@ from typing import Optional
 
 class TransactionBase(BaseModel):
     quantity: int
-    total: float
     product_id: int
     customer_id: int
 
@@ -22,6 +21,7 @@ class TransactionUpdate(BaseModel):
 
 class TransactionResponse(TransactionBase):
     id: int
+    total: float
 
     model_config = ConfigDict(
         from_attributes=True

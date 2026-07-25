@@ -11,7 +11,8 @@ from app.core.config import settings
 
 
 pwd_context = CryptContext(
-    schemes=["bcrypt"],
+    # Prefer a pure-Python scheme to avoid binary bcrypt backend issues in tests
+    schemes=["sha256_crypt", "bcrypt"],
     deprecated="auto"
 )
 

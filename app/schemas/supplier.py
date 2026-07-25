@@ -1,10 +1,11 @@
-from pydantic import BaseModel, ConfigDict, EmailStr
+from pydantic import BaseModel, ConfigDict, EmailStr, Field
 from typing import Optional
 
 
 class SupplierBase(BaseModel):
-    company_name: str
-    email: EmailStr
+    # accept 'name' as an alias for company_name to match tests
+    company_name: str = Field(..., alias="name")
+    email: Optional[EmailStr] = None
     phone: str
     address: str
 
@@ -24,5 +25,6 @@ class SupplierResponse(SupplierBase):
     id: int
 
     model_config = ConfigDict(
-        from_attributes=True
+        from_attributes=True,
+        populate_by_name=True
     )

@@ -4,7 +4,7 @@ from typing import Optional
 
 class CustomerBase(BaseModel):
     name: str
-    email: EmailStr
+    email: Optional[EmailStr] = None
     phone: str
 
 

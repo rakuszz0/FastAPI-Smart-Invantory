@@ -2,6 +2,7 @@ from sqlalchemy import Column
 from sqlalchemy import Integer
 from sqlalchemy import Float
 from sqlalchemy import ForeignKey
+from sqlalchemy import String
 
 from sqlalchemy.orm import relationship
 
@@ -17,6 +18,8 @@ class Transaction(Base):
     quantity = Column(Integer)
 
     total = Column(Float)
+
+    status = Column(String(50), default="pending", nullable=False)
 
     product_id = Column(
         Integer,
@@ -37,3 +40,7 @@ class Transaction(Base):
         "Customer",
         back_populates="transactions"
     )
+
+
+# Backref for payments
+Transaction.payments = relationship("Payment", back_populates="transaction")
