@@ -1,86 +1,86 @@
 # Smart Inventory API
 
-Smart Inventory API adalah sistem backend untuk mengelola inventaris, pelanggan, pemasok, transaksi, dan proses pembayaran. Aplikasi ini dibangun dengan FastAPI agar mudah digunakan, cepat dikembangkan, dan siap diintegrasikan dengan layanan lain seperti Midtrans.
+Smart Inventory API is a backend system designed to manage inventory, customers, suppliers, transactions, and payment processing. The application is built with FastAPI to ensure ease of use, rapid development, and seamless integration with third-party services like Midtrans.
 
-## Ringkasan proyek
-Smart Inventory API dirancang untuk membantu tim operasional dan bisnis mengelola proses inventaris, pelanggan, pemasok, transaksi, serta pembayaran secara terpusat. Sistem ini menyediakan antarmuka backend yang aman, dapat dikembangkan, dan siap digunakan untuk kebutuhan operasional harian maupun integrasi dengan layanan pembayaran eksternal.
+## Project Overview
+Smart Inventory API is designed to help operational and business teams manage inventory, customer, supplier, transaction, and payment processes in a centralized manner. This system provides a secure backend interface that is scalable and ready for daily operational use as well as integration with external payment services.
 
-## Fitur utama
-- Mengelola produk, pemasok, pelanggan, dan transaksi
-- Sistem autentikasi untuk login, register, dan refresh token
-- Endpoint AI sederhana untuk forecasting, rekomendasi, dan deteksi anomali
-- Middleware keamanan, logging, CORS, rate limiting, dan header keamanan
-- Integrasi pembayaran dengan Midtrans dan kerangka DOKU
-- Webhook pembayaran untuk memproses status transaksi secara otomatis
+## Key Features
+- Manage products, suppliers, customers, and transactions
+- Authentication system for login, registration, and token refresh
+- Simple AI endpoints for forecasting, recommendations, and anomaly detection
+- Security middleware, logging, CORS, rate limiting, and security headers
+- Payment integration with Midtrans and DOKU framework
+- Payment webhooks to process transaction status automatically
 
-## Persiapan awal
-Ikuti langkah berikut agar aplikasi dapat berjalan di lingkungan lokal.
+## Initial Setup
+Follow these steps to run the application in your local environment.
 
-1. Buat dan aktifkan virtual environment
+1. Create and activate a virtual environment
 
 ```bash
 python -m venv venv
 source venv/bin/activate
 ```
 
-2. Instal semua dependensi
+2. Install all dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-3. Jalankan aplikasi
+3. Run the application
 
 ```bash
 uvicorn app.main:app --reload
 ```
 
-4. Jalankan pengujian
+4. Run tests
 
 ```bash
 python -m pytest -q
 ```
 
-5. Buka dokumentasi API
+5. Open API documentation
 
-Setelah server berjalan, buka:
+After the server is running, open:
 
 ```text
 http://localhost:8000/docs
 ```
 
-Dokumentasi interaktif ini memudahkan Anda melihat seluruh endpoint yang tersedia.
+This interactive documentation makes it easy to view all available endpoints.
 
-## Struktur API
-Semua endpoint utama menggunakan prefix:
+## API Structure
+All main endpoints use the prefix:
 
 ```text
 /api/v1
 ```
 
-Beberapa endpoint penting:
-- `/products` untuk mengelola produk
-- `/suppliers` untuk mengelola pemasok
-- `/customers` untuk mengelola pelanggan
-- `/transactions` untuk mengelola transaksi
-- `/auth` untuk registrasi, login, dan refresh token
-- `/ai/*` untuk fitur AI demo
-- `/payments/*` untuk alur pembayaran
-- `/admin/payments/*` untuk operasi pembayaran oleh admin
+Some important endpoints:
+- `/products` for managing products
+- `/suppliers` for managing suppliers
+- `/customers` for managing customers
+- `/transactions` for managing transactions
+- `/auth` for registration, login, and token refresh
+- `/ai/*` for demo AI features
+- `/payments/*` for payment flow
+- `/admin/payments/*` for payment operations by admin
 
-## Peran pengguna
-Aplikasi ini mendukung role-based access control. Role yang umum dipakai adalah:
-- `admin` untuk operasi administratif
-- `staff` untuk mengelola data operasional
-- `user` untuk pengguna biasa
+## User Roles
+This application supports role-based access control. Common roles are:
+- `admin` for administrative operations
+- `staff` for operational data management
+- `user` for regular users
 
-Jika Anda ingin memperluas sistem izin, role ini dapat dipakai untuk membatasi akses endpoint tertentu agar hanya user dengan hak tertentu yang bisa mengaksesnya.
+If you want to expand the permission system, these roles can be used to restrict access to certain endpoints so only users with specific rights can access them.
 
-## Panduan pembayaran Midtrans
-Aplikasi ini sudah dilengkapi dengan alur pembayaran dasar yang siap diuji di sandbox Midtrans.
+## Midtrans Payment Guide
+The application is equipped with a basic payment flow ready to test on Midtrans sandbox.
 
-### Konfigurasi environment
-Tambahkan variabel berikut ke file `.env`:
+### Environment Configuration
+Add the following variables to your `.env` file:
 
 ```bash
 MIDTRANS_SERVER_KEY="SB-Mid-server-3JWScOa4pa0QJjHG4vAEzCmh"
@@ -90,16 +90,16 @@ EMAIL_SYSTEM="jiwagila023@gmail.com"
 PAYMENT_WEBHOOK_SECRET="change-me-in-production"
 ```
 
-### Alur pembayaran
-1. Buat transaksi terlebih dahulu melalui endpoint transaksi.
-2. Panggil endpoint pembayaran untuk memulai proses pembayaran.
-3. Midtrans akan mengirimkan notifikasi webhook saat status pembayaran berubah.
-4. Sistem akan memperbarui status transaksi dan pembayaran secara otomatis.
+### Payment Flow
+1. Create a transaction first via the transaction endpoint.
+2. Call the payment endpoint to start the payment process.
+3. Midtrans will send a webhook notification when payment status changes.
+4. The system will automatically update transaction and payment status.
 
-### Endpoint pembayaran
+### Payment Endpoints
 
-#### 1. Memulai pembayaran
-Endpoint ini dipakai untuk membuat record pembayaran baru untuk transaksi yang sudah ada.
+#### 1. Initiate Payment
+This endpoint is used to create a new payment record for an existing transaction.
 
 ```bash
 curl -X POST http://localhost:8000/api/v1/payments/initiate \
@@ -107,12 +107,12 @@ curl -X POST http://localhost:8000/api/v1/payments/initiate \
   -d '{"transaction_id": 1, "provider": "midtrans"}'
 ```
 
-Tujuan endpoint ini adalah menginisialisasi pembayaran berdasarkan transaksi tertentu dan mengirimkan data ke penyedia pembayaran yang dipilih.
+The purpose of this endpoint is to initialize payment based on a specific transaction and send data to the selected payment provider.
 
-#### 2. Menerima webhook Midtrans
-Endpoint ini menerima notifikasi dari penyedia pembayaran. Saat webhook masuk, sistem akan memvalidasi tanda tangan, membaca status pembayaran, lalu mengubah status transaksi sesuai hasilnya.
+#### 2. Receive Midtrans Webhook
+This endpoint receives notifications from the payment provider. When a webhook arrives, the system will validate the signature, read the payment status, and update the transaction status accordingly.
 
-Contoh payload webhook untuk status berhasil:
+Example webhook payload for successful payment:
 
 ```bash
 curl -X POST http://localhost:8000/api/v1/payments/webhook \
@@ -132,7 +132,7 @@ curl -X POST http://localhost:8000/api/v1/payments/webhook \
   }'
 ```
 
-Contoh payload webhook untuk status gagal:
+Example webhook payload for failed payment:
 
 ```bash
 curl -X POST http://localhost:8000/api/v1/payments/webhook \
@@ -152,7 +152,7 @@ curl -X POST http://localhost:8000/api/v1/payments/webhook \
   }'
 ```
 
-Contoh payload webhook untuk status kadaluwarsa:
+Example webhook payload for expired payment:
 
 ```bash
 curl -X POST http://localhost:8000/api/v1/payments/webhook \
@@ -172,16 +172,16 @@ curl -X POST http://localhost:8000/api/v1/payments/webhook \
   }'
 ```
 
-Status yang umum dipetakan oleh sistem:
-- `settlement` atau `capture` → status internal `paid`
-- `deny`, `cancel`, `failure`, `expire`, `expired` → status internal `failed`
+Common status mappings by the system:
+- `settlement` or `capture` → internal status `paid`
+- `deny`, `cancel`, `failure`, `expire`, `expired` → internal status `failed`
 
-Contoh respon sukses dari Midtrans yang lebih realistis:
+Example successful response from Midtrans:
 
 ```json
 {
   "status_code": "201",
-  "status_message": "Transaksi berhasil diproses",
+  "status_message": "Transaction processed successfully",
   "transaction_id": "midtrans-sandbox-001",
   "order_id": "txn-1",
   "gross_amount": "10000.00",
@@ -192,24 +192,24 @@ Contoh respon sukses dari Midtrans yang lebih realistis:
 }
 ```
 
-#### 3. Melihat daftar pembayaran (admin)
-Endpoint ini dipakai oleh admin untuk melihat seluruh record pembayaran yang pernah dibuat.
+#### 3. View Payment List (Admin)
+This endpoint is used by admin to view all payment records ever created.
 
 ```bash
 curl -X GET http://localhost:8000/api/v1/admin/payments/ \
   -H 'Authorization: Bearer <admin-token>'
 ```
 
-#### 4. Mengulang pembayaran (admin)
-Endpoint ini dipakai ketika admin ingin mengirim ulang proses pembayaran untuk record yang sama.
+#### 4. Retry Payment (Admin)
+This endpoint is used when admin wants to resend the payment process for the same record.
 
 ```bash
 curl -X POST http://localhost:8000/api/v1/admin/payments/1/retry \
   -H 'Authorization: Bearer <admin-token>'
 ```
 
-#### 5. Refund pembayaran (admin)
-Endpoint ini dipakai untuk menandai pembayaran sebagai dikembalikan.
+#### 5. Refund Payment (Admin)
+This endpoint is used to mark a payment as refunded.
 
 Request body:
 
@@ -217,7 +217,7 @@ Request body:
 {}
 ```
 
-Contoh request:
+Example request:
 
 ```bash
 curl -X POST http://localhost:8000/api/v1/admin/payments/1/refund \
@@ -226,7 +226,7 @@ curl -X POST http://localhost:8000/api/v1/admin/payments/1/refund \
   -d '{}'
 ```
 
-Contoh respon JSON:
+Example JSON response:
 
 ```json
 {
@@ -236,8 +236,8 @@ Contoh respon JSON:
 }
 ```
 
-#### 6. Membatalkan pembayaran (admin)
-Endpoint ini dipakai untuk menandai pembayaran sebagai dibatalkan.
+#### 6. Cancel Payment (Admin)
+This endpoint is used to mark a payment as canceled.
 
 Request body:
 
@@ -245,7 +245,7 @@ Request body:
 {}
 ```
 
-Contoh request:
+Example request:
 
 ```bash
 curl -X POST http://localhost:8000/api/v1/admin/payments/1/cancel \
@@ -254,7 +254,7 @@ curl -X POST http://localhost:8000/api/v1/admin/payments/1/cancel \
   -d '{}'
 ```
 
-Contoh respon JSON:
+Example JSON response:
 
 ```json
 {
@@ -264,26 +264,26 @@ Contoh respon JSON:
 }
 ```
 
-## Catatan penting
-- Untuk lingkungan produksi, gunakan secret manager dan verifikasi signature yang lebih spesifik sesuai penyedia pembayaran.
-- Webhook sebaiknya diolah secara idempotent agar tidak terjadi duplikasi pemrosesan.
-- Saat webhook menunjukkan status `paid`, transaksi akan otomatis dipindahkan ke status `completed`.
+## Important Notes
+- For production environment, use a secret manager and more specific signature verification according to the payment provider.
+- Webhooks should be processed idempotently to prevent duplicate processing.
+- When a webhook shows `paid` status, the transaction will automatically move to `completed` status.
 
-## Cara test dari Postman
-Bagian ini dibuat supaya tim non-teknis bisa mencoba alur pembayaran dengan mudah.
+## How to Test with Postman
+This section is designed to help non-technical teams easily test the payment flow.
 
-### 1. Jalankan aplikasi lokal
-Pastikan server berjalan terlebih dahulu:
+### 1. Run Local Application
+Make sure the server is running first:
 
 ```bash
 uvicorn app.main:app --reload
 ```
 
-### 2. Buka Postman
-Buat request baru dengan metode yang sesuai.
+### 2. Open Postman
+Create a new request with the appropriate method.
 
-### 3. Test endpoint pembayaran
-#### A. Buat pembayaran
+### 3. Test Payment Endpoints
+#### A. Create Payment
 - Method: `POST`
 - URL: `http://localhost:8000/api/v1/payments/initiate`
 - Body: raw JSON
@@ -295,11 +295,11 @@ Buat request baru dengan metode yang sesuai.
 }
 ```
 
-#### B. Test webhook sukses
+#### B. Test Successful Webhook
 - Method: `POST`
 - URL: `http://localhost:8000/api/v1/payments/webhook`
 - Header: `Content-Type: application/json`
-- Header: `X-Signature: <nilai tanda tangan yang sama dengan body>`
+- Header: `X-Signature: <sha256-hmac-signature-of-body>`
 - Body: raw JSON
 
 ```json
@@ -317,32 +317,32 @@ Buat request baru dengan metode yang sesuai.
 }
 ```
 
-#### C. Test webhook gagal
-Gunakan body yang sama, tetapi ubah `transaction_status` menjadi `deny`.
+#### C. Test Failed Webhook
+Use the same body, but change `transaction_status` to `deny`.
 
-#### D. Test webhook kadaluwarsa
-Gunakan body yang sama, tetapi ubah `transaction_status` menjadi `expire`.
+#### D. Test Expired Webhook
+Use the same body, but change `transaction_status` to `expire`.
 
-### 4. Test endpoint admin
-Untuk melihat daftar pembayaran atau melakukan refund/cancel, gunakan token admin pada header Authorization.
+### 4. Test Admin Endpoints
+To view payment list or perform refund/cancel operations, use admin token in the Authorization header.
 
 ```text
 Authorization: Bearer <admin-token>
 ```
 
-Contoh endpoint:
+Example endpoints:
 - `GET http://localhost:8000/api/v1/admin/payments/`
 - `POST http://localhost:8000/api/v1/admin/payments/1/refund`
 - `POST http://localhost:8000/api/v1/admin/payments/1/cancel`
 
-### 5. Cek hasil
-Setelah request dikirim, pastikan:
-- status pembayaran berubah sesuai webhook
-- transaksi berubah menjadi `completed` saat pembayaran sukses
-- transaksi berubah menjadi `failed` atau `expired` saat webhook menunjukkan kondisi tersebut
+### 5. Check Results
+After sending a request, ensure:
+- Payment status changes according to webhook
+- Transaction changes to `completed` when payment is successful
+- Transaction changes to `failed` or `expired` when webhook shows that condition
 
-## Contoh respon admin
-Endpoint admin berikut mengembalikan data ringkas mengenai status pembayaran yang telah diproses:
+## Admin Response Examples
+The following admin endpoint returns concise data about processed payments:
 
 ```json
 [
@@ -357,12 +357,12 @@ Endpoint admin berikut mengembalikan data ringkas mengenai status pembayaran yan
 ]
 ```
 
-Endpoint ini dapat dipakai untuk monitoring internal, audit, maupun pelacakan status pembayaran oleh tim operasional atau stakeholder.
+This endpoint can be used for internal monitoring, audit purposes, and payment status tracking by operational teams or stakeholders.
 
-## Versi formal untuk stakeholder atau client
-Proyek ini dikembangkan sebagai solusi backend yang mendukung pengelolaan inventaris dan transaksi secara terstruktur, dengan fokus pada keamanan, skalabilitas, dan kemudahan integrasi. Fitur pembayaran yang tersedia saat ini dirancang untuk mendukung alur transaksi yang aman dan transparan, termasuk pemrosesan webhook, pemantauan status pembayaran, serta tindakan administratif seperti refund dan cancel.
+## Formal Version for Stakeholders and Clients
+This project is developed as a backend solution that supports structured inventory and transaction management, with focus on security, scalability, and ease of integration. The payment features currently available are designed to support a safe and transparent transaction flow, including webhook processing, payment status monitoring, and administrative actions such as refunds and cancellations.
 
-Tujuan utama implementasi ini adalah memberikan fondasi sistem yang siap digunakan untuk proses bisnis nyata, dengan dokumentasi yang memadai sehingga tim internal maupun mitra eksternal dapat memahami alur kerja secara cepat.
+The main purpose of this implementation is to provide a foundation system ready for real business processes, with adequate documentation so that internal teams and external partners can quickly understand the workflow.
 
-## Pengujian
-Pengujian untuk alur pembayaran, webhook, dan akses admin sudah tersedia di folder `tests`.
+## Testing
+Tests for payment flow, webhooks, and admin access are available in the `tests` folder.
