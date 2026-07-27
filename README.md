@@ -83,11 +83,11 @@ The application is equipped with a basic payment flow ready to test on Midtrans 
 Add the following variables to your `.env` file:
 
 ```bash
-MIDTRANS_SERVER_KEY="SB-Mid-server-3JWScOa4pa0QJjHG4vAEzCmh"
-MIDTRANS_CLIENT_KEY="SB-Mid-client-cSoG5C-yKiBSkgTj"
+MIDTRANS_SERVER_KEY="SB-Mid-server-your-server-key"
+MIDTRANS_CLIENT_KEY="SB-Mid-client-your-client-key"
 MIDTRANS_ENVIRONMENT="sandbox"
-EMAIL_SYSTEM="jiwagila023@gmail.com"
-PAYMENT_WEBHOOK_SECRET="change-me-in-production"
+EMAIL_SYSTEM="your email"
+PAYMENT_WEBHOOK_SECRET=""
 ```
 
 ### Payment Flow
