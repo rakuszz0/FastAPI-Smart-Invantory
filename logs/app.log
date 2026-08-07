@@ -27724,3 +27724,169 @@ WHERE transactions.id = ?
 2026-07-26 01:55:05,817 | INFO | POST /api/v1/transactions/ | 200 | 0.0073s
 2026-07-26 01:55:05,817 | INFO | ROLLBACK
 2026-07-26 01:55:05,818 | INFO | HTTP Request: POST http://testserver/api/v1/transactions/ "HTTP/1.1 200 OK"
+2026-08-07 15:22:29,990 | INFO | OPTIONS /api/v1/auth/login | 200 | 0.0060s
+2026-08-07 15:22:30,635 | INFO | SELECT DATABASE()
+2026-08-07 15:22:30,635 | INFO | [raw sql] {}
+2026-08-07 15:22:30,645 | INFO | SELECT @@sql_mode
+2026-08-07 15:22:30,646 | INFO | [raw sql] {}
+2026-08-07 15:22:30,650 | INFO | SELECT @@lower_case_table_names
+2026-08-07 15:22:30,650 | INFO | [raw sql] {}
+2026-08-07 15:22:30,659 | INFO | BEGIN (implicit)
+2026-08-07 15:22:30,667 | INFO | SELECT users.id AS users_id, users.fullname AS users_fullname, users.email AS users_email, users.password AS users_password, users.`role` AS users_role, users.is_active AS users_is_active, users.phone AS users_phone, users.address AS users_address, users.date_of_birth AS users_date_of_birth, users.gender AS users_gender, users.created_at AS users_created_at, users.updated_at AS users_updated_at 
+FROM users 
+WHERE users.email = %(email_1)s 
+ LIMIT %(param_1)s
+2026-08-07 15:22:30,667 | INFO | [generated in 0.00029s] {'email_1': 'ilahir66@gmail.com', 'param_1': 1}
+2026-08-07 15:22:30,789 | INFO | ROLLBACK
+2026-08-07 15:22:37,277 | INFO | OPTIONS /api/v1/products | 200 | 0.0024s
+2026-08-07 15:22:37,284 | INFO | OPTIONS /api/v1/products | 200 | 0.0015s
+2026-08-07 15:22:37,567 | INFO | GET /api/v1/products | 307 | 0.2679s
+2026-08-07 15:22:37,570 | INFO | GET /api/v1/products | 307 | 0.0002s
+2026-08-07 15:22:37,572 | INFO | OPTIONS /api/v1/products/ | 200 | 0.0001s
+2026-08-07 15:22:37,572 | INFO | OPTIONS /api/v1/products/ | 200 | 0.0002s
+2026-08-07 15:22:37,622 | INFO | BEGIN (implicit)
+2026-08-07 15:22:37,630 | INFO | SELECT products.id AS products_id, products.name AS products_name, products.category AS products_category, products.stock AS products_stock, products.price AS products_price, products.supplier_id AS products_supplier_id 
+FROM products
+2026-08-07 15:22:37,630 | INFO | [generated in 0.00025s] {}
+2026-08-07 15:22:37,757 | INFO | ROLLBACK
+2026-08-07 15:22:37,777 | INFO | BEGIN (implicit)
+2026-08-07 15:22:37,777 | INFO | SELECT products.id AS products_id, products.name AS products_name, products.category AS products_category, products.stock AS products_stock, products.price AS products_price, products.supplier_id AS products_supplier_id 
+FROM products
+2026-08-07 15:22:37,778 | INFO | [cached since 0.1477s ago] {}
+2026-08-07 15:22:37,787 | INFO | ROLLBACK
+2026-08-07 15:22:55,334 | INFO | OPTIONS /api/v1/suppliers | 200 | 0.0003s
+2026-08-07 15:22:55,334 | INFO | OPTIONS /api/v1/suppliers | 200 | 0.0009s
+2026-08-07 15:22:55,405 | INFO | GET /api/v1/suppliers | 307 | 0.0058s
+2026-08-07 15:22:55,416 | INFO | GET /api/v1/suppliers | 307 | 0.0005s
+2026-08-07 15:22:55,417 | INFO | OPTIONS /api/v1/suppliers/ | 200 | 0.0007s
+2026-08-07 15:22:55,426 | INFO | OPTIONS /api/v1/suppliers/ | 200 | 0.0001s
+2026-08-07 15:22:55,436 | INFO | BEGIN (implicit)
+2026-08-07 15:22:55,439 | INFO | SELECT suppliers.id AS suppliers_id, suppliers.company_name AS suppliers_company_name, suppliers.email AS suppliers_email, suppliers.phone AS suppliers_phone, suppliers.address AS suppliers_address 
+FROM suppliers
+2026-08-07 15:22:55,439 | INFO | [generated in 0.00019s] {}
+2026-08-07 15:22:56,205 | INFO | ROLLBACK
+2026-08-07 15:22:56,233 | INFO | BEGIN (implicit)
+2026-08-07 15:22:56,233 | INFO | SELECT suppliers.id AS suppliers_id, suppliers.company_name AS suppliers_company_name, suppliers.email AS suppliers_email, suppliers.phone AS suppliers_phone, suppliers.address AS suppliers_address 
+FROM suppliers
+2026-08-07 15:22:56,233 | INFO | [cached since 0.7941s ago] {}
+2026-08-07 15:22:56,254 | INFO | ROLLBACK
+2026-08-07 15:22:58,652 | INFO | OPTIONS /api/v1/customers | 200 | 0.0071s
+2026-08-07 15:22:58,659 | INFO | OPTIONS /api/v1/customers | 200 | 0.0029s
+2026-08-07 15:22:58,669 | INFO | GET /api/v1/customers | 307 | 0.0027s
+2026-08-07 15:22:58,674 | INFO | GET /api/v1/customers | 307 | 0.0023s
+2026-08-07 15:22:58,676 | INFO | OPTIONS /api/v1/customers/ | 200 | 0.0023s
+2026-08-07 15:22:58,687 | INFO | OPTIONS /api/v1/customers/ | 200 | 0.0047s
+2026-08-07 15:22:58,699 | INFO | BEGIN (implicit)
+2026-08-07 15:22:58,704 | INFO | SELECT customers.id AS customers_id, customers.name AS customers_name, customers.email AS customers_email, customers.phone AS customers_phone 
+FROM customers
+2026-08-07 15:22:58,705 | INFO | [generated in 0.00171s] {}
+2026-08-07 15:22:59,088 | INFO | ROLLBACK
+2026-08-07 15:22:59,195 | INFO | BEGIN (implicit)
+2026-08-07 15:22:59,195 | INFO | SELECT customers.id AS customers_id, customers.name AS customers_name, customers.email AS customers_email, customers.phone AS customers_phone 
+FROM customers
+2026-08-07 15:22:59,195 | INFO | [cached since 0.4924s ago] {}
+2026-08-07 15:22:59,225 | INFO | ROLLBACK
+2026-08-07 15:24:18,276 | INFO | GET /api/v1/products | 307 | 0.0038s
+2026-08-07 15:24:18,282 | INFO | GET /api/v1/products | 307 | 0.0004s
+2026-08-07 15:24:18,299 | INFO | BEGIN (implicit)
+2026-08-07 15:24:18,301 | INFO | SELECT products.id AS products_id, products.name AS products_name, products.category AS products_category, products.stock AS products_stock, products.price AS products_price, products.supplier_id AS products_supplier_id 
+FROM products
+2026-08-07 15:24:18,301 | INFO | [cached since 100.7s ago] {}
+2026-08-07 15:24:18,433 | INFO | ROLLBACK
+2026-08-07 15:24:18,458 | INFO | BEGIN (implicit)
+2026-08-07 15:24:18,458 | INFO | SELECT products.id AS products_id, products.name AS products_name, products.category AS products_category, products.stock AS products_stock, products.price AS products_price, products.supplier_id AS products_supplier_id 
+FROM products
+2026-08-07 15:24:18,458 | INFO | [cached since 100.8s ago] {}
+2026-08-07 15:24:18,460 | INFO | ROLLBACK
+2026-08-07 15:24:20,023 | INFO | GET /api/v1/suppliers | 307 | 0.0026s
+2026-08-07 15:24:20,031 | INFO | GET /api/v1/suppliers | 307 | 0.0023s
+2026-08-07 15:24:20,045 | INFO | BEGIN (implicit)
+2026-08-07 15:24:20,046 | INFO | SELECT suppliers.id AS suppliers_id, suppliers.company_name AS suppliers_company_name, suppliers.email AS suppliers_email, suppliers.phone AS suppliers_phone, suppliers.address AS suppliers_address 
+FROM suppliers
+2026-08-07 15:24:20,046 | INFO | [cached since 84.61s ago] {}
+2026-08-07 15:24:20,049 | INFO | ROLLBACK
+2026-08-07 15:24:20,057 | INFO | BEGIN (implicit)
+2026-08-07 15:24:20,057 | INFO | SELECT suppliers.id AS suppliers_id, suppliers.company_name AS suppliers_company_name, suppliers.email AS suppliers_email, suppliers.phone AS suppliers_phone, suppliers.address AS suppliers_address 
+FROM suppliers
+2026-08-07 15:24:20,057 | INFO | [cached since 84.62s ago] {}
+2026-08-07 15:24:20,058 | INFO | ROLLBACK
+2026-08-07 15:24:21,674 | INFO | GET /api/v1/customers | 307 | 0.0011s
+2026-08-07 15:24:21,681 | INFO | GET /api/v1/customers | 307 | 0.0007s
+2026-08-07 15:24:21,685 | INFO | BEGIN (implicit)
+2026-08-07 15:24:21,686 | INFO | SELECT customers.id AS customers_id, customers.name AS customers_name, customers.email AS customers_email, customers.phone AS customers_phone 
+FROM customers
+2026-08-07 15:24:21,686 | INFO | [cached since 82.98s ago] {}
+2026-08-07 15:24:21,691 | INFO | ROLLBACK
+2026-08-07 15:24:21,707 | INFO | BEGIN (implicit)
+2026-08-07 15:24:21,707 | INFO | SELECT customers.id AS customers_id, customers.name AS customers_name, customers.email AS customers_email, customers.phone AS customers_phone 
+FROM customers
+2026-08-07 15:24:21,708 | INFO | [cached since 83s ago] {}
+2026-08-07 15:24:21,709 | INFO | ROLLBACK
+2026-08-07 15:24:22,592 | INFO | GET /api/v1/suppliers | 307 | 0.0003s
+2026-08-07 15:24:22,595 | INFO | GET /api/v1/suppliers | 307 | 0.0003s
+2026-08-07 15:24:22,596 | INFO | BEGIN (implicit)
+2026-08-07 15:24:22,596 | INFO | SELECT suppliers.id AS suppliers_id, suppliers.company_name AS suppliers_company_name, suppliers.email AS suppliers_email, suppliers.phone AS suppliers_phone, suppliers.address AS suppliers_address 
+FROM suppliers
+2026-08-07 15:24:22,596 | INFO | [cached since 87.16s ago] {}
+2026-08-07 15:24:22,598 | INFO | ROLLBACK
+2026-08-07 15:24:22,604 | INFO | BEGIN (implicit)
+2026-08-07 15:24:22,604 | INFO | SELECT suppliers.id AS suppliers_id, suppliers.company_name AS suppliers_company_name, suppliers.email AS suppliers_email, suppliers.phone AS suppliers_phone, suppliers.address AS suppliers_address 
+FROM suppliers
+2026-08-07 15:24:22,604 | INFO | [cached since 87.17s ago] {}
+2026-08-07 15:24:22,605 | INFO | ROLLBACK
+2026-08-07 15:24:34,439 | INFO | GET /api/v1/products | 307 | 0.0014s
+2026-08-07 15:24:34,457 | INFO | GET /api/v1/products | 307 | 0.0111s
+2026-08-07 15:24:34,466 | INFO | BEGIN (implicit)
+2026-08-07 15:24:34,466 | INFO | SELECT products.id AS products_id, products.name AS products_name, products.category AS products_category, products.stock AS products_stock, products.price AS products_price, products.supplier_id AS products_supplier_id 
+FROM products
+2026-08-07 15:24:34,466 | INFO | [cached since 116.8s ago] {}
+2026-08-07 15:24:34,482 | INFO | ROLLBACK
+2026-08-07 15:24:34,494 | INFO | BEGIN (implicit)
+2026-08-07 15:24:34,494 | INFO | SELECT products.id AS products_id, products.name AS products_name, products.category AS products_category, products.stock AS products_stock, products.price AS products_price, products.supplier_id AS products_supplier_id 
+FROM products
+2026-08-07 15:24:34,494 | INFO | [cached since 116.9s ago] {}
+2026-08-07 15:24:34,495 | INFO | ROLLBACK
+2026-08-07 15:27:04,270 | INFO | GET /api/v1/products | 307 | 0.0148s
+2026-08-07 15:27:04,280 | INFO | GET /api/v1/products | 307 | 0.0007s
+2026-08-07 15:27:04,322 | INFO | BEGIN (implicit)
+2026-08-07 15:27:04,327 | INFO | SELECT products.id AS products_id, products.name AS products_name, products.category AS products_category, products.stock AS products_stock, products.price AS products_price, products.supplier_id AS products_supplier_id 
+FROM products
+2026-08-07 15:27:04,329 | INFO | [cached since 266.7s ago] {}
+2026-08-07 15:27:04,461 | INFO | ROLLBACK
+2026-08-07 15:27:04,490 | INFO | BEGIN (implicit)
+2026-08-07 15:27:04,490 | INFO | SELECT products.id AS products_id, products.name AS products_name, products.category AS products_category, products.stock AS products_stock, products.price AS products_price, products.supplier_id AS products_supplier_id 
+FROM products
+2026-08-07 15:27:04,491 | INFO | [cached since 266.9s ago] {}
+2026-08-07 15:27:04,491 | INFO | ROLLBACK
+2026-08-07 15:33:36,214 | INFO | OPTIONS /api/v1/products | 200 | 0.0014s
+2026-08-07 15:33:36,219 | INFO | OPTIONS /api/v1/products | 200 | 0.0074s
+2026-08-07 15:33:36,251 | INFO | GET /api/v1/products | 307 | 0.0069s
+2026-08-07 15:33:36,262 | INFO | GET /api/v1/products | 307 | 0.0003s
+2026-08-07 15:33:36,266 | INFO | OPTIONS /api/v1/products/ | 200 | 0.0002s
+2026-08-07 15:33:36,306 | INFO | OPTIONS /api/v1/products/ | 200 | 0.0352s
+2026-08-07 15:33:36,453 | INFO | BEGIN (implicit)
+2026-08-07 15:33:36,470 | INFO | SELECT products.id AS products_id, products.name AS products_name, products.category AS products_category, products.stock AS products_stock, products.price AS products_price, products.supplier_id AS products_supplier_id 
+FROM products
+2026-08-07 15:33:36,472 | INFO | [cached since 658.8s ago] {}
+2026-08-07 15:33:39,294 | INFO | ROLLBACK
+2026-08-07 15:33:39,404 | INFO | BEGIN (implicit)
+2026-08-07 15:33:39,410 | INFO | SELECT products.id AS products_id, products.name AS products_name, products.category AS products_category, products.stock AS products_stock, products.price AS products_price, products.supplier_id AS products_supplier_id 
+FROM products
+2026-08-07 15:33:39,411 | INFO | [cached since 661.7s ago] {}
+2026-08-07 15:33:39,455 | INFO | ROLLBACK
+2026-08-07 15:34:07,579 | INFO | OPTIONS /api/v1/transactions | 200 | 0.0090s
+2026-08-07 15:34:07,584 | INFO | OPTIONS /api/v1/transactions | 200 | 0.0136s
+2026-08-07 15:34:07,606 | INFO | GET /api/v1/transactions | 307 | 0.0103s
+2026-08-07 15:34:07,650 | INFO | GET /api/v1/transactions | 307 | 0.0179s
+2026-08-07 15:34:07,652 | INFO | OPTIONS /api/v1/transactions/ | 200 | 0.0015s
+2026-08-07 15:34:07,669 | INFO | OPTIONS /api/v1/transactions/ | 200 | 0.0014s
+2026-08-07 15:34:07,725 | INFO | BEGIN (implicit)
+2026-08-07 15:34:07,796 | INFO | SELECT transactions.id AS transactions_id, transactions.quantity AS transactions_quantity, transactions.total AS transactions_total, transactions.status AS transactions_status, transactions.product_id AS transactions_product_id, transactions.customer_id AS transactions_customer_id 
+FROM transactions
+2026-08-07 15:34:07,796 | INFO | [generated in 0.00023s] {}
+2026-08-07 15:34:07,929 | INFO | ROLLBACK
+2026-08-07 15:34:08,038 | INFO | BEGIN (implicit)
+2026-08-07 15:34:08,038 | INFO | SELECT transactions.id AS transactions_id, transactions.quantity AS transactions_quantity, transactions.total AS transactions_total, transactions.status AS transactions_status, transactions.product_id AS transactions_product_id, transactions.customer_id AS transactions_customer_id 
+FROM transactions
+2026-08-07 15:34:08,039 | INFO | [cached since 0.2423s ago] {}
+2026-08-07 15:34:08,042 | INFO | ROLLBACK
